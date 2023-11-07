@@ -4,7 +4,6 @@
 //テストシーンを管理するクラス
 class MainGameScene : public GameObject
 {
-
 	int hModel_;    //モデル番号
 public:
 	//コンストラクタ
