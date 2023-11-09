@@ -5,6 +5,7 @@
 class MainGameScene : public GameObject
 {
 	int hModel_;    //モデル番号
+	Transform kari;
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
