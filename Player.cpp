@@ -2,6 +2,7 @@
 #include "Engine/Input.h"
 #include "Engine/Model.h"
 #include "Engine/Camera.h"
+#include "Engine/SphereCollider.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -20,6 +21,9 @@ void Player::Initialize()
 	//モデルデータのロード
 	hModel_ = Model::Load("Sample.fbx");
 	assert(hModel_ >= 0);
+
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(front.position_.x, 1, front.position_.y), 1.2f);
+	AddCollider(collision);
 }
 
 //更新
@@ -56,6 +60,7 @@ void Player::Update()
 	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
 
 	
+	
 }
 
 //描画
@@ -68,4 +73,10 @@ void Player::Draw()
 //開放
 void Player::Release()
 {
+}
+
+//当たり判定
+void Player::OnCollision(GameObject* pTarget)
+{
+	//当たったときの処理
 }

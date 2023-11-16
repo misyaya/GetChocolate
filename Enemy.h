@@ -2,17 +2,16 @@
 #include "Engine/GameObject.h"
 
 //◆◆◆を管理するクラス
-class Player : public GameObject
+class Enemy : public GameObject
 {
-    int hModel_;    //モデル番号
-    Transform kari;
-    Transform front;
+    int enemy_;
+    Transform enemyTr;
 public:
     //コンストラクタ
-    Player(GameObject* parent);
+    Enemy(GameObject* parent);
 
     //デストラクタ
-    ~Player();
+    ~Enemy();
 
     //初期化
     void Initialize() override;
@@ -28,4 +27,5 @@ public:
 
     //当たり判定
     void OnCollision(GameObject* pTarget);
+    
 };

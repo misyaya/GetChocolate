@@ -4,6 +4,7 @@
 #include "Engine/Camera.h"
 #include "Player.h"
 #include "Floor.h"
+#include "Enemy.h"
 
 //コンストラクタ
 MainGameScene::MainGameScene(GameObject * parent)
@@ -16,6 +17,7 @@ void MainGameScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
+	Instantiate<Enemy>(this);
 }
 
 //更新
