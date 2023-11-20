@@ -3,6 +3,7 @@
 #include "Engine/Model.h"
 #include "Engine/Camera.h"
 #include "Engine/SphereCollider.h"
+#include "Sword.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
@@ -22,38 +23,41 @@ void Player::Initialize()
 	hModel_ = Model::Load("Sample.fbx");
 	assert(hModel_ >= 0);
 
-	SphereCollider* collision = new SphereCollider(XMFLOAT3(front.position_.x, 1, front.position_.y), 1.2f);
+	
+	Instantiate<Sword>(this);
+
+	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.2f);
 	AddCollider(collision);
 }
 
 //更新
 void Player::Update()
 {
-	
+	kari = transform_;
 
 	if (Input::IsKey(DIK_W))
 	{
-		kari.position_.z += 0.1f;
-		kari.rotate_.y = front.rotate_.y;
+		transform_.position_.z += 0.1f;
+		transform_.rotate_.y = front.rotate_.y;
 	}
 
 	if (Input::IsKey(DIK_S))
 	{
-		kari.position_.z -= 0.1f;
-		kari.rotate_.y = front.rotate_.y;
+		transform_.position_.z -= 0.1f;
+		transform_.rotate_.y = front.rotate_.y;
 	}
 
 
 	if (Input::IsKey(DIK_D))
 	{
-		kari.position_.x += 0.1f;
-		kari.rotate_.y = front.rotate_.y + 90.0f;
+		transform_.position_.x += 0.1f;
+		transform_.rotate_.y = front.rotate_.y + 90.0f;
 	}
 
 	if (Input::IsKey(DIK_A))
 	{
-		kari.position_.x -= 0.1f;
-		kari.rotate_.y = front.rotate_.y - 90.0f;
+		transform_.position_.x -= 0.1f;
+		transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
 
 	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
@@ -66,7 +70,7 @@ void Player::Update()
 //描画
 void Player::Draw()
 {
-	Model::SetTransform(hModel_, kari);
+	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
 }
 
