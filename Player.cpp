@@ -28,6 +28,9 @@ void Player::Initialize()
 
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.2f);
 	AddCollider(collision);
+
+	SphereCollider* collisionS = new SphereCollider(XMFLOAT3(0.5f, 2.0f, 0.8f), 1.2f);
+	AddCollider(collisionS);
 }
 
 //çXêV
