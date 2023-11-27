@@ -24,7 +24,8 @@ void Sword::Initialize()
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
 
-    
+    SphereCollider* collisionS = new SphereCollider(XMFLOAT3(0.5f, 2.0f, 0.8f), 1.2f);
+    AddCollider(collisionS);
 }
 
 //çXêV
