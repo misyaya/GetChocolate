@@ -29,7 +29,7 @@ void Player::Initialize()
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.2f);
 	AddCollider(collision);
 
-
+	
 }
 
 //XV
@@ -48,7 +48,7 @@ void Player::Update()
 		transform_.position_.z -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
 	}
-
+	
 
 	if (Input::IsKey(DIK_D))
 	{
@@ -84,5 +84,11 @@ void Player::Release()
 //“–‚½‚è”»’è
 void Player::OnCollision(GameObject* pTarget)
 {
-	//“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+	//“G‚É“–‚½‚Á‚½‚Æ‚«
+	if (pTarget->GetObjectName() == "Enemy")
+	{
+		pGauge->AddValue(-0.05);
+
+	}
 }
+

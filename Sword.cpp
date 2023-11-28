@@ -1,6 +1,6 @@
 #include "Sword.h"
 #include "Engine/Model.h"
-#include "Engine/SphereCollider.h"
+#include "Engine/BoxCollider.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
@@ -24,8 +24,8 @@ void Sword::Initialize()
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
 
-    SphereCollider* collisionS = new SphereCollider(XMFLOAT3(0.5f, 2.0f, 0.8f), 1.2f);
-    AddCollider(collisionS);
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
+    AddCollider(collision);
 }
 
 //更新

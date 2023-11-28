@@ -120,6 +120,7 @@
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="LifeGauge.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -217,6 +218,7 @@
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="LifeGauge.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

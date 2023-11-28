@@ -88,4 +88,19 @@ namespace Image
 	//引数：handle	知りたい画像の番号
 	//戻値：ワールド行列
 	XMMATRIX GetMatrix(int handle);
+
+	//画像サイズ(横)取得
+	//引数：handle　知りたい画像の番号
+	//戻値：画像横幅
+	int GetWidth(int handle);
+
+	//画像サイズ(縦)取得
+	//引数：handle　知りたい画像の番号
+	//戻値：画像縦幅
+	int GetHeight(int handle);
+
+	//画像サイズ取得
+	//引数：handle　知りたい画像の番号
+	//戻値：画像サイズ
+	XMFLOAT3 GetSize(int handle);
 }

@@ -1,12 +1,16 @@
 #pragma once
 #include "Engine/GameObject.h"
-
+#include "LifeGauge.h"
 //◆◆◆を管理するクラス
 class Player : public GameObject
 {
     int hModel_;    //モデル番号
     Transform kari;
     Transform front;
+
+    int hp_;
+
+    LifeGauge* pGauge = (LifeGauge*)FindObject("LifeGauge");
 public:
     //コンストラクタ
     Player(GameObject* parent);
