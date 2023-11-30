@@ -1,6 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "LifeGauge.h"
+
 //◆◆◆を管理するクラス
 class Player : public GameObject
 {
@@ -10,7 +10,6 @@ class Player : public GameObject
 
     int hp_;
 
-    LifeGauge* pGauge = (LifeGauge*)FindObject("LifeGauge");
 public:
     //コンストラクタ
     Player(GameObject* parent);

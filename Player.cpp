@@ -87,7 +87,7 @@ void Player::OnCollision(GameObject* pTarget)
 	//“G‚É“–‚½‚Á‚½‚Æ‚«
 	if (pTarget->GetObjectName() == "Enemy")
 	{
-		pGauge->AddValue(-0.05);
+		
 
 	}
 }
