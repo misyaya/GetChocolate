@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include  "LifeGauge.h"
 
 //◆◆◆を管理するクラス
 class Player : public GameObject
@@ -8,8 +9,8 @@ class Player : public GameObject
     Transform kari;
     Transform front;
 
-    int hp_;
-
+    int nowHp_;
+    LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
 public:
     //コンストラクタ
     Player(GameObject* parent);

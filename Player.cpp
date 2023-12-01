@@ -7,7 +7,7 @@
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hModel_(-1)
+    :GameObject(parent, "Player"), hModel_(-1),nowHp_(180)
 {
 }
 
@@ -36,6 +36,7 @@ void Player::Initialize()
 void Player::Update()
 {
 	kari = transform_;
+
 
 	if (Input::IsKey(DIK_W))
 	{
@@ -87,7 +88,7 @@ void Player::OnCollision(GameObject* pTarget)
 	//敵に当たったとき
 	if (pTarget->GetObjectName() == "Enemy")
 	{
-		
+		pLifeGauge->AddValue(-10);
 
 	}
 }

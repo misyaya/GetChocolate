@@ -5,14 +5,15 @@
 class LifeGauge : public GameObject
 {
 private:
-    int hPictGauge_;    //画像番号(ゲージの中身)
-    int hPictFrame_;    //画像番号(ゲージの外枠)
+    int hPictGauge_;    //画像番号(ゲージ本体)
+    int hPictFrame_;    //画像番号(ゲージフレーム)
 
-    float nowHp;    //今の値
+    float nowHp_;    //今の値
     const float maxHp_ = 1.0f;  //最大値
+    const float minHp_ = 0.0f;  //最小値
     float aniHp_;   //表示用の値
-    int ImageWidth;     //ゲージ画像の幅
-    int ImageHeight;    //ゲージ画像の高さ
+    int ImageWidth;     //ゲージ本体画像の幅
+    int ImageHeight;    //ゲージ本体画像の高さ
 
     bool flag = true;
     float power = 0;
@@ -41,14 +42,15 @@ public:
     //開放
     void Release() override;
 
-    //位置
+    //ゲージの位置設定
     void SetPosition(float x, float y, float z);
 
-    //値を加減算する
+    //値の加減算
     void AddValue(float v);
 
-    //
+    //値のセット
     void SetValue(float v);
 
+    //現在のHP取得
     float GetValue();
 };
