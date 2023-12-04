@@ -42,6 +42,7 @@ void LifeGauge::Draw()
     //幅    =    画像幅    *   今のHP
     int width = ImageWidth * nowHp_;
 
+
     // ゲージ本体の切り抜き調整、描画
     Image::SetRect(hPictGauge_, left, 0, width, ImageHeight);
     Image::SetTransform(hPictGauge_, transform_);
@@ -57,12 +58,25 @@ void LifeGauge::Release()
 {
 }
 
+void LifeGauge::SetHp(float _nowHp, int _maxHp)
+{
+    nowHp_ = _nowHp;
+    maxHp_ = _maxHp;
+}
+
 //ゲージの位置設定
 void LifeGauge::SetPosition(float x, float y, float z)
 {
     transform_.position_.x = x;
     transform_.position_.y = y;
     transform_.position_.z = z;
+}
+
+void LifeGauge::SetRotate(float x, float y, float z)
+{
+    transform_.rotate_.x = x;
+    transform_.rotate_.y = y;
+    transform_.rotate_.z = z;
 }
 
 //値の加減算

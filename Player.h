@@ -10,7 +10,7 @@ class Player : public GameObject
     Transform front;
 
     int nowHp_;
-    LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
+   // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
 public:
     //コンストラクタ
     Player(GameObject* parent);

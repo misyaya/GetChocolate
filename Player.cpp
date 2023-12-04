@@ -29,7 +29,7 @@ void Player::Initialize()
 	SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.2f);
 	AddCollider(collision);
 
-	
+	LifeGauge gauge();
 }
 
 //XV
@@ -85,10 +85,12 @@ void Player::Release()
 //“–‚½‚è”»’è
 void Player::OnCollision(GameObject* pTarget)
 {
+	LifeGauge* pLifeGauge = (LifeGauge*)FindObject("LifeGauge");
+
 	//“G‚É“–‚½‚Á‚½‚Æ‚«
 	if (pTarget->GetObjectName() == "Enemy")
 	{
-		pLifeGauge->AddValue(-10);
+		pLifeGauge->AddValue(-1);
 
 	}
 }

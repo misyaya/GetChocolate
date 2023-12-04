@@ -9,7 +9,7 @@ private:
     int hPictFrame_;    //画像番号(ゲージフレーム)
 
     float nowHp_;    //今の値
-    const float maxHp_ = 1.0f;  //最大値
+    float maxHp_;  //最大値
     const float minHp_ = 0.0f;  //最小値
     float aniHp_;   //表示用の値
     int ImageWidth;     //ゲージ本体画像の幅
@@ -17,10 +17,7 @@ private:
 
     bool flag = true;
     float power = 0;
-    float scalex = 1.3f;
 
-    float MIN = 0.0f;
-    float MAX = 1.0f;
 
 public:
 
@@ -42,8 +39,14 @@ public:
     //開放
     void Release() override;
 
+    //HP設定
+    void SetHp(float _nowHp, int _maxHp);
+
     //ゲージの位置設定
     void SetPosition(float x, float y, float z);
+
+    //ゲージの向き設定
+    void SetRotate(float x, float y, float z);
 
     //値の加減算
     void AddValue(float v);
