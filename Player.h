@@ -32,4 +32,6 @@ public:
 
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
+
+    XMFLOAT3 GetPlayerTr();
 };

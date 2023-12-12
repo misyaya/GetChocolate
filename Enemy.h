@@ -1,11 +1,20 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Player.h"
 
 //◆◆◆を管理するクラス
 class Enemy : public GameObject
 {
     int enemy_;
+    float enemySpeed_;
     Transform enemyTr;
+
+    Player* pl;
+    XMFLOAT3 player;
+    float plX;
+    float plY;
+    float plZ;
+
 public:
     //コンストラクタ
     Enemy(GameObject* parent);
@@ -27,5 +36,10 @@ public:
 
     //当たり判定
     void OnCollision(GameObject* pTarget);
-    
+  
+    void SetEnemyTr(Transform _transform);
+
+    Transform GetEnemyTr();
+
+    void ChasePlayer();
 };
