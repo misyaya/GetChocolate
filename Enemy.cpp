@@ -62,10 +62,12 @@ Transform Enemy::GetEnemyTr()
 
 void Enemy::ChasePlayer()
 {
-    player = pl->GetPlayerTr();
-    plX = player.x;
-    plY = player.y;
-    plZ = player.z;
+    pl->SetPlayerTr();
+    playerPos_ = pl->GetPlayerTr();
+    
+    plX = playerPos_.x;
+    plY = playerPos_.y;
+    plZ = playerPos_.z;
 
     if (plX > enemyTr.position_.x)
     {

@@ -8,6 +8,8 @@ class Player : public GameObject
     int hModel_;    //ƒ‚ƒfƒ‹”Ô†
     Transform kari;
     Transform front;
+    XMFLOAT3 pl;
+    XMFLOAT3 pp;
 
     int nowHp_;
    // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
@@ -32,6 +34,8 @@ public:
 
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
+
+    void SetPlayerTr();
 
     XMFLOAT3 GetPlayerTr();
 };

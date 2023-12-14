@@ -10,7 +10,6 @@
 Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1),nowHp_(180)
 {
-	transform_.position_ = XMFLOAT3(0.0, 0.0, 0.0);
 }
 
 //デストラクタ
@@ -33,8 +32,6 @@ void Player::Initialize()
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1.0f, 7.0f, 0.5f));
 	AddCollider(collision2);
-
-	
 
 	//LifeGauge gauge();
 }
@@ -72,6 +69,8 @@ void Player::Update()
 
 	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
 	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
+
+	pp = transform_.position_;
 }
 
 //描画
@@ -95,12 +94,17 @@ void Player::OnCollision(GameObject* pTarget)
 	if (pTarget->GetObjectName() == "Enemy")
 	{
 		//pLifeGauge->AddValue(-1);
-
 	}
+}
+
+void Player::SetPlayerTr()
+{
+	pl = XMFLOAT3(0.0f,0.0f,0.0f);
 }
 
 XMFLOAT3 Player::GetPlayerTr()
 {
-	return transform_.position_;
+	SetPlayerTr();
+	return pl;
 }
 

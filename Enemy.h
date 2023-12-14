@@ -10,7 +10,7 @@ class Enemy : public GameObject
     Transform enemyTr;
 
     Player* pl;
-    XMFLOAT3 player;
+    XMFLOAT3 playerPos_;
     float plX;
     float plY;
     float plZ;
