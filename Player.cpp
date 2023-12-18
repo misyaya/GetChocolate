@@ -70,7 +70,7 @@ void Player::Update()
 	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
 	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
 
-	pp = transform_.position_;
+	
 }
 
 //•`‰æ
@@ -97,14 +97,13 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
-void Player::SetPlayerTr()
+void Player::SetPlayerPos(XMFLOAT3 _playerPos)
 {
-	pl = XMFLOAT3(0.0f,0.0f,0.0f);
+	transform_.position_ = _playerPos;
 }
 
-XMFLOAT3 Player::GetPlayerTr()
+XMFLOAT3 Player::GetPlayerPos()
 {
-	SetPlayerTr();
-	return pl;
+	return transform_.position_;
 }
 

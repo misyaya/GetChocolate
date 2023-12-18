@@ -10,6 +10,7 @@ class Enemy : public GameObject
     Transform enemyTr;
 
     Player* pl;
+    
     XMFLOAT3 playerPos_;
     float plX;
     float plY;
@@ -36,10 +37,14 @@ public:
 
     //当たり判定
     void OnCollision(GameObject* pTarget);
-  
-    void SetEnemyTr(Transform _transform);
 
-    Transform GetEnemyTr();
+    //エネミーの位置設定
+    void SetEnemyPos(XMFLOAT3 _enemyPos);
 
-    void ChasePlayer();
+    //エネミーの位置取得
+    XMFLOAT3 GetEnemyPos();
+
+    //プレイヤーを追いかける
+    void PlayerChase();
+
 };

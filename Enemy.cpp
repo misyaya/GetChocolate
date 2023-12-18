@@ -1,17 +1,21 @@
 #include "Enemy.h"
 #include "Engine/Model.h"
 #include "Engine/SphereCollider.h"
+#include "Player.h"
 
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.5)
+    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.005)
 {
+    pl = new Player(parent);
+    enemyTr.position_ = XMFLOAT3(3.0f, 0.0f, 60.0f);
 }
 
 //デストラクタ
 Enemy::~Enemy()
 {
+    delete pl;
 }
 
 //初期化
@@ -21,8 +25,8 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    enemyTr.position_.x = 3.0f;
-    enemyTr.position_.z = 3.0f;
+  /*  enemyTr.position_.x = 3.0f;
+    enemyTr.position_.z = 3.0f;*/
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(enemyTr.position_.x, 1.3f, enemyTr.position_.z), 1.2f);
     AddCollider(collision);
@@ -31,7 +35,7 @@ void Enemy::Initialize()
 //更新
 void Enemy::Update()
 {
-    ChasePlayer();
+    PlayerChase();
 }
 
 //描画
@@ -50,49 +54,21 @@ void Enemy::OnCollision(GameObject* pTarget)
 {
 }
 
-void Enemy::SetEnemyTr(Transform _transform)
+void Enemy::SetEnemyPos(XMFLOAT3 _enemyPos)
 {
-    enemyTr = _transform;
+    enemyTr.position_ = _enemyPos;
 }
 
-Transform Enemy::GetEnemyTr()
+XMFLOAT3 Enemy::GetEnemyPos()
 {
-    return enemyTr;
+    return transform_.position_;
 }
 
-void Enemy::ChasePlayer()
+
+void Enemy::PlayerChase()
 {
-    pl->SetPlayerTr();
-    playerPos_ = pl->GetPlayerTr();
-    
-    plX = playerPos_.x;
-    plY = playerPos_.y;
-    plZ = playerPos_.z;
-
-    if (plX > enemyTr.position_.x)
-    {
-        enemyTr.position_.x += enemySpeed_;
-    }
-    else
-    {
-        enemyTr.position_.x -= enemySpeed_;
-    }
-
-    if (plY > enemyTr.position_.y)
-    {
-        enemyTr.position_.y += enemySpeed_;
-    }
-    else
-    {
-        enemyTr.position_.y-= enemySpeed_;
-    }
-
-    if (plX > enemyTr.position_.z)
-    {
-        enemyTr.position_.z += enemySpeed_;
-    }
-    else
-    {
-        enemyTr.position_.z -= enemySpeed_;
-    }
+    // プレイヤーの位置情報を取得し、エネミーの位置を更新する
+    XMFLOAT3 plPos = pl->GetPlayerPos(); // プレイヤーの位置を取得
+    SetEnemyPos(plPos); // エネミーの位置をプレイヤーの位置に更新
 }
+
