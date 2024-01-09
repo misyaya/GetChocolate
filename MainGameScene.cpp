@@ -19,11 +19,7 @@ void MainGameScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
 	Instantiate<Enemy>(this);
-	/*LifeGauge* g = Instantiate<LifeGauge>(this);
-	g->SetHp(100.0f, 100.0f);
-	g->SetPosition(-0.9f, 0.8f, 10.0f);
-	*/
-	
+
 }
 
 //XV

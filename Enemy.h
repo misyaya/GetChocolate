@@ -38,13 +38,4 @@ public:
     //当たり判定
     void OnCollision(GameObject* pTarget);
 
-    //エネミーの位置設定
-    void SetEnemyPos(XMFLOAT3 _enemyPos);
-
-    //エネミーの位置取得
-    XMFLOAT3 GetEnemyPos();
-
-    //プレイヤーを追いかける
-    void PlayerChase();
-
 };

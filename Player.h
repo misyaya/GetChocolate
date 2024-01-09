@@ -33,10 +33,4 @@ public:
 
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
-
-    //Player‚ÌˆÊ’uİ’è
-    void SetPlayerPos(XMFLOAT3 _playerPos);
-
-    //Player‚ÌˆÊ’uæ“¾
-    XMFLOAT3 GetPlayerPos();
 };

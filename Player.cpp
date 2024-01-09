@@ -97,13 +97,3 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
-void Player::SetPlayerPos(XMFLOAT3 _playerPos)
-{
-	transform_.position_ = _playerPos;
-}
-
-XMFLOAT3 Player::GetPlayerPos()
-{
-	return transform_.position_;
-}
-

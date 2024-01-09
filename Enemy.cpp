@@ -35,7 +35,7 @@ void Enemy::Initialize()
 //更新
 void Enemy::Update()
 {
-    PlayerChase();
+    
 }
 
 //描画
@@ -52,23 +52,5 @@ void Enemy::Release()
 
 void Enemy::OnCollision(GameObject* pTarget)
 {
-}
-
-void Enemy::SetEnemyPos(XMFLOAT3 _enemyPos)
-{
-    enemyTr.position_ = _enemyPos;
-}
-
-XMFLOAT3 Enemy::GetEnemyPos()
-{
-    return transform_.position_;
-}
-
-
-void Enemy::PlayerChase()
-{
-    // プレイヤーの位置情報を取得し、エネミーの位置を更新する
-    XMFLOAT3 plPos = pl->GetPlayerPos(); // プレイヤーの位置を取得
-    SetEnemyPos(plPos); // エネミーの位置をプレイヤーの位置に更新
 }
 
