@@ -33,4 +33,8 @@ public:
 
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
+
+    void SetPlayrPos(XMFLOAT3 _position);
+
+    XMFLOAT3 GetPlayerPos();
 };

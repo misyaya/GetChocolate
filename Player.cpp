@@ -97,3 +97,8 @@ void Player::OnCollision(GameObject* pTarget)
 	}
 }
 
+void Player::SetPlayrPos(XMFLOAT3 _position)
+{
+
+}
+
