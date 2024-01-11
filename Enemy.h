@@ -7,7 +7,7 @@ class Enemy : public GameObject
 {
     int enemy_;
     float enemySpeed_;
-    Transform enemyTr;
+ 
 
     Player* pl;
     

@@ -5,10 +5,11 @@
 //◆◆◆を管理するクラス
 class Player : public GameObject
 {
-    int hModel_;    //モデル番号
+    int hModel_;    //モデル番号4
+    int hPictHp_;
     Transform kari;
     Transform front;
-   
+    Transform hpTr_;
    
     int nowHp_;
    // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");

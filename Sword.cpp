@@ -44,3 +44,13 @@ void Sword::Draw()
 void Sword::Release()
 {
 }
+
+//“–‚½‚è”»’è
+void Sword::OnCollision(GameObject* pTarget)
+{
+    //“G‚É“–‚½‚Á‚½‚Æ‚«
+    if (pTarget->GetObjectName() == "Enemy")
+    {
+
+    }
+}

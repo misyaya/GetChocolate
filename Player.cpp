@@ -5,10 +5,11 @@
 #include "Engine/SphereCollider.h"
 #include "Engine/BoxCollider.h"
 #include "Sword.h"
+#include "Engine/Image.h"
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hModel_(-1),nowHp_(180)
+    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),hPictHp_(-1)
 {
 }
 
@@ -24,16 +25,21 @@ void Player::Initialize()
 	hModel_ = Model::Load("Sample.fbx");
 	assert(hModel_ >= 0);
 
+	//画像データのロード
+	hPictHp_ = Image::Load("HpFive.png");
+	assert(hPictHp_ >= 0);
 	
 	Instantiate<Sword>(this);
 
-	//SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.0, 0), 1.2f);
-	//AddCollider(collision);
+	
+	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
+	
+	
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1.0f, 7.0f, 0.5f));
 	AddCollider(collision2);
 
-	//LifeGauge gauge();
+	
 }
 
 //更新
@@ -78,6 +84,11 @@ void Player::Draw()
 {
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
+
+	Image::SetRect(hPictHp_, 0, 0, 10, 10);
+	Image::SetTransform(hPictHp_, hpTr_);
+	Image::Draw(hPictHp_);
+	
 }
 
 //開放
@@ -88,12 +99,10 @@ void Player::Release()
 //当たり判定
 void Player::OnCollision(GameObject* pTarget)
 {
-	//LifeGauge* pLifeGauge = (LifeGauge*)FindObject("LifeGauge");
-
 	//敵に当たったとき
 	if (pTarget->GetObjectName() == "Enemy")
 	{
-		//pLifeGauge->AddValue(-1);
+		nowHp_--;
 	}
 }
 
