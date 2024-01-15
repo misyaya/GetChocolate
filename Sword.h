@@ -26,4 +26,7 @@ public:
 
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
+
+    //
+    void SetSowrdTr(XMFLOAT3 _transform);
 };

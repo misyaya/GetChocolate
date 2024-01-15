@@ -19,6 +19,7 @@ void MainGameScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
 	Instantiate<Enemy>(this);
+	//Instantiate<LifeGauge>(this);
 
 }
 

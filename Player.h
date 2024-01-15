@@ -1,17 +1,33 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include  "LifeGauge.h"
+#include "LifeGauge.h"
+#include "Sword.h"
+#include "Engine/Text.h"
 
 //◆◆◆を管理するクラス
 class Player : public GameObject
 {
-    int hModel_;    //モデル番号4
-    int hPictHp_;
-    Transform kari;
-    Transform front;
-    Transform hpTr_;
+   int hModel_;    //モデル番号4
+   int hPictHp_;
+   int hB_;
+   int nowHp_;
+   int maxHp_;
+
+   int time_;
+
+   Transform kari;
+   Transform front;
+   Transform hpTr_;
    
-    int nowHp_;
+   Text* pText;
+
+   int situation = 0;
+   enum 
+   {
+       WAIT = 0,
+       DAMAGE
+   };
+    
    // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
 public:
     //コンストラクタ
@@ -34,6 +50,8 @@ public:
 
     //当たり判定
     void OnCollision(GameObject* pTarget);
+
+    void SetInvulnerable();
 
     void SetPlayrPos(XMFLOAT3 _position);
 

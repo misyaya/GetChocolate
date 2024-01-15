@@ -5,8 +5,7 @@
 class LifeGauge : public GameObject
 {
 private:
-    int hPictGauge_;    //画像番号(ゲージ本体)
-    int hPictFrame_;    //画像番号(ゲージフレーム)
+    int hPictHeart_;    //画像番号(ゲージ本体)
 
     float nowHp_;    //今の値
     float maxHp_;  //最大値
