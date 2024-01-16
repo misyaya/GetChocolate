@@ -10,7 +10,8 @@
 using namespace std::chrono;
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr)
+    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),
+	invinTime(0.0f),invinState(InvincibilityState::Normal),deltaTime(3.0f)
 {
 }
 
@@ -52,8 +53,16 @@ void Player::Initialize()
 //更新
 void Player::Update()
 {
+	if (invinState == InvincibilityState::Invincible)
+	{
+		invinTime -= deltaTime;
 
-
+		if (invinTime <= 0.0f)
+		{
+			invinState = InvincibilityState::Normal;
+		}
+	}
+	
 	if (Input::IsKey(DIK_W))
 	{
 		
@@ -66,7 +75,6 @@ void Player::Update()
 		transform_.position_.z -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
 	}
-	
 
 	if (Input::IsKey(DIK_D))
 	{
@@ -113,24 +121,27 @@ void Player::Release()
 //当たり判定
 void Player::OnCollision(GameObject* pTarget)
 {
-	switch (situation)
-	{
-	case WAIT:
-		break;
-
-	case DAMAGE:
-		//敵に当たったとき
-		if (pTarget->GetObjectName() == "Enemy")
+	//敵に当たったとき
+	if (pTarget->GetObjectName() == "Enemy")
+	{	
+		// 既に無敵状態の場合は何もしない
+		if (invinState == InvincibilityState::Invincible)
+		{
+			return;
+		}
+		else
 		{
 			nowHp_--;
-			situation = WAIT;
-			std::chrono::steady_clock::now();
+			invinTime = invinDuration;
+			invinState = InvincibilityState::Invincible;
+
+			if (nowHp_ <= 0)
+			{
+
+			}
 		}
-
-		break;
-
 	}
-	
+
 }
 
 void Player::SetInvulnerable()

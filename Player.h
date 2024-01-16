@@ -7,6 +7,7 @@
 //◆◆◆を管理するクラス
 class Player : public GameObject
 {
+private:
    int hModel_;    //モデル番号4
    int hPictHp_;
    int hB_;
@@ -22,12 +23,17 @@ class Player : public GameObject
    Text* pText;
 
    int situation = 0;
-   enum 
+
+   enum class InvincibilityState
    {
-       WAIT = 0,
-       DAMAGE
+       Normal,
+       Invincible
    };
     
+   float invinTime;
+   const float invinDuration = 5.0f*60.0f;
+   InvincibilityState invinState;
+   float deltaTime;
    // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
 public:
     //コンストラクタ
