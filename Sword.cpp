@@ -55,7 +55,7 @@ void Sword::OnCollision(GameObject* pTarget)
     }
 }
 
-void Sword::SetSowrdTr(XMFLOAT3 _transform)
+void Sword::SetSwordTr(XMFLOAT3 _transform)
 {
     transform_.position_ = _transform;
 }

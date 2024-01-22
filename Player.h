@@ -59,7 +59,7 @@ public:
 
     void SetInvulnerable();
 
-    void SetPlayrPos(XMFLOAT3 _position);
+    void SetPlayerPos(XMFLOAT3 _position);
 
     XMFLOAT3 GetPlayerPos();
 };

@@ -28,5 +28,5 @@ public:
     void OnCollision(GameObject* pTarget);
 
     //
-    void SetSowrdTr(XMFLOAT3 _transform);
+    void SetSwordTr(XMFLOAT3 _transform);
 };

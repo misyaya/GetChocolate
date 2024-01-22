@@ -148,7 +148,7 @@ void Player::SetInvulnerable()
 {
 }
 
-void Player::SetPlayrPos(XMFLOAT3 _position)
+void Player::SetPlayerPos(XMFLOAT3 _position)
 {
 
 }
