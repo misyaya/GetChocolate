@@ -15,6 +15,9 @@ class Enemy : public GameObject
     float plX;
     float plY;
     float plZ;
+    float differenceX;
+    float differenceY;
+    float differenceZ;
 
 public:
     //コンストラクタ
@@ -37,5 +40,11 @@ public:
 
     //当たり判定
     void OnCollision(GameObject* pTarget);
+
+    void SetPlayerPos(XMFLOAT3 _playerPos);
+
+    void SetPlayer(Player* player);
+
+    void PlayerChase();
 
 };

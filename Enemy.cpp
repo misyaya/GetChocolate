@@ -32,6 +32,17 @@ void Enemy::Initialize()
 void Enemy::Update()
 {
     
+
+
+
+    if (pl)
+    {
+        playerPos_ = pl->GetPosition();
+        //SetPlayerPos(playerPos_);
+        //SetPosition(playerPos_);
+        PlayerChase();
+
+    }
 }
 
 //•`‰æ
@@ -48,11 +59,45 @@ void Enemy::Release()
 
 void Enemy::OnCollision(GameObject* pTarget)
 {
-    //“G‚É“–‚½‚Á‚½‚Æ‚«
+    //Œ•‚É“–‚½‚Á‚½‚Æ‚«
     if (pTarget->GetObjectName() == "Sword")
     {
        // KillMe();
     }
+}
+
+void Enemy::SetPlayer(Player* player)
+{
+    pl = player;
+}
+
+void Enemy::SetPlayerPos(XMFLOAT3 _playerPos)
+{
+    transform_.position_ = _playerPos;
+}
+
+void Enemy::PlayerChase()
+{
+    differenceX = transform_.position_.x - playerPos_.x;
+    differenceY = transform_.position_.y - playerPos_.y;
+    differenceZ = transform_.position_.z - playerPos_.z;
+
+
+    if (differenceX > 0.2f)
+    {
+        transform_.position_.x -= 0.05f;
+    }
+    else if(differenceX < 0.2f)
+    {
+        transform_.position_.x += 0.05f;
+    }
+    else
+    {
+        transform_.position_.x = playerPos_.x;
+    }
+    
+
+    
 }
 
 

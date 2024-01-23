@@ -6,6 +6,7 @@
 #include "Engine/BoxCollider.h"
 #include "Engine/Image.h"
 #include <chrono>
+#include "Enemy.h"
 
 using namespace std::chrono;
 //ƒRƒ“ƒXƒgƒ‰ƒNƒ^
@@ -94,6 +95,12 @@ void Player::Update()
 
 	/*LifeGauge* pGauge = (LifeGauge*)FindObject("LifeGauge");
 	pGauge->SetHp(nowHp_, maxHp_);*/
+
+	Enemy* enemy = static_cast<Enemy*>(FindObject("Enemy"));
+	if (enemy)
+	{
+		enemy->SetPlayer(this);
+	}
 }
 
 //•`‰æ
@@ -121,6 +128,7 @@ void Player::Release()
 //“–‚½‚è”»’è
 void Player::OnCollision(GameObject* pTarget)
 {
+	//“G‚É“–‚½‚Á‚½‚ç‚¿‚å‚Á‚ÆŒã‚ë‚É”ò‚Ô‚æ‚¤‚É‚µ‚½‚¢
 	//“G‚É“–‚½‚Á‚½‚Æ‚«
 	if (pTarget->GetObjectName() == "Enemy")
 	{	
