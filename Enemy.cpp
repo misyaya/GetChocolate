@@ -6,7 +6,7 @@
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.005)
+    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05)
 {
 }
 
@@ -24,24 +24,19 @@ void Enemy::Initialize()
 
     transform_.position_ = XMFLOAT3(2.0, 0.0f, 6.0f);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0,1.2f,0), 1.2f);
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);
 }
 
 //更新
 void Enemy::Update()
 {
-    
-
-
-
     if (pl)
     {
         playerPos_ = pl->GetPosition();
         //SetPlayerPos(playerPos_);
         //SetPosition(playerPos_);
         PlayerChase();
-
     }
 }
 
@@ -78,26 +73,38 @@ void Enemy::SetPlayerPos(XMFLOAT3 _playerPos)
 
 void Enemy::PlayerChase()
 {
+    //エネミー位置とプレイヤー位置の差
     differenceX = transform_.position_.x - playerPos_.x;
-    differenceY = transform_.position_.y - playerPos_.y;
+    //differenceY = transform_.position_.y - playerPos_.y;
     differenceZ = transform_.position_.z - playerPos_.z;
 
 
-    if (differenceX > 0.2f)
+    //進む方向　X
+    if (abs(differenceX) > 0.2f)
     {
-        transform_.position_.x -= 0.05f;
-    }
-    else if(differenceX < 0.2f)
-    {
-        transform_.position_.x += 0.05f;
-    }
-    else
-    {
-        transform_.position_.x = playerPos_.x;
+        if(differenceX > 0.2f)
+        {
+            transform_.position_.x -= enemySpeed_;
+        }
+        else if (differenceX < -0.2f)
+        {
+            transform_.position_.x += enemySpeed_;
+        }
     }
     
-
-    
+    //進む方向　Z
+    if (abs(differenceZ) > 0.2f)
+    {
+        if(differenceZ > 0.2f)
+        {
+            transform_.position_.z -= enemySpeed_;
+        }
+        else if (differenceZ < -0.2f)
+        {
+            transform_.position_.z += enemySpeed_;
+        }
+    }
+   
 }
 
 

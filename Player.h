@@ -61,5 +61,5 @@ public:
 
     void SetPlayerPos(XMFLOAT3 _position);
 
-    XMFLOAT3 GetPlayerPos();
+    //XMFLOAT3 GetPlayerPos();
 };
