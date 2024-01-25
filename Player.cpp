@@ -27,16 +27,8 @@ void Player::Initialize()
 	//モデルデータのロード
 	hModel_ = Model::Load("Sample.fbx");
 	assert(hModel_ >= 0);
-
-	//画像データのロード
-	/*hPictHp_ = Image::Load("HpFive.png");
-	assert(hPictHp_ >= 0);*/
-
-	hB_ = Image::Load("brick.jpg");
-	assert(hB_ >= 0);
 	
 	Instantiate<Sword>(this);
-
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
@@ -47,54 +39,45 @@ void Player::Initialize()
 	AddCollider(collision2);
 
 	pText = new Text;
-
 	pText->Initialize();
 }
 
 //更新
 void Player::Update()
 {
-	if (invinState == InvincibilityState::Invincible)
-	{
-		invinTime -= deltaTime;
-
-		if (invinTime <= 0.0f)
-		{
-			invinState = InvincibilityState::Normal;
-		}
-	}
+	SetInvulnerable();
 	
+	//前
 	if (Input::IsKey(DIK_W))
 	{
-		
 		transform_.position_.z += 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
 	}
 
+	//後
 	if (Input::IsKey(DIK_S))
 	{
 		transform_.position_.z -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
 	}
 
+	//左
 	if (Input::IsKey(DIK_D))
 	{
-		//sword->SetSowrdTr(XMFLOAT3(0.5f, 0.0f, 0.0f));
 		transform_.position_.x += 0.1f;
 		transform_.rotate_.y = front.rotate_.y + 90.0f;
 	}
 
+	//右
 	if (Input::IsKey(DIK_A))
 	{
 		transform_.position_.x -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
 
+	//カメラ 追尾させたい
 	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
 	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
-
-	/*LifeGauge* pGauge = (LifeGauge*)FindObject("LifeGauge");
-	pGauge->SetHp(nowHp_, maxHp_);*/
 
 	Enemy* enemy = static_cast<Enemy*>(FindObject("Enemy"));
 	if (enemy)
@@ -106,17 +89,11 @@ void Player::Update()
 //描画
 void Player::Draw()
 {
+	//プレイヤー
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
 
-	/*Image::SetRect(hPictHp_, 512, 64, 60, 64);
-	Image::SetTransform(hPictHp_, hpTr_);
-	Image::Draw(hPictHp_);*/
-
-	//Image::SetRect(hB_, 0, 0, 2048, 1000);
-	//Image::SetTransform(hB_, kari);
-	//Image::Draw(hB_);
-
+	//HP　数字
 	pText->Draw(30, 30, nowHp_);
 }
 
@@ -143,6 +120,8 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
+			//transform_.position_.z = -3.0f;
+
 			if (nowHp_ <= 0)
 			{
 
@@ -154,6 +133,16 @@ void Player::OnCollision(GameObject* pTarget)
 
 void Player::SetInvulnerable()
 {
+	//無敵時間か否か　残り時間
+	if (invinState == InvincibilityState::Invincible)
+	{
+		invinTime -= deltaTime;
+
+		if (invinTime <= 0.0f)
+		{
+			invinState = InvincibilityState::Normal;
+		}
+	}
 }
 
 void Player::SetPlayerPos(XMFLOAT3 _position)
