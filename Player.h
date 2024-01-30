@@ -14,7 +14,6 @@ private:
    int nowHp_;
    int maxHp_;
 
-
    Transform kari;
    Transform front;
    Transform hpTr_;
@@ -33,7 +32,7 @@ private:
    const float invinDuration = 5.0f*60.0f;
    InvincibilityState invinState;
    float deltaTime;
-   // LifeGauge* pLifeGauge = (LifeGauge*)FindObject("Gauge");
+
 public:
     //コンストラクタ
     Player(GameObject* parent);
@@ -56,11 +55,18 @@ public:
     //当たり判定
     void OnCollision(GameObject* pTarget);
 
+    //無敵時間
     void SetInvulnerable();
 
+    //Player位置の設定
     void SetPlayerPos(XMFLOAT3 _position);
 
+    //Player位置の取得
     XMFLOAT3 GetPlayerPos();
 
+    //カメラ
     void UpdateCamera();
+
+    //後ろに飛ぶ
+    void MoveBackward(float _distance);
 };
