@@ -12,9 +12,7 @@ class Enemy : public GameObject
     Player* pl;
     
     XMFLOAT3 playerPos_;
-    float plX;
-    float plY;
-    float plZ;
+   
     float differenceX;
     float differenceY;
     float differenceZ;

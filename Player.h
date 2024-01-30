@@ -14,7 +14,6 @@ private:
    int nowHp_;
    int maxHp_;
 
-   int time_;
 
    Transform kari;
    Transform front;
@@ -61,5 +60,7 @@ public:
 
     void SetPlayerPos(XMFLOAT3 _position);
 
-    //XMFLOAT3 GetPlayerPos();
+    XMFLOAT3 GetPlayerPos();
+
+    void UpdateCamera();
 };

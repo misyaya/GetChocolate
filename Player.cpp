@@ -14,6 +14,8 @@ Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),
 	invinTime(0.0f),invinState(InvincibilityState::Normal),deltaTime(3.0f)
 {
+	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
+	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
 }
 
 //デストラクタ
@@ -58,7 +60,7 @@ void Player::Update()
 	if (Input::IsKey(DIK_S))
 	{
 		transform_.position_.z -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y;
+		transform_.rotate_.y = front.rotate_.y - 180.0f;
 	}
 
 	//左
@@ -75,9 +77,8 @@ void Player::Update()
 		transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
 
-	//カメラ 追尾させたい
-	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
-	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
+	//カメラ
+	UpdateCamera();
 
 	Enemy* enemy = static_cast<Enemy*>(FindObject("Enemy"));
 	if (enemy)
@@ -148,5 +149,29 @@ void Player::SetInvulnerable()
 void Player::SetPlayerPos(XMFLOAT3 _position)
 {
 
+}
+
+XMFLOAT3 Player::GetPlayerPos()
+{
+	return transform_.position_;
+}
+
+void Player::UpdateCamera()
+{
+	// プレイヤーの位置
+	XMFLOAT3 playerPosition = GetPlayerPos();
+
+	// カメラの位置
+	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 5, playerPosition.z - 8);
+
+	// カメラの焦点
+	XMFLOAT3 newTarget = XMFLOAT3(playerPosition.x, playerPosition.y + 2, playerPosition.z + 5);
+
+	// カメラの位置と焦点を設定
+	Camera::SetPosition(newPosition);
+	Camera::SetTarget(newTarget);
+
+	// カメラ更新
+	Camera::Update();
 }
 

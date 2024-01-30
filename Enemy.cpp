@@ -6,7 +6,8 @@
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
-    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05)
+    :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
+    differenceX(0), differenceY(0), differenceZ(0)
 {
 }
 
@@ -34,8 +35,6 @@ void Enemy::Update()
     if (pl)
     {
         playerPos_ = pl->GetPosition();
-        //SetPlayerPos(playerPos_);
-        //SetPosition(playerPos_);
         PlayerChase();
     }
 }
@@ -78,30 +77,36 @@ void Enemy::PlayerChase()
     //differenceY = transform_.position_.y - playerPos_.y;
     differenceZ = transform_.position_.z - playerPos_.z;
 
+    float chaseDistance = 10.0f; // PlayerとEnemy距離
 
-    //進む方向　X
-    if (abs(differenceX) > 0.2f)
+    if (abs(differenceX) < chaseDistance &&
+        abs(differenceY) < chaseDistance &&
+        abs(differenceZ) < chaseDistance)
     {
-        if(differenceX > 0.2f)
+        //進む方向　X
+        if (abs(differenceX) > 0.2f)
         {
-            transform_.position_.x -= enemySpeed_;
+            if (differenceX > 0.2f)
+            {
+                transform_.position_.x -= enemySpeed_;
+            }
+            else if (differenceX < -0.2f)
+            {
+                transform_.position_.x += enemySpeed_;
+            }
         }
-        else if (differenceX < -0.2f)
+
+        //進む方向　Z
+        if (abs(differenceZ) > 0.2f)
         {
-            transform_.position_.x += enemySpeed_;
-        }
-    }
-    
-    //進む方向　Z
-    if (abs(differenceZ) > 0.2f)
-    {
-        if(differenceZ > 0.2f)
-        {
-            transform_.position_.z -= enemySpeed_;
-        }
-        else if (differenceZ < -0.2f)
-        {
-            transform_.position_.z += enemySpeed_;
+            if (differenceZ > 0.2f)
+            {
+                transform_.position_.z -= enemySpeed_;
+            }
+            else if (differenceZ < -0.2f)
+            {
+                transform_.position_.z += enemySpeed_;
+            }
         }
     }
    
