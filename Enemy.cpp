@@ -97,13 +97,13 @@ void Enemy::PlayerChase()
         }
 
         //i‚Þ•ûŒü@Z
-        if (abs(differenceZ) > 0.2f)
+        if (abs(differenceZ) > 0.5f)
         {
-            if (differenceZ > 0.2f)
+            if (differenceZ > 0.5f)
             {
                 transform_.position_.z -= enemySpeed_;
             }
-            else if (differenceZ < -0.2f)
+            else if (differenceZ < -0.5f)
             {
                 transform_.position_.z += enemySpeed_;
             }
