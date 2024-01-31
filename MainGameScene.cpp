@@ -5,7 +5,9 @@
 #include "Player.h"
 #include "Floor.h"
 #include "Enemy.h"
+#include "Chocolate.h"
 #include "LifeGauge.h"
+
 
 //コンストラクタ
 MainGameScene::MainGameScene(GameObject * parent)
@@ -19,6 +21,7 @@ void MainGameScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
 	Instantiate<Enemy>(this);
+	Instantiate<Chocolate>(this);
 	//Instantiate<LifeGauge>(this);
 
 }

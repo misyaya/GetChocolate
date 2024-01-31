@@ -121,6 +121,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="LifeGauge.cpp" />
+    <ClCompile Include="Chocolate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -219,6 +220,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="LifeGauge.h" />
+    <ClInclude Include="Chocolate.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

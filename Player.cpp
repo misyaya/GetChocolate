@@ -121,7 +121,8 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
-			//transform_.position_.z = -3.0f;
+			float knockbackDistance = -10.0f; //後ろに飛ぶ距離
+			MoveBackward(knockbackDistance);
 
 			if (nowHp_ <= 0)
 			{
@@ -148,7 +149,7 @@ void Player::SetInvulnerable()
 
 void Player::SetPlayerPos(XMFLOAT3 _position)
 {
-
+	transform_.position_ = _position;
 }
 
 XMFLOAT3 Player::GetPlayerPos()
@@ -173,5 +174,18 @@ void Player::UpdateCamera()
 
 	// カメラ更新
 	Camera::Update();
+}
+
+void Player::MoveBackward(float _distance)
+{
+	// プレイヤーの現在位置を取得
+	XMFLOAT3 currentPosition = GetPlayerPos();
+
+	// プレイヤーを後ろに移動
+	currentPosition.z += _distance;
+
+	// 移動後の位置を設定
+	SetPlayerPos(currentPosition);
+
 }
 
