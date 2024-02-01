@@ -22,8 +22,6 @@ void MainGameScene::Initialize()
 	Instantiate<Floor>(this);
 	Instantiate<Enemy>(this);
 	Instantiate<Chocolate>(this);
-	//Instantiate<LifeGauge>(this);
-
 }
 
 //XV

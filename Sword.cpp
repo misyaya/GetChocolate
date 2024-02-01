@@ -1,6 +1,8 @@
 #include "Sword.h"
 #include "Engine/Model.h"
 #include "Engine/BoxCollider.h"
+#include "Engine/Input.h"
+#include "Engine/BoxCollider.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
@@ -31,6 +33,14 @@ void Sword::Initialize()
 //更新
 void Sword::Update()
 {
+    //エンターが押されたら
+    if (Input::IsKeyDown(DIK_RIGHT) )
+    {
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+        AddCollider(collision);
+    }
+
+   
 }
 
 //描画
