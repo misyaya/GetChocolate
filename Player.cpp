@@ -131,6 +131,12 @@ void Player::OnCollision(GameObject* pTarget)
 		}
 	}
 
+	//ƒ`ƒ‡ƒR‚É“–‚½‚Á‚½‚Æ‚«
+	/*if (pTarget->GetObjectName() == "Chocolate")
+	{
+		
+	}*/
+
 }
 
 void Player::SetInvulnerable()

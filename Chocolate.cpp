@@ -1,6 +1,6 @@
 #include "Chocolate.h"
 #include "Engine/Model.h"
-
+#include "Engine/BoxCollider.h"
 
 //コンストラクタ
 Chocolate::Chocolate(GameObject* parent)
@@ -23,6 +23,9 @@ void Chocolate::Initialize()
     transform_.position_.x = 2.0f;
     transform_.position_.y = 1.0f;
     transform_.position_.z = 3.0f;
+
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+    AddCollider(collision);
 }
 
 //更新
@@ -41,4 +44,14 @@ void Chocolate::Draw()
 //開放
 void Chocolate::Release()
 {
+}
+
+//何かに当たった
+void Chocolate::OnCollision(GameObject* pTarget)
+{
+    //プレイヤーに当たったとき
+    if (pTarget->GetObjectName() == "Player")
+    {
+        KillMe();
+    }
 }
