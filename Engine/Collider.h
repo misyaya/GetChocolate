@@ -63,7 +63,8 @@ public:
 	bool IsHitCircleVsCircle(SphereCollider* circleA, SphereCollider* circleB);
 
 	//テスト表示用の枠を描画
-	//引数：position	オブジェクトの位置		rotate	オブジェクトの向き
+	//引数：position	オブジェクトの位置
+	//引数：rotate	オブジェクトの向き
 	void Draw(XMFLOAT3 position, XMFLOAT3 rotate);
 
 	//セッター

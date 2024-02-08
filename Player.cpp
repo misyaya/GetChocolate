@@ -30,7 +30,6 @@ void Player::Initialize()
 	hModel_ = Model::Load("Sample.fbx");
 	assert(hModel_ >= 0);
 	
-	Instantiate<Sword>(this);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
@@ -85,6 +84,7 @@ void Player::Update()
 	{
 		enemy->SetPlayer(this);
 	}
+
 }
 
 //•`‰æ

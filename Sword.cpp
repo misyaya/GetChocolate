@@ -46,6 +46,33 @@ void Sword::Update()
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
     }
+
+    if (Input::IsKey(DIK_W))
+    {
+        transform_.position_.z += 0.1f;
+        transform_.rotate_.y = front.rotate_.y;
+    }
+
+    //å„
+    if (Input::IsKey(DIK_S))
+    {
+        transform_.position_.z -= 0.1f;
+        transform_.rotate_.y = front.rotate_.y - 180.0f;
+    }
+
+    //ç∂
+    if (Input::IsKey(DIK_D))
+    {
+        transform_.position_.x += 0.1f;
+        transform_.rotate_.y = front.rotate_.y + 90.0f;
+    }
+
+    //âE
+    if (Input::IsKey(DIK_A))
+    {
+        transform_.position_.x -= 0.1f;
+        transform_.rotate_.y = front.rotate_.y - 90.0f;
+    }
 }
 
 //ï`âÊ

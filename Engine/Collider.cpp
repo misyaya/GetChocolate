@@ -90,7 +90,7 @@ void Collider::Draw(XMFLOAT3 position, XMFLOAT3 rotate)
 {
 	Transform transform;
 	transform.position_ = XMFLOAT3(position.x + center_.x, position.y + center_.y, position.z + center_.z);
-	transform.rotate_ = XMFLOAT3(rotate);
+	transform.rotate_ = XMFLOAT3(rotate.x + center_.x, rotate.y + center_.y, rotate.z + center_.z);
 	transform.scale_ = size_;
 	transform.Calclation();
 	Model::SetTransform(hDebugModel_, transform);

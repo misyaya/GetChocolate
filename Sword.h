@@ -5,6 +5,7 @@
 class Sword : public GameObject
 {
     int sword_;
+    Transform front;
 public:
     //コンストラクタ
     Sword(GameObject* parent);
