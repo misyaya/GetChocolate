@@ -3,6 +3,7 @@
 #include "Engine/BoxCollider.h"
 #include "Engine/Input.h"
 #include "Engine/BoxCollider.h"
+#include "Engine/Input.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
@@ -26,8 +27,6 @@ void Sword::Initialize()
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
-    AddCollider(collision);
 }
 
 //更新
@@ -41,6 +40,12 @@ void Sword::Update()
     }
 
    
+    //スペースキーが押されていたら
+    if (Input::IsKey(DIK_SPACE))
+    {
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
+        AddCollider(collision);
+    }
 }
 
 //描画

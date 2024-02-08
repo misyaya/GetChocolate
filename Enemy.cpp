@@ -56,7 +56,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     //Œ•‚É“–‚½‚Á‚½‚Æ‚«
     if (pTarget->GetObjectName() == "Sword")
     {
-       // KillMe();
+       KillMe();
     }
 }
 
