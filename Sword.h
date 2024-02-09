@@ -6,6 +6,13 @@ class Sword : public GameObject
 {
     int sword_;
     Transform front;
+
+    enum {
+        MOVE = 0,
+        RETURN,
+        WAIT
+    };
+
 public:
     //コンストラクタ
     Sword(GameObject* parent);
