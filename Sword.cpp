@@ -33,10 +33,9 @@ void Sword::Initialize()
 void Sword::Update()
 {
     //ÉGÉìÉ^Å[Ç™âüÇ≥ÇÍÇΩÇÁ
-    if (Input::IsKeyDown(DIK_RIGHT) )
+    if (Input::IsKeyDown(DIK_RETURN) )
     {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
-        AddCollider(collision);
+        ClearCollider();
     }
 
    
@@ -45,6 +44,7 @@ void Sword::Update()
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
+        
     }
 
     if (Input::IsKey(DIK_W))
