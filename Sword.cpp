@@ -35,7 +35,7 @@ void Sword::Update()
     //エンターが押されたら
     if (Input::IsKeyDown(DIK_RETURN) )
     {
-        transform_.rotate_.z = 0.0f;
+        transform_.rotate_.x = 0.0f;
         ClearCollider();
     }
 
@@ -43,10 +43,10 @@ void Sword::Update()
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_SPACE))
     {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0.1, 0.3, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
-        transform_.rotate_.z = 90.0f;
+        transform_.rotate_.x = 90.0f;
         
     }
 

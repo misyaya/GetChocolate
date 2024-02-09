@@ -19,6 +19,11 @@ BoxCollider::BoxCollider(XMFLOAT3 basePos, XMFLOAT3 size)
 #endif
 }
 
+void BoxCollider::SetPos(XMFLOAT3 position)
+{	
+	center_ = position;
+}
+
 //ÚG”»’è
 //ˆø”Ftarget	‘Šè‚Ì“–‚½‚è”»’è
 //–ß’lFÚG‚µ‚Ä‚ê‚Îtrue
