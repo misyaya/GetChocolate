@@ -6,6 +6,7 @@ class Sword : public GameObject
 {
     int sword_;
     Transform front;
+    XMFLOAT3 collisionPos;
 
     enum {
         MOVE = 0,

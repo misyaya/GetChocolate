@@ -41,6 +41,8 @@ void Player::Initialize()
 
 	pText = new Text;
 	pText->Initialize();
+
+	Instantiate<Sword>(this);
 }
 
 //XV

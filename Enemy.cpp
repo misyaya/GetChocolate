@@ -25,8 +25,8 @@ void Enemy::Initialize()
 
     transform_.position_ = XMFLOAT3(2.0, 0.0f, 6.0f);
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
-    AddCollider(collision);
+    /*SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
+    AddCollider(collision);*/
 }
 
 //çXêV
