@@ -24,7 +24,7 @@ void Chocolate::Initialize()
     transform_.position_.y = 1.0f;
     transform_.position_.z = 3.0f;
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1.0, 0), XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1, 1, 1));
     AddCollider(collision);
 }
 
@@ -51,6 +51,12 @@ void Chocolate::OnCollision(GameObject* pTarget)
 {
     //プレイヤーに当たったとき
     if (pTarget->GetObjectName() == "Player")
+    {
+        //KillMe();
+    }
+
+    //プレイヤーに当たったとき
+    if (pTarget->GetObjectName() == "Sword")
     {
         KillMe();
     }

@@ -23,10 +23,10 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    transform_.position_ = XMFLOAT3(2.0, 0.0f, 6.0f);
+    transform_.position_ = XMFLOAT3(2.0, 0.0f, 8.0f);
 
-    /*SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
-    AddCollider(collision);*/
+    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0),XMFLOAT3(0.0f ,0.0f , 0.0f), 1.0f);
+    AddCollider(collision);
 }
 
 //XV
@@ -35,7 +35,7 @@ void Enemy::Update()
     if (pl)
     {
         playerPos_ = pl->GetPosition();
-        PlayerChase();
+        //PlayerChase();
     }
 }
 

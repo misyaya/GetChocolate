@@ -71,5 +71,6 @@ public:
 	//セッター
 	void SetGameObject(GameObject* gameObject) { pGameObject_ = gameObject; }
 
+	void ColliderRotate(XMFLOAT3& center_, const XMFLOAT3& rotate);
 };
 

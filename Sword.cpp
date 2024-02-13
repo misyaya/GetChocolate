@@ -27,9 +27,6 @@ void Sword::Initialize()
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
 
-    SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), XMFLOAT3(0, 0.0f, 0), 1.0f);
-    AddCollider(collision);
-
 }
 
 //更新
@@ -46,13 +43,41 @@ void Sword::Update()
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_SPACE))
     {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0.1, 0.3, 1), XMFLOAT3(1, 1, 1));
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(1.0f,0.0f,0.0f), XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1, 4.0, 1));
         AddCollider(collision);
         collision->SetPos(XMFLOAT3(0.0f,0.0f,0.0f));
+       // collision->SetRot(transform_.rotate_);
         transform_.rotate_.x = 90.0f;
     }
+    //前
+    if (Input::IsKey(DIK_W))
+    {
+        transform_.position_.z += 0.1f;
+        transform_.rotate_.y = front.rotate_.y;
+    }
 
+    //後
+    if (Input::IsKey(DIK_S))
+    {
+        transform_.position_.z -= 0.1f;
+        transform_.rotate_.y = front.rotate_.y - 180.0f;
+    }
 
+    //左
+    if (Input::IsKey(DIK_D))
+    {
+        transform_.position_.x += 0.1f;
+        transform_.rotate_.y = front.rotate_.y + 90.0f;
+    }
+
+    //右
+    if (Input::IsKey(DIK_A))
+    {
+        transform_.position_.x -= 0.1f;
+        transform_.rotate_.y = front.rotate_.y - 90.0f;
+    }
+
+    
 }
 
 //描画

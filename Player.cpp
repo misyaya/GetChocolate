@@ -36,13 +36,12 @@ void Player::Initialize()
 	kari.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
 	
 
-	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(1.0f, 3.0f, 0.5f));
+	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(1.0f, 3.0f, 0.5f));
 	AddCollider(collision2);
 
 	pText = new Text;
 	pText->Initialize();
 
-	Instantiate<Sword>(this);
 }
 
 //XV

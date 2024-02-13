@@ -21,7 +21,15 @@ Collider::~Collider()
 //ñﬂílÅFê⁄êGÇµÇƒÇ¢ÇÍÇŒtrue
 bool Collider::IsHitBoxVsBox(BoxCollider* boxA, BoxCollider* boxB)
 {
+	XMFLOAT3 centerA = boxA->center_;
+	XMFLOAT3 rotateA = boxA->rotate_;
 
+	XMFLOAT3 centerB = boxB->center_;
+	XMFLOAT3 rotateB = boxB->rotate_;
+
+	ColliderRotate(centerA, rotateA);
+	ColliderRotate(centerB, rotateB);
+	
 	XMFLOAT3 boxPosA = Transform::Float3Add(boxA->pGameObject_->GetWorldPosition(), boxA->center_);
 	XMFLOAT3 boxPosB = Transform::Float3Add(boxB->pGameObject_->GetWorldPosition(), boxB->center_);
 
@@ -44,8 +52,19 @@ bool Collider::IsHitBoxVsBox(BoxCollider* boxA, BoxCollider* boxB)
 //ñﬂílÅFê⁄êGÇµÇƒÇ¢ÇÍÇŒtrue
 bool Collider::IsHitBoxVsCircle(BoxCollider* box, SphereCollider* sphere)
 {
-	XMFLOAT3 circlePos = Transform::Float3Add(sphere->pGameObject_->GetWorldPosition(), sphere->center_);
-	XMFLOAT3 boxPos = Transform::Float3Add(box->pGameObject_->GetWorldPosition(), box->center_);
+	XMFLOAT3 centerSphere = sphere->center_;
+	XMFLOAT3 rotateSphere = sphere->rotate_;
+
+	XMFLOAT3 centerBox = box->center_;
+	XMFLOAT3 rotateBox = box->rotate_;
+	
+	
+	ColliderRotate(centerSphere, rotateSphere);
+	ColliderRotate(centerBox, rotateBox);
+	
+
+	XMFLOAT3 circlePos = Transform::Float3Add(sphere->pGameObject_->GetWorldPosition(), centerSphere);
+	XMFLOAT3 boxPos = Transform::Float3Add(box->pGameObject_->GetWorldPosition(), rotateBox);
 
 
 
@@ -60,6 +79,7 @@ bool Collider::IsHitBoxVsCircle(BoxCollider* box, SphereCollider* sphere)
 	}
 
 	return false;
+
 }
 
 //ãÖëÃìØémÇÃè’ìÀîªíË
@@ -69,9 +89,15 @@ bool Collider::IsHitBoxVsCircle(BoxCollider* box, SphereCollider* sphere)
 bool Collider::IsHitCircleVsCircle(SphereCollider* circleA, SphereCollider* circleB)
 {
 	XMFLOAT3 centerA = circleA->center_;
+	XMFLOAT3 rotateA = circleA->rotate_;
 	XMFLOAT3 positionA = circleA->pGameObject_->GetWorldPosition();
+
 	XMFLOAT3 centerB = circleB->center_;
+	XMFLOAT3 rotateB = circleB->rotate_;
 	XMFLOAT3 positionB = circleB->pGameObject_->GetWorldPosition();
+
+	ColliderRotate(centerA, rotateA);
+	ColliderRotate(centerB, rotateB);
 
 	XMVECTOR v = (XMLoadFloat3(&centerA) + XMLoadFloat3(&positionA))
 		- (XMLoadFloat3(&centerB) + XMLoadFloat3(&positionB));
@@ -90,9 +116,24 @@ void Collider::Draw(XMFLOAT3 position, XMFLOAT3 rotate)
 {
 	Transform transform;
 	transform.position_ = XMFLOAT3(position.x + center_.x, position.y + center_.y, position.z + center_.z);
-	//transform.rotate_ = XMFLOAT3(rotate.x + center_.x, rotate.y + center_.y, rotate.z + center_.z);
+	transform.rotate_ = XMFLOAT3(rotate.x + rotate_.x, rotate.y + rotate_.y, rotate.z + rotate_.z);
+	//transform.rotate_ = XMFLOAT3(rotate);
 	transform.scale_ = size_;
 	transform.Calclation();
 	Model::SetTransform(hDebugModel_, transform);
 	Model::Draw(hDebugModel_);
+}
+
+void Collider::ColliderRotate(XMFLOAT3& center_, const XMFLOAT3& rotate)
+{
+	//âÒì]çsóÒÇÃçÏê¨
+	XMMATRIX rotationMatrix = XMMatrixRotationRollPitchYaw(rotate.x, rotate.y, rotate.z);
+
+	//íÜêSç¿ïWÇXMVECTORÇ…ïœä∑
+	XMVECTOR centerVec = XMLoadFloat3(&center_);
+
+	//âÒì]
+	XMVECTOR rotateCenter = XMVector3Transform(centerVec, rotationMatrix);
+
+	XMStoreFloat3(&center_, rotateCenter);
 }
