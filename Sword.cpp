@@ -26,7 +26,7 @@ void Sword::Initialize()
     transform_.position_.x = 0.5f;
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
-
+    state_ = ATTACK;
 }
 
 //更新
@@ -39,7 +39,15 @@ void Sword::Update()
         ClearCollider();
 
     }
+    if (Input::IsKey(DIK_UP))
+    {
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
+        AddCollider(collision);
 
+        if (attackflag_)
+            AttackBeside();
+
+    }
    
     //スペースキーが押されていたら
     if (Input::IsKey(DIK_SPACE))
@@ -47,9 +55,10 @@ void Sword::Update()
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
+        if(attackflag_)
         AttackSword();
-        //transform_.rotate_.x = 90.0f;
-        state_ = ATTACK;
+      
+        
         
         
     }
@@ -116,7 +125,47 @@ void Sword::AttackSword()
     case MOVE:
         break;
     case ATTACK:
-        transform_.rotate_.x += 10;
-  
+      
+        transform_.rotate_.x += 20;
+        if(transform_.rotate_.x >= 100)
+        {
+            state_ = RETURN;
+            break;
+        }
+
+    case RETURN:
+        transform_.rotate_.x -= 10;
+        if (transform_.rotate_.x <= 0)
+        {
+            state_ = ATTACK;
+            attackflag_ = true;
+            break;
+        }
+    }
+}
+
+void Sword::AttackBeside()
+{
+    switch (state_)
+    {
+    case MOVE:
+        break;
+    case ATTACK:
+
+        transform_.rotate_.z += 20;
+        if (transform_.rotate_.z >= 100)
+        {
+            state_ = RETURN;
+            break;
+        }
+
+    case RETURN:
+        transform_.rotate_.z -= 10;
+        if (transform_.rotate_.z <= 0)
+        {
+            state_ = ATTACK;
+            attackflag_ = true;
+            break;
+        }
     }
 }

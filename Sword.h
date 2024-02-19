@@ -7,12 +7,14 @@ class Sword : public GameObject
     int sword_;
     Transform front;
     int state_;
+    bool attackflag_ = true;
 
     enum {
         MOVE = 0,
         RETURN,
-        WAIT,
-        ATTACK
+        ATTACK,
+        WAIT
+       
     };
 
 public:
@@ -41,4 +43,6 @@ public:
     void SetSwordTr(XMFLOAT3 _transform);
 
     void AttackSword();
+
+    void AttackBeside();
 };
