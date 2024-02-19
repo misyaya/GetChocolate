@@ -37,6 +37,7 @@ void Sword::Update()
     {
         transform_.rotate_.z = 0.0f;
         ClearCollider();
+
     }
 
    
@@ -46,36 +47,39 @@ void Sword::Update()
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
-        transform_.rotate_.z = 90.0f;
+        AttackSword();
+        //transform_.rotate_.x = 90.0f;
+        state_ = ATTACK;
+        
         
     }
 
-    if (Input::IsKey(DIK_W))
-    {
-        transform_.position_.z += 0.1f;
-        transform_.rotate_.y = front.rotate_.y;
-    }
+    //if (Input::IsKey(DIK_W))
+    //{
+    //    transform_.position_.z += 0.1f;
+    //    transform_.rotate_.y = front.rotate_.y;
+    //}
 
-    //å„
-    if (Input::IsKey(DIK_S))
-    {
-        transform_.position_.z -= 0.1f;
-        transform_.rotate_.y = front.rotate_.y - 180.0f;
-    }
+    ////å„
+    //if (Input::IsKey(DIK_S))
+    //{
+    //    transform_.position_.z -= 0.1f;
+    //    transform_.rotate_.y = front.rotate_.y - 180.0f;
+    //}
 
-    //ç∂
-    if (Input::IsKey(DIK_D))
-    {
-        transform_.position_.x += 0.1f;
-        transform_.rotate_.y = front.rotate_.y + 90.0f;
-    }
+    ////ç∂
+    //if (Input::IsKey(DIK_D))
+    //{
+    //    transform_.position_.x += 0.1f;
+    //    transform_.rotate_.y = front.rotate_.y + 90.0f;
+    //}
 
-    //âE
-    if (Input::IsKey(DIK_A))
-    {
-        transform_.position_.x -= 0.1f;
-        transform_.rotate_.y = front.rotate_.y - 90.0f;
-    }
+    ////âE
+    //if (Input::IsKey(DIK_A))
+    //{
+    //    transform_.position_.x -= 0.1f;
+    //    transform_.rotate_.y = front.rotate_.y - 90.0f;
+    //}
 }
 
 //ï`âÊ
@@ -103,4 +107,16 @@ void Sword::OnCollision(GameObject* pTarget)
 void Sword::SetSwordTr(XMFLOAT3 _transform)
 {
     transform_.position_ = _transform;
+}
+
+void Sword::AttackSword()
+{
+    switch (state_)
+    {
+    case MOVE:
+        break;
+    case ATTACK:
+        transform_.rotate_.x += 10;
+  
+    }
 }

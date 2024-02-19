@@ -34,7 +34,7 @@ void Player::Initialize()
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
 	kari.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
-	
+	Instantiate<Sword>(this);
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(1.0f, 3.0f, 0.5f));
 	AddCollider(collision2);
