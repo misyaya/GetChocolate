@@ -8,6 +8,11 @@ class Sword : public GameObject
     Transform front;
     int state_;
     bool attackflag_ = true;
+    bool atF = true;
+    // ƒNƒ‰ƒX‚Ìƒƒ“ƒo•Ï”
+    bool isRotating = false;
+    float targetRotation = 0.0f;
+    float downSwingRotation = 90.0f;
 
     enum {
         MOVE = 0,

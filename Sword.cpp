@@ -57,6 +57,42 @@ void Sword::Update()
         AttackSword();  
     }
 
+    //エンターが押されたら
+    if (Input::IsKey(DIK_L))
+    {
+        transform_.rotate_.x += 10.0f;
+    }
+
+    if (Input::IsKey(DIK_K))
+    {
+        float rotationSpeed = 0.5f;
+        while(atF)
+        {
+            if (transform_.rotate_.x < 90.0f && attackflag_)
+            {
+                transform_.rotate_.x += rotationSpeed;
+            }
+            else
+            {
+                // 回転が90度を超えた場合、90度に固定
+
+                attackflag_ = false;
+                // 90度まで回転した後、0度まで戻す
+                if (transform_.rotate_.x > 0.0f)
+                {
+                    transform_.rotate_.x -= rotationSpeed;
+                }
+                else
+                {
+                    // 回転が0度を超えた場合、0度に固定
+                    transform_.rotate_.x = 0.0f;
+                    atF = false;
+                }
+            }
+        }
+    }
+
+    
     //if (Input::IsKey(DIK_W))
     //{
     //    transform_.position_.z += 0.1f;
@@ -115,7 +151,7 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 void Sword::AttackSword()
 {
     attackflag_ = false;
-    switch (state_)
+    /*switch (state_)
     {
     case MOVE:
         break;
@@ -135,13 +171,22 @@ void Sword::AttackSword()
             attackflag_ = true;
             break;
         }
-    }
+    }*/
 }
 
 void Sword::AttackBeside()
 {
     attackflag_ = false;
-    switch (state_)
+
+    while (transform_.rotate_.z <= 100)
+    {
+        transform_.rotate_.z += 0.5f;
+    }
+    while (transform_.rotate_.z <= -100)
+    {
+        transform_.rotate_.z -= 0.5f;
+    }
+    /*switch (state_)
     {
     case MOVE:
         break;
@@ -161,5 +206,5 @@ void Sword::AttackBeside()
         state_ = ATTACK;
         attackflag_ = true;
         break;
-    }
+    }*/
 }
