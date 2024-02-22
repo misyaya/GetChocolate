@@ -39,28 +39,22 @@ void Sword::Update()
         ClearCollider();
 
     }
-    if (Input::IsKey(DIK_UP))
+    if (Input::IsKeyDown(DIK_UP)&& attackflag_)
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
-        if (attackflag_)
-            AttackBeside();
-
+     
+        AttackBeside();
     }
    
     //スペースキーが押されていたら
-    if (Input::IsKey(DIK_SPACE))
+    if (Input::IsKey(DIK_SPACE)&& attackflag_)
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
-        if(attackflag_)
-        AttackSword();
-      
-        
-        
-        
+        AttackSword();  
     }
 
     //if (Input::IsKey(DIK_W))
@@ -120,6 +114,7 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 
 void Sword::AttackSword()
 {
+    attackflag_ = false;
     switch (state_)
     {
     case MOVE:
@@ -132,7 +127,7 @@ void Sword::AttackSword()
             state_ = RETURN;
             break;
         }
-
+        state_ = ATTACK;
     case RETURN:
         transform_.rotate_.x -= 10;
         if (transform_.rotate_.x <= 0)
@@ -146,26 +141,27 @@ void Sword::AttackSword()
 
 void Sword::AttackBeside()
 {
+    attackflag_ = false;
     switch (state_)
     {
     case MOVE:
         break;
     case ATTACK:
-
-        transform_.rotate_.z += 20;
-        if (transform_.rotate_.z >= 100)
+        while (transform_.rotate_.z <= 100)
         {
-            state_ = RETURN;
-            break;
+            transform_.rotate_.z += 0.5f;
         }
-
+        state_ = RETURN;
+        
     case RETURN:
-        transform_.rotate_.z -= 10;
-        if (transform_.rotate_.z <= 0)
+        
+        while (transform_.rotate_.z >= 0)
         {
-            state_ = ATTACK;
-            attackflag_ = true;
-            break;
+            transform_.rotate_.z -= 10;
+            
         }
+        state_ = ATTACK;
+        attackflag_ = true;
+        break;
     }
 }

@@ -2,6 +2,7 @@
 #include "Engine/Model.h"
 #include "Engine/SphereCollider.h"
 #include "Player.h"
+#include "Chocolate.h"
 
 
 //コンストラクタ
@@ -57,6 +58,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Sword")
     {
        KillMe();
+       Instantiate<Chocolate>;
     }
 }
 
