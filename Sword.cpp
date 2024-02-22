@@ -120,7 +120,6 @@ void Sword::AttackSword()
     case MOVE:
         break;
     case ATTACK:
-      
         transform_.rotate_.x += 20;
         if(transform_.rotate_.x >= 100)
         {
@@ -154,7 +153,6 @@ void Sword::AttackBeside()
         state_ = RETURN;
         
     case RETURN:
-        
         while (transform_.rotate_.z >= 0)
         {
             transform_.rotate_.z -= 10;
