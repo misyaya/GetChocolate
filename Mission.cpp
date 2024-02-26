@@ -16,7 +16,7 @@ void Mission::Initialize()
 {
     for(int i = 0; i < minum_; i++)
     {
-        mission
+        
     }
 
 }

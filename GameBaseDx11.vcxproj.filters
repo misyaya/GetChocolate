@@ -122,6 +122,16 @@
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="LifeGauge.cpp" />
     <ClCompile Include="Chocolate.cpp" />
+    <ClCompile Include="Mission.cpp" />
+    <ClCompile Include="StartButton.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Back_Title.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -221,6 +231,16 @@
     <ClInclude Include="Sword.h" />
     <ClInclude Include="LifeGauge.h" />
     <ClInclude Include="Chocolate.h" />
+    <ClInclude Include="Mission.h" />
+    <ClInclude Include="StartButton.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Back_Title.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

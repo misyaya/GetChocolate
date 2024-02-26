@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Back_Title.cpp" />
+    <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine\Audio.cpp" />
@@ -167,9 +169,12 @@
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Back_Title.h" />
+    <ClInclude Include="StartButton.h" />
     <ClInclude Include="Chocolate.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
@@ -207,6 +212,7 @@
     <ClInclude Include="Mission.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
