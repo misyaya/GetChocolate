@@ -182,29 +182,11 @@ void Sword::AttackBeside()
     {
         transform_.rotate_.z += 0.5f;
     }
-    while (transform_.rotate_.z <= -100)
+
+    while (transform_.rotate_.z >= -100)
     {
         transform_.rotate_.z -= 0.5f;
     }
-    /*switch (state_)
-    {
-    case MOVE:
-        break;
-    case ATTACK:
-        while (transform_.rotate_.z <= 100)
-        {
-            transform_.rotate_.z += 0.5f;
-        }
-        state_ = RETURN;
-        
-    case RETURN:
-        while (transform_.rotate_.z >= 0)
-        {
-            transform_.rotate_.z -= 10;
-            
-        }
-        state_ = ATTACK;
-        attackflag_ = true;
-        break;
-    }*/
+ 
+    attackflag_ = true;
 }

@@ -18,6 +18,8 @@ void Floor::Initialize()
     //モデルデータのロード
     floor_ = Model::Load("Floor.fbx");
     assert(floor_ >= 0);
+
+    transform_.scale_ = XMFLOAT3(3.0f, 1.0f, 3.0f);
 }
 
 //更新
