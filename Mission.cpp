@@ -1,4 +1,7 @@
 #include "Mission.h"
+#include <vector>
+
+using std::vector;
 
 //コンストラクタ
 Mission::Mission(GameObject* parent)
@@ -14,10 +17,9 @@ Mission::~Mission()
 //初期化
 void Mission::Initialize()
 {
-    for(int i = 0; i < minum_; i++)
-    {
-        
-    }
+    vector<mission> Mis;
+
+    
 
 }
 

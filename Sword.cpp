@@ -36,6 +36,7 @@ void Sword::Update()
     if (Input::IsKeyDown(DIK_RETURN) )
     {
         transform_.rotate_.z = 0.0f;
+        transform_.rotate_.x = 0.0f;
         ClearCollider();
 
     }
@@ -49,11 +50,8 @@ void Sword::Update()
     }
    
     //スペースキーが押されていたら
-    if (Input::IsKey(DIK_SPACE)&& attackflag_)
+    if (Input::IsKeyDown(DIK_SPACE)&& attackflag_)
     {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
-        AddCollider(collision);
-
         AttackSword();  
     }
 
@@ -91,34 +89,7 @@ void Sword::Update()
             }
         }
     }
-
-    
-    //if (Input::IsKey(DIK_W))
-    //{
-    //    transform_.position_.z += 0.1f;
-    //    transform_.rotate_.y = front.rotate_.y;
-    //}
-
-    ////後
-    //if (Input::IsKey(DIK_S))
-    //{
-    //    transform_.position_.z -= 0.1f;
-    //    transform_.rotate_.y = front.rotate_.y - 180.0f;
-    //}
-
-    ////左
-    //if (Input::IsKey(DIK_D))
-    //{
-    //    transform_.position_.x += 0.1f;
-    //    transform_.rotate_.y = front.rotate_.y + 90.0f;
-    //}
-
-    ////右
-    //if (Input::IsKey(DIK_A))
-    //{
-    //    transform_.position_.x -= 0.1f;
-    //    transform_.rotate_.y = front.rotate_.y - 90.0f;
-    //}
+    //ClearCollider();
 }
 
 //描画
@@ -139,7 +110,7 @@ void Sword::OnCollision(GameObject* pTarget)
     //敵に当たったとき
     if (pTarget->GetObjectName() == "Enemy")
     {
-
+        //ClearCollider();
     }
 }
 
@@ -150,28 +121,13 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 
 void Sword::AttackSword()
 {
-    attackflag_ = false;
-    /*switch (state_)
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(transform_.position_.x,0 ,transform_.position_.z), XMFLOAT3(1, 1, 1));
+    AddCollider(collision);
+
+    while(transform_.rotate_.x <= 120.0f)
     {
-    case MOVE:
-        break;
-    case ATTACK:
-        transform_.rotate_.x += 20;
-        if(transform_.rotate_.x >= 100)
-        {
-            state_ = RETURN;
-            break;
-        }
-        state_ = ATTACK;
-    case RETURN:
-        transform_.rotate_.x -= 10;
-        if (transform_.rotate_.x <= 0)
-        {
-            state_ = ATTACK;
-            attackflag_ = true;
-            break;
-        }
-    }*/
+        transform_.rotate_.x += 10.0f;
+    }
 }
 
 void Sword::AttackBeside()

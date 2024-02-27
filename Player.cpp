@@ -55,12 +55,12 @@ void Player::Update()
 		transform_.rotate_.y = front.rotate_.y;
 	}
 
-	//å„
-	if (Input::IsKey(DIK_S))
-	{
-		transform_.position_.z -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 180.0f;
-	}
+	////å„
+	//if (Input::IsKey(DIK_S))
+	//{
+	//	transform_.position_.z -= 0.1f;
+	//	transform_.rotate_.y = front.rotate_.y - 180.0f;
+	//}
 
 	//ç∂
 	if (Input::IsKey(DIK_D))

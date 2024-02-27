@@ -57,6 +57,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     //Œ•‚É“–‚½‚Á‚½‚Æ‚«
     if (pTarget->GetObjectName() == "Sword")
     {
+       //ClearCollider();
        KillMe();
        Instantiate<Chocolate>;
     }

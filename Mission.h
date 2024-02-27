@@ -13,8 +13,6 @@ class Mission : public GameObject
         bool flag;
     };
 
-    int minum_;
-
 public:
     //コンストラクタ
     Mission(GameObject* parent);
