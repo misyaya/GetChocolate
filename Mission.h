@@ -1,34 +1,35 @@
 #pragma once
-#include "Engine/GameObject.h"
 #include <string>
 
 using std::string;
 
 //ミッションを管理するクラス
-class Mission : public GameObject
+class Mission
 {
-    struct mission {
-        int num;
-        string name;
-        bool flag;
+    enum MissionStatus {
+        NotStarted,
+        InProgress,
+        Completed
     };
+
+    string name_;
+    string description_;
+    MissionStatus status_;
+    int requiredEnemyCount;
+    int enemyCount;
+
+    string GetStatusString() const;
 
 public:
     //コンストラクタ
-    Mission(GameObject* parent);
+    Mission(const string& name, const string& description);
+    
+    //ステータス更新
+    void UpdateStatus(MissionStatus newStatus);
 
-    //デストラクタ
-    ~Mission();
+    void DefeatEnemy();
 
-    //初期化
-    void Initialize() override;
+    string GetMissionType() const;
 
-    //更新
-    void Update() override;
-
-    //描画
-    void Draw() override;
-
-    //開放
-    void Release() override;
+    const string& GetName() const;
 };

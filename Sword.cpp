@@ -37,6 +37,7 @@ void Sword::Update()
     {
         transform_.rotate_.z = 0.0f;
         transform_.rotate_.x = 0.0f;
+        
         ClearCollider();
 
     }

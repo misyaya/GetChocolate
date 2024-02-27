@@ -1,39 +1,33 @@
 #include "Mission.h"
-#include <vector>
+#include <iostream>
 
-using std::vector;
 
-//コンストラクタ
-Mission::Mission(GameObject* parent)
-    :GameObject(parent, "Mission")
+
+Mission::Mission(const string& name, const string& description)
 {
 }
 
-//デストラクタ
-Mission::~Mission()
+void Mission::UpdateStatus(MissionStatus newStatus)
 {
+	status_ = newStatus;
 }
 
-//初期化
-void Mission::Initialize()
+void Mission::DefeatEnemy()
 {
-    vector<mission> Mis;
-
-    
 
 }
 
-//更新
-void Mission::Update()
+string Mission::GetMissionType() const
 {
+	return "Defeat Enemies";
 }
 
-//描画
-void Mission::Draw()
+const string& Mission::GetName() const
 {
+	return name_;
 }
 
-//開放
-void Mission::Release()
+string Mission::GetStatusString() const
 {
+	return string();
 }
