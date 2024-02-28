@@ -4,7 +4,7 @@
 #include "Sword.h"
 #include "Engine/Text.h"
 
-//◆◆◆を管理するクラス
+//プレイヤーを管理するクラス
 class Player : public GameObject
 {
 private:
