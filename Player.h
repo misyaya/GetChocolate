@@ -19,8 +19,10 @@ private:
    Transform hpTr_;
    
    Text* pText;
+   Text* pTextHp;
 
    int situation = 0;
+
 
    enum class InvincibilityState
    {

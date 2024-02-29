@@ -51,8 +51,9 @@ void Sword::Update()
     }
    
     //スペースキーが押されていたら
-    if (Input::IsKeyDown(DIK_SPACE)&& attackflag_)
+    if (Input::IsKeyDown(DIK_SPACE))
     {
+        flag_ = true;
         AttackSword();  
     }
 
@@ -111,7 +112,7 @@ void Sword::OnCollision(GameObject* pTarget)
     //敵に当たったとき
     if (pTarget->GetObjectName() == "Enemy")
     {
-        //ClearCollider();
+        flag_ = false;
     }
 }
 
@@ -122,8 +123,11 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 
 void Sword::AttackSword()
 {
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(transform_.position_.x,0 ,transform_.position_.z), XMFLOAT3(1, 1, 1));
-    AddCollider(collision);
+    if(flag_)
+    {
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(transform_.position_.x, 0, transform_.position_.z), XMFLOAT3(1, 1, 1));
+        AddCollider(collision);
+    }
 
     while(transform_.rotate_.x <= 120.0f)
     {

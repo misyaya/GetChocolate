@@ -20,10 +20,14 @@ void MainGameScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
-	Instantiate<Enemy>(this);
 	Instantiate<Chocolate>(this);
 
 
+	for (int i = 0; i < 10; i++)
+	{
+		Instantiate<Enemy>(this);
+	}
+	
 }
 
 //XV

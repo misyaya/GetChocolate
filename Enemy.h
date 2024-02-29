@@ -50,4 +50,6 @@ public:
 
     int GetKill();
 
+    void SetEnemyPos(XMFLOAT3 _enemyPos);
+
 };

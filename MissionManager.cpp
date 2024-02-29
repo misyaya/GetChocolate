@@ -53,10 +53,10 @@ void MissionManager::FinishMission(const string& _missionName)
 }
 
 void MissionManager::EnemyCheck()
-{
+{/*
 	Enemy* enemy;
 
-	int enKill = enemy->GetKill();
+	int enKill = enemy->GetKill();*/
 
 	//if(enKill >= 3 && )
 

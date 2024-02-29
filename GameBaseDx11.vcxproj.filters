@@ -26,6 +26,9 @@
     <Filter Include="TitleScene">
       <UniqueIdentifier>{c87b57aa-3b93-4539-998c-1181d37761ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ResultScene">
+      <UniqueIdentifier>{9bebfae6-671d-4c62-a495-a5be3b456a01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -132,6 +135,12 @@
     <ClCompile Include="Back_Title.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
+    <ClCompile Include="MissionDisplay.cpp" />
+    <ClCompile Include="MissionManager.cpp" />
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -241,6 +250,12 @@
     <ClInclude Include="Back_Title.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
+    <ClInclude Include="MissionDisplay.h" />
+    <ClInclude Include="MissionManager.h" />
+    <ClInclude Include="ResultScene.h">
+      <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

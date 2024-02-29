@@ -7,11 +7,12 @@
 #include "Engine/Image.h"
 #include <chrono>
 #include "Enemy.h"
+#include "Engine/SceneManager.h"
 
 using namespace std::chrono;
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),
+    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),pTextHp(nullptr),
 	invinTime(0.0f),invinState(InvincibilityState::Normal),deltaTime(3.0f)
 {
 	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
@@ -41,6 +42,9 @@ void Player::Initialize()
 
 	pText = new Text;
 	pText->Initialize();
+
+	pTextHp = new Text;
+	pTextHp->Initialize();
 }
 
 //更新
@@ -54,13 +58,6 @@ void Player::Update()
 		transform_.position_.z += 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
 	}
-
-	////後
-	//if (Input::IsKey(DIK_S))
-	//{
-	//	transform_.position_.z -= 0.1f;
-	//	transform_.rotate_.y = front.rotate_.y - 180.0f;
-	//}
 
 	//左
 	if (Input::IsKey(DIK_D))
@@ -95,7 +92,8 @@ void Player::Draw()
 	Model::Draw(hModel_);
 
 	//HP　数字
-	pText->Draw(30, 30, nowHp_);
+	pText->Draw(30, 30, "HP");
+	pTextHp->Draw(90, 30, nowHp_);
 }
 
 //開放
@@ -126,7 +124,8 @@ void Player::OnCollision(GameObject* pTarget)
 
 			if (nowHp_ <= 0)
 			{
-
+				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				pSceneManager->ChangeScene(SCENE_ID_RESULT);
 			}
 		}
 	}

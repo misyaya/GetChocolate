@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Chocolate.h"
 
-
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
@@ -24,7 +23,8 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    transform_.position_ = XMFLOAT3(2.0, 0.0f, 6.0f);
+    transform_.position_.x = (float)(rand() % 50 - 25);
+    transform_.position_.z = (float)(rand() % 50);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);
@@ -57,7 +57,6 @@ void Enemy::OnCollision(GameObject* pTarget)
     //剣に当たったとき
     if (pTarget->GetObjectName() == "Sword")
     {
-        kill_++;
        //ClearCollider();
        KillMe();
        Instantiate<Chocolate>;
@@ -119,6 +118,11 @@ void Enemy::PlayerChase()
 int Enemy::GetKill()
 {
     return kill_;
+}
+
+void Enemy::SetEnemyPos(XMFLOAT3 _enemyPos)
+{
+    transform_.position_ = _enemyPos;
 }
 
 

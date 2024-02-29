@@ -8,6 +8,7 @@ class Sword : public GameObject
     Transform front;
     int state_;
     bool attackflag_ = true;
+    bool flag_ = true;
     bool atF = true;
     // ƒNƒ‰ƒX‚Ìƒƒ“ƒo•Ï”
     bool isRotating = false;
