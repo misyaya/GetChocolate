@@ -18,7 +18,7 @@ class Enemy : public GameObject
     float differenceZ;
 
     //エネミーを倒した数
-    int kill_;
+    int deadCount_;
 
 public:
     //コンストラクタ

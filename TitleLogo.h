@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//タイトルロゴを管理するクラス
 class TitleLogo : public GameObject
 {
     int hLogo_;   //タイトルロゴ

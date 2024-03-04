@@ -123,7 +123,6 @@
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="LifeGauge.cpp" />
     <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="StartButton.cpp">
@@ -238,7 +237,6 @@
     <ClInclude Include="Floor.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Sword.h" />
-    <ClInclude Include="LifeGauge.h" />
     <ClInclude Include="Chocolate.h" />
     <ClInclude Include="Mission.h" />
     <ClInclude Include="StartButton.h">

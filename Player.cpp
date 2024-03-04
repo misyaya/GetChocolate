@@ -15,8 +15,8 @@ Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),pTextHp(nullptr),
 	invinTime(0.0f),invinState(InvincibilityState::Normal),deltaTime(3.0f)
 {
-	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
-	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
+	Camera::SetPosition(XMFLOAT3(tentative.position_.x, 4, tentative.position_.z - 8));
+	Camera::SetTarget(XMFLOAT3(tentative.position_.x, 4, 0));
 }
 
 //デストラクタ
@@ -28,14 +28,14 @@ Player::~Player()
 void Player::Initialize()
 {
 	//モデルデータのロード
-	hModel_ = Model::Load("Sample.fbx");
+	hModel_ = Model::Load("Player.fbx");
 	assert(hModel_ >= 0);
 	
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
-	kari.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
-	Instantiate<Sword>(this);
+	tentative.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
+	//Instantiate<Sword>(this);
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(1.0f, 3.0f, 0.5f));
 	AddCollider(collision2);

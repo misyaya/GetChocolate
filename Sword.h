@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//Swordを管理するクラス
 class Sword : public GameObject
 {
     int sword_;
@@ -14,6 +14,11 @@ class Sword : public GameObject
     bool isRotating = false;
     float targetRotation = 0.0f;
     float downSwingRotation = 90.0f;
+
+    bool walkFlagL_ = true;
+    bool walkFlagR_ = true;
+    bool walkFlagF_ = true;
+    bool walkFlagB_ = true;
 
     enum {
         MOVE = 0,

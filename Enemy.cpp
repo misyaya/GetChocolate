@@ -3,11 +3,12 @@
 #include "Engine/SphereCollider.h"
 #include "Player.h"
 #include "Chocolate.h"
+#include "EnemyManager.h"
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
-    differenceX(0), differenceY(0), differenceZ(0),kill_(0)
+    differenceX(0), differenceY(0), differenceZ(0),deadCount_(0)
 {
 }
 
@@ -57,9 +58,11 @@ void Enemy::OnCollision(GameObject* pTarget)
     //剣に当たったとき
     if (pTarget->GetObjectName() == "Sword")
     {
-       //ClearCollider();
-       KillMe();
-       Instantiate<Chocolate>;
+        KillMe();
+        deadCount_++;
+        Instantiate<Chocolate>;
+        EnemyManager* pEManager = new EnemyManager();
+        pEManager->SetDeadCount(deadCount_);
     }
 }
 
@@ -113,11 +116,6 @@ void Enemy::PlayerChase()
         }
     }
    
-}
-
-int Enemy::GetKill()
-{
-    return kill_;
 }
 
 void Enemy::SetEnemyPos(XMFLOAT3 _enemyPos)

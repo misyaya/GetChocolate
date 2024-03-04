@@ -1,6 +1,5 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "LifeGauge.h"
 #include "Sword.h"
 #include "Engine/Text.h"
 
@@ -14,7 +13,7 @@ private:
    int nowHp_;
    int maxHp_;
 
-   Transform kari;
+   Transform tentative;
    Transform front;
    Transform hpTr_;
    

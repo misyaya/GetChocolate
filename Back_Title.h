@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//タイトル背景を管理するクラス
 class Back_Title : public GameObject
 {
     int hBack_;    //背景

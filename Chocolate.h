@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//チョコレートを管理するクラス
 class Chocolate : public GameObject
 {
     int hChoco_;

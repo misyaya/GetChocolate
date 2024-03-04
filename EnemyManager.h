@@ -6,6 +6,6 @@ public:
 	EnemyManager();
 	~EnemyManager();
 
-	void SetEnemyDead(int _dead);
+	void SetDeadCount(int _count);
 };
 

@@ -6,7 +6,7 @@
 #include "Floor.h"
 #include "Enemy.h"
 #include "Chocolate.h"
-#include "LifeGauge.h"
+
 
 
 //コンストラクタ
@@ -21,6 +21,7 @@ void MainGameScene::Initialize()
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
 	Instantiate<Chocolate>(this);
+	Instantiate<Sword>(this);
 
 
 	for (int i = 0; i < 10; i++)

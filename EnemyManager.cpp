@@ -9,7 +9,7 @@ EnemyManager::~EnemyManager()
 {
 }
 
-void EnemyManager::SetEnemyDead(int _dead)
+void EnemyManager::SetDeadCount(int _count)
 {
-	enemyDead_ = _dead;
+	enemyDead_ = _count;
 }

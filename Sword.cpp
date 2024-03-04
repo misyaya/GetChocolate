@@ -39,14 +39,14 @@ void Sword::Update()
         transform_.rotate_.x = 0.0f;
         
         ClearCollider();
-
     }
+
+
     if (Input::IsKeyDown(DIK_UP)&& attackflag_)
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
-     
         AttackBeside();
     }
    
@@ -63,10 +63,11 @@ void Sword::Update()
         transform_.rotate_.x += 10.0f;
     }
 
+
     if (Input::IsKey(DIK_K))
     {
         float rotationSpeed = 0.5f;
-        while(atF)
+        while (atF)
         {
             if (transform_.rotate_.x < 90.0f && attackflag_)
             {
@@ -91,7 +92,45 @@ void Sword::Update()
             }
         }
     }
-    //ClearCollider();
+
+
+
+    //‘O
+	if (Input::IsKey(DIK_W))
+	{
+        
+		transform_.position_.z += 0.1f;
+		transform_.rotate_.y = front.rotate_.y;
+	}
+
+	//¶
+	if (Input::IsKey(DIK_D))
+	{
+        walkFlagR_ = true;
+
+        if (walkFlagL_)
+        {
+            transform_.position_.x = transform_.position_.x + 0.5f;
+            walkFlagL_ = false;
+        }
+
+		transform_.position_.x += 0.1f;
+		transform_.rotate_.y = front.rotate_.y + 90.0f;
+	}
+
+	//‰E
+	if (Input::IsKey(DIK_A))
+	{
+        walkFlagL_ = true;
+        if (walkFlagR_)
+        {
+            transform_.position_.x = transform_.position_.x - 1.5f;
+            walkFlagR_ = false;
+        }
+
+		transform_.position_.x -= 0.1f;
+		transform_.rotate_.y = front.rotate_.y - 90.0f;
+	}
 }
 
 //•`‰æ
@@ -125,7 +164,7 @@ void Sword::AttackSword()
 {
     if(flag_)
     {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(transform_.position_.x, 0, transform_.position_.z), XMFLOAT3(1, 1, 1));
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
     }
 

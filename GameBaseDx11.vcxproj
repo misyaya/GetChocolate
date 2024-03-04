@@ -168,7 +168,6 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="LifeGauge.cpp" />
     <ClCompile Include="MainGameScene.cpp" />
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -215,7 +214,6 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="Floor.h" />
-    <ClInclude Include="LifeGauge.h" />
     <ClInclude Include="MainGameScene.h" />
     <ClInclude Include="Mission.h" />
     <ClInclude Include="Player.h" />

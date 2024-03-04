@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//スタートボタンを管理するクラス
 class StartButton : public GameObject
 {
     int hButton_;  //ボタン
