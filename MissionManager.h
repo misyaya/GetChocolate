@@ -10,6 +10,7 @@ class MissionManager
 {
 private:
 	vector<Mission>missions;
+	int EnemyDeadCuont_;
 
 public:
 	//コンストラクタ

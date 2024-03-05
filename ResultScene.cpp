@@ -1,11 +1,12 @@
 #include "ResultScene.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
+#include "EnemyManager.h"
 
 
 //コンストラクタ
 ResultScene::ResultScene(GameObject* parent)
-	: GameObject(parent, "ResultScene"),pText(nullptr)
+	: GameObject(parent, "ResultScene"),pText(nullptr),pECount(nullptr)
 {
 }
 
@@ -14,6 +15,9 @@ void ResultScene::Initialize()
 {
 	pText = new Text;
 	pText->Initialize();
+
+	pECount = new Text;
+	pECount->Initialize();
 }
 
 //更新
@@ -31,8 +35,12 @@ void ResultScene::Update()
 //描画
 void ResultScene::Draw()
 {
+	EnemyManager* EManager = new EnemyManager();
+	int eCount_ = EManager->GetDeadCount();
+	
 	//HP　数字
 	pText->Draw(30, 30, "RESULT");
+	pECount->Draw(30, 90, eCount_);
 	
 }
 

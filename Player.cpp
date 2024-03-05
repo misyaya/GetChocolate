@@ -59,6 +59,13 @@ void Player::Update()
 		transform_.rotate_.y = front.rotate_.y;
 	}
 
+	//å„
+	if (Input::IsKey(DIK_S))
+	{
+		transform_.position_.z -= 0.1f;
+		transform_.rotate_.y = front.rotate_.y - 180.0f;
+	}
+
 	//ç∂
 	if (Input::IsKey(DIK_D))
 	{
@@ -72,6 +79,9 @@ void Player::Update()
 		transform_.position_.x -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
+
+	
+
 
 	//ÉJÉÅÉâ
 	UpdateCamera();

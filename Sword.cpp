@@ -54,6 +54,7 @@ void Sword::Update()
     if (Input::IsKeyDown(DIK_SPACE))
     {
         flag_ = true;
+        seconds_ = 0;
         AttackSword();  
     }
 
@@ -103,6 +104,13 @@ void Sword::Update()
 		transform_.rotate_.y = front.rotate_.y;
 	}
 
+    //Œã
+    if (Input::IsKey(DIK_S))
+    {
+        transform_.position_.z -= 0.1f;
+        transform_.rotate_.y = front.rotate_.y - 180.0f;
+    }
+
 	//¶
 	if (Input::IsKey(DIK_D))
 	{
@@ -125,12 +133,14 @@ void Sword::Update()
         if (walkFlagR_)
         {
             transform_.position_.x = transform_.position_.x - 1.5f;
+            transform_.position_.z = transform_.position_.z - 1.5f;
             walkFlagR_ = false;
         }
 
 		transform_.position_.x -= 0.1f;
 		transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
+ 
 }
 
 //•`‰æ
@@ -152,6 +162,12 @@ void Sword::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Enemy")
     {
         flag_ = false;
+        count_++;
+    }
+
+    if (count_ <= 1)
+    {
+        FihishAttack();
     }
 }
 
@@ -189,4 +205,11 @@ void Sword::AttackBeside()
     }
  
     attackflag_ = true;
+}
+
+void Sword::FihishAttack()
+{
+    //ClearCollider();
+    count_ = 0;
+    transform_.rotate_.x = 0;
 }

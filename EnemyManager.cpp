@@ -13,3 +13,8 @@ void EnemyManager::SetDeadCount(int _count)
 {
 	enemyDead_ = _count;
 }
+
+int EnemyManager::GetDeadCount()
+{
+	return enemyDead_;
+}

@@ -7,5 +7,6 @@ public:
 	~EnemyManager();
 
 	void SetDeadCount(int _count);
+	int GetDeadCount();
 };
 

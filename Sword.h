@@ -20,6 +20,10 @@ class Sword : public GameObject
     bool walkFlagF_ = true;
     bool walkFlagB_ = true;
 
+
+    int seconds_;
+    int count_;
+
     enum {
         MOVE = 0,
         RETURN,
@@ -53,7 +57,12 @@ public:
     //
     void SetSwordTr(XMFLOAT3 _transform);
 
+    //çUåÇ1
     void AttackSword();
 
+    //çUåÇ2
     void AttackBeside();
+
+    //çUåÇèIóπ1
+    void FihishAttack();
 };

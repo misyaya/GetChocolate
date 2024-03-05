@@ -7,6 +7,7 @@
 class ResultScene : public GameObject
 {
 	Text* pText;
+	Text* pECount;
 
 public:
 	//コンストラクタ
