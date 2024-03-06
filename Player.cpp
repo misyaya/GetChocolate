@@ -45,6 +45,9 @@ void Player::Initialize()
 
 	pTextHp = new Text;
 	pTextHp->Initialize();
+	
+
+	transform_.position_ = XMFLOAT3(0.0f,0.0f,-1.0f);
 }
 
 //çXêV
@@ -63,21 +66,21 @@ void Player::Update()
 	if (Input::IsKey(DIK_S))
 	{
 		transform_.position_.z -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 180.0f;
+		//transform_.rotate_.y = front.rotate_.y - 180.0f;
 	}
 
 	//ç∂
 	if (Input::IsKey(DIK_D))
 	{
 		transform_.position_.x += 0.1f;
-		transform_.rotate_.y = front.rotate_.y + 90.0f;
+		//transform_.rotate_.y = front.rotate_.y + 90.0f;
 	}
 
 	//âE
 	if (Input::IsKey(DIK_A))
 	{
 		transform_.position_.x -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 90.0f;
+		//transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
 
 	
@@ -129,8 +132,8 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
-			float knockbackDistance = -10.0f; //å„ÇÎÇ…îÚÇ‘ãóó£
-			MoveBackward(knockbackDistance);
+			//float knockbackDistance = -10.0f; //å„ÇÎÇ…îÚÇ‘ãóó£
+			//MoveBackward(knockbackDistance);
 
 			if (nowHp_ <= 0)
 			{

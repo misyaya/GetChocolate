@@ -23,7 +23,7 @@ void Sword::Initialize()
     sword_ = Model::Load("Sword.fbx");
     assert(sword_ >= 0);
 
-    transform_.position_.x = 0.5f;
+    transform_.position_.x = 0.0f;
     transform_.position_.y = 2.0f;
     transform_.position_.z = 0.8f;
     state_ = ATTACK;
@@ -97,8 +97,8 @@ void Sword::Update()
 
 
     //前
-	if (Input::IsKey(DIK_W))
-	{
+    if (Input::IsKey(DIK_W))
+    {
         
 		transform_.position_.z += 0.1f;
 		transform_.rotate_.y = front.rotate_.y;
@@ -108,39 +108,61 @@ void Sword::Update()
     if (Input::IsKey(DIK_S))
     {
         transform_.position_.z -= 0.1f;
-        transform_.rotate_.y = front.rotate_.y - 180.0f;
+        //transform_.rotate_.y = front.rotate_.y - 180.0f;
     }
 
-	//左
-	if (Input::IsKey(DIK_D))
-	{
-        walkFlagR_ = true;
+    //左
+    if (Input::IsKey(DIK_D))
+    {
+        transform_.position_.x += 0.1f;
+        //transform_.rotate_.y = front.rotate_.y + 90.0f;
+    }
 
-        if (walkFlagL_)
-        {
-            transform_.position_.x = transform_.position_.x + 0.5f;
-            walkFlagL_ = false;
-        }
+    //右
+    if (Input::IsKey(DIK_A))
+    {
+        transform_.position_.x -= 0.1f;
+        //transform_.rotate_.y = front.rotate_.y - 90.0f;
+    }
+    {
+        //   //後
+        //   if (Input::IsKey(DIK_S))
+        //   {
+        //       transform_.position_.z -= 0.1f;
+        //       transform_.rotate_.y = front.rotate_.y - 180.0f;
+        //   }
 
-		transform_.position_.x += 0.1f;
-		transform_.rotate_.y = front.rotate_.y + 90.0f;
-	}
+           ////左
+           //if (Input::IsKey(DIK_D))
+           //{
+        //       walkFlagR_ = true;
 
-	//右
-	if (Input::IsKey(DIK_A))
-	{
-        walkFlagL_ = true;
-        if (walkFlagR_)
-        {
-            transform_.position_.x = transform_.position_.x - 1.5f;
-            transform_.position_.z = transform_.position_.z - 1.5f;
-            walkFlagR_ = false;
-        }
+        //       if (walkFlagL_)
+        //       {
+        //           transform_.position_.x = transform_.position_.x + 0.5f;
+        //           walkFlagL_ = false;
+        //       }
 
-		transform_.position_.x -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 90.0f;
-	}
- 
+           //	transform_.position_.x += 0.1f;
+           //	transform_.rotate_.y = front.rotate_.y + 90.0f;
+           //}
+
+           ////右
+           //if (Input::IsKey(DIK_A))
+           //{
+        //       walkFlagL_ = true;
+        //       if (walkFlagR_)
+        //       {
+        //           transform_.position_.x = transform_.position_.x - 1.5f;
+        //           transform_.position_.z = transform_.position_.z - 1.5f;
+        //           walkFlagR_ = false;
+        //       }
+
+           //	transform_.position_.x -= 0.1f;
+           //	transform_.rotate_.y = front.rotate_.y - 90.0f;
+           //}
+
+    }
 }
 
 //描画
@@ -209,7 +231,6 @@ void Sword::AttackBeside()
 
 void Sword::FihishAttack()
 {
-    //ClearCollider();
     count_ = 0;
     transform_.rotate_.x = 0;
 }
