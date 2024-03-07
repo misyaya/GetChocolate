@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//◆◆◆を管理するクラス
+//ステージ床を管理するクラス
 class Floor : public GameObject
 {
     int floor_;

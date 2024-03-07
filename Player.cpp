@@ -7,15 +7,16 @@
 #include "Engine/Image.h"
 #include <chrono>
 #include "Enemy.h"
+#include "Engine/SceneManager.h"
 
 using namespace std::chrono;
 //コンストラクタ
 Player::Player(GameObject* parent)
-    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),
+    :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),pTextHp(nullptr),
 	invinTime(0.0f),invinState(InvincibilityState::Normal),deltaTime(3.0f)
 {
-	Camera::SetPosition(XMFLOAT3(kari.position_.x, 4, kari.position_.z - 8));
-	Camera::SetTarget(XMFLOAT3(kari.position_.x, 4, 0));
+	Camera::SetPosition(XMFLOAT3(tentative.position_.x, 4, tentative.position_.z - 8));
+	Camera::SetTarget(XMFLOAT3(tentative.position_.x, 4, 0));
 }
 
 //デストラクタ
@@ -27,21 +28,26 @@ Player::~Player()
 void Player::Initialize()
 {
 	//モデルデータのロード
-	hModel_ = Model::Load("Sample.fbx");
+	hModel_ = Model::Load("Player.fbx");
 	assert(hModel_ >= 0);
 	
-	Instantiate<Sword>(this);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
-	kari.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
-	
+	tentative.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
+	//Instantiate<Sword>(this);
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(1.0f, 3.0f, 0.5f));
 	AddCollider(collision2);
 
 	pText = new Text;
 	pText->Initialize();
+
+	pTextHp = new Text;
+	pTextHp->Initialize();
+	
+
+	transform_.position_ = XMFLOAT3(0.0f,0.0f,-1.0f);
 }
 
 //更新
@@ -60,22 +66,25 @@ void Player::Update()
 	if (Input::IsKey(DIK_S))
 	{
 		transform_.position_.z -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 180.0f;
+		//transform_.rotate_.y = front.rotate_.y - 180.0f;
 	}
 
 	//左
 	if (Input::IsKey(DIK_D))
 	{
 		transform_.position_.x += 0.1f;
-		transform_.rotate_.y = front.rotate_.y + 90.0f;
+		//transform_.rotate_.y = front.rotate_.y + 90.0f;
 	}
 
 	//右
 	if (Input::IsKey(DIK_A))
 	{
 		transform_.position_.x -= 0.1f;
-		transform_.rotate_.y = front.rotate_.y - 90.0f;
+		//transform_.rotate_.y = front.rotate_.y - 90.0f;
 	}
+
+	
+
 
 	//カメラ
 	UpdateCamera();
@@ -85,6 +94,7 @@ void Player::Update()
 	{
 		enemy->SetPlayer(this);
 	}
+
 }
 
 //描画
@@ -95,7 +105,8 @@ void Player::Draw()
 	Model::Draw(hModel_);
 
 	//HP　数字
-	pText->Draw(30, 30, nowHp_);
+	pText->Draw(30, 30, "HP");
+	pTextHp->Draw(90, 30, nowHp_);
 }
 
 //開放
@@ -121,12 +132,13 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
-			float knockbackDistance = -10.0f; //後ろに飛ぶ距離
-			MoveBackward(knockbackDistance);
+			//float knockbackDistance = -10.0f; //後ろに飛ぶ距離
+			//MoveBackward(knockbackDistance);
 
 			if (nowHp_ <= 0)
 			{
-
+				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				pSceneManager->ChangeScene(SCENE_ID_RESULT);
 			}
 		}
 	}

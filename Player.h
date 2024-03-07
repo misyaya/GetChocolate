@@ -1,10 +1,9 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "LifeGauge.h"
 #include "Sword.h"
 #include "Engine/Text.h"
 
-//◆◆◆を管理するクラス
+//プレイヤーを管理するクラス
 class Player : public GameObject
 {
 private:
@@ -14,13 +13,15 @@ private:
    int nowHp_;
    int maxHp_;
 
-   Transform kari;
+   Transform tentative;
    Transform front;
    Transform hpTr_;
    
    Text* pText;
+   Text* pTextHp;
 
    int situation = 0;
+
 
    enum class InvincibilityState
    {
