@@ -29,7 +29,7 @@ private:
    };
     
    float invinTime;
-   const float invinDuration = 5.0f*60.0f;
+   const float invinDuration = 5.0f * 60.0f;
    InvincibilityState invinState;
    float deltaTime;
 

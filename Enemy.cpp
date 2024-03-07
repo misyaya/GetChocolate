@@ -57,6 +57,11 @@ void Enemy::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Sword")
     {
        // KillMe();
+        KillMe();
+        ++deadCount_;
+        Instantiate<Chocolate>;
+        EnemyManager* pEManager = new EnemyManager();
+        pEManager->SetDeadCount(deadCount_);
     }
 }
 

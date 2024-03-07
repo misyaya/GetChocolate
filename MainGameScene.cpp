@@ -6,7 +6,7 @@
 #include "Floor.h"
 #include "Enemy.h"
 #include "Chocolate.h"
-#include "LifeGauge.h"
+#include "Engine/SceneManager.h"
 
 
 //コンストラクタ
@@ -27,6 +27,12 @@ void MainGameScene::Initialize()
 //更新
 void MainGameScene::Update()
 {
+	//スペースキーが押されていたら
+	if (Input::IsKey(DIK_K))
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_RESULT);
+	}
 }
 
 //描画
