@@ -21,4 +21,7 @@ public:
 
 	//ŠJ•ú
 	void Release() override;
+
+	//I—¹ğŒ‚ğ–‚½‚µ‚½‚Æ‚«
+	void MainGameEnd();
 };

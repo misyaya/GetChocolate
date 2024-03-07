@@ -64,6 +64,7 @@ void Enemy::OnCollision(GameObject* pTarget)
         Instantiate<Chocolate>;
         EnemyManager* pEManager = new EnemyManager();
         pEManager->SetDeadCount(deadCount_);
+
     }
 }
 

@@ -7,7 +7,9 @@
 class ResultScene : public GameObject
 {
 	Text* pText;
-	Text* pECount;
+	Text* pECount; //Enemyを倒した数
+
+	int hBack_;    
 
 public:
 	//コンストラクタ

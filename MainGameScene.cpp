@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Chocolate.h"
 #include "Engine/SceneManager.h"
+#include "EnemyManager.h"
 
 
 
@@ -41,6 +42,13 @@ void MainGameScene::Update()
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_RESULT);
 	}
+
+	EnemyManager* EManager = new EnemyManager();
+
+	if (EManager->GetDeadCount() >= 3)
+	{
+		MainGameEnd();
+	}
 }
 
 //•`‰æ
@@ -51,4 +59,10 @@ void MainGameScene::Draw()
 //ŠJ•ú
 void MainGameScene::Release()
 {
+}
+
+void MainGameScene::MainGameEnd()
+{
+	SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+	pSceneManager->ChangeScene(SCENE_ID_RESULT);
 }

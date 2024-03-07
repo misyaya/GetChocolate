@@ -29,6 +29,9 @@
     <Filter Include="ResultScene">
       <UniqueIdentifier>{9bebfae6-671d-4c62-a495-a5be3b456a01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mission">
+      <UniqueIdentifier>{7d3c3667-f15c-430b-89ae-c5e48439df4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -124,7 +127,6 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="Chocolate.cpp" />
-    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="StartButton.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
@@ -134,12 +136,19 @@
     <ClCompile Include="Back_Title.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="MissionDisplay.cpp" />
-    <ClCompile Include="MissionManager.cpp" />
     <ClCompile Include="ResultScene.cpp">
       <Filter>ResultScene</Filter>
     </ClCompile>
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Mission.cpp">
+      <Filter>Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionDisplay.cpp">
+      <Filter>Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionManager.cpp">
+      <Filter>Mission</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -238,7 +247,6 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="Chocolate.h" />
-    <ClInclude Include="Mission.h" />
     <ClInclude Include="StartButton.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
@@ -248,12 +256,19 @@
     <ClInclude Include="Back_Title.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="MissionDisplay.h" />
-    <ClInclude Include="MissionManager.h" />
     <ClInclude Include="ResultScene.h">
       <Filter>ResultScene</Filter>
     </ClInclude>
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="Mission.h">
+      <Filter>Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionDisplay.h">
+      <Filter>Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionManager.h">
+      <Filter>Mission</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">
