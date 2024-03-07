@@ -93,7 +93,11 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\lib\vs2022\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -118,13 +122,21 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\lib\vs2022\x64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Back_Title.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="MissionDisplay.cpp" />
+    <ClCompile Include="MissionManager.cpp" />
+    <ClCompile Include="ResultScene.cpp" />
+    <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine\Audio.cpp" />
@@ -156,13 +168,20 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="LifeGauge.cpp" />
     <ClCompile Include="MainGameScene.cpp" />
+    <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sword.cpp" />
+    <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Back_Title.h" />
+    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="MissionDisplay.h" />
+    <ClInclude Include="MissionManager.h" />
+    <ClInclude Include="ResultScene.h" />
+    <ClInclude Include="StartButton.h" />
     <ClInclude Include="Chocolate.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
@@ -195,10 +214,11 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="Floor.h" />
-    <ClInclude Include="LifeGauge.h" />
     <ClInclude Include="MainGameScene.h" />
+    <ClInclude Include="Mission.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
+    <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>

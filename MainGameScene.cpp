@@ -9,6 +9,7 @@
 #include "Engine/SceneManager.h"
 
 
+
 //コンストラクタ
 MainGameScene::MainGameScene(GameObject * parent)
 	: GameObject(parent, "MainGameScene")
@@ -20,8 +21,15 @@ void MainGameScene::Initialize()
 {
 	Instantiate<Player>(this);
 	Instantiate<Floor>(this);
-	Instantiate<Enemy>(this);
 	Instantiate<Chocolate>(this);
+	Instantiate<Sword>(this);
+
+
+	for (int i = 0; i < 10; i++)
+	{
+		Instantiate<Enemy>(this);
+	}
+	
 }
 
 //更新

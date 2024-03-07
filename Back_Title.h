@@ -1,17 +1,19 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//チョコレートを管理するクラス
-class Chocolate : public GameObject
+//タイトル背景を管理するクラス
+class Back_Title : public GameObject
 {
-    int hChoco_;
+    int hBack_;    //背景
+
+    Transform backTr_;
 
 public:
     //コンストラクタ
-    Chocolate(GameObject* parent);
+    Back_Title(GameObject* parent);
 
     //デストラクタ
-    ~Chocolate();
+    ~Back_Title();
 
     //初期化
     void Initialize() override;
@@ -24,8 +26,4 @@ public:
 
     //開放
     void Release() override;
-
-    //何かに当たった
-    //引数：pTarget 当たった相手
-    void OnCollision(GameObject* pTarget) override;
 };

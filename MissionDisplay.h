@@ -1,17 +1,16 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//チョコレートを管理するクラス
-class Chocolate : public GameObject
+//ミッション表示を管理するクラス
+class MissionDisplay : public GameObject
 {
-    int hChoco_;
 
 public:
     //コンストラクタ
-    Chocolate(GameObject* parent);
+    MissionDisplay(GameObject* parent);
 
     //デストラクタ
-    ~Chocolate();
+    ~MissionDisplay();
 
     //初期化
     void Initialize() override;
@@ -24,8 +23,4 @@ public:
 
     //開放
     void Release() override;
-
-    //何かに当たった
-    //引数：pTarget 当たった相手
-    void OnCollision(GameObject* pTarget) override;
 };

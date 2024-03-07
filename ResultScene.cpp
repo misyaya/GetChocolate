@@ -28,7 +28,8 @@ void ResultScene::Update()
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TITLE);
-	}	
+	}
+	
 }
 
 //•`‰æ
@@ -40,6 +41,7 @@ void ResultScene::Draw()
 	//HP@”Žš
 	pText->Draw(30, 30, "RESULT");
 	pECount->Draw(30, 90, eCount_);
+	
 }
 
 //ŠJ•ú

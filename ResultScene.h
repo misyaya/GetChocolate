@@ -1,18 +1,18 @@
 #pragma once
 #include "Engine/GameObject.h"
+#include "Engine/Text.h"
 
 
-//タイトルシーンを管理するクラス
-class TitleScene : public GameObject
+//リザルトシーンを管理するクラス
+class ResultScene : public GameObject
 {
-	
-	
-	
+	Text* pText;
+	Text* pECount;
 
 public:
 	//コンストラクタ
 	//引数：parent  親オブジェクト（SceneManager）
-	TitleScene(GameObject* parent);
+	ResultScene(GameObject* parent);
 
 	//初期化
 	void Initialize() override;

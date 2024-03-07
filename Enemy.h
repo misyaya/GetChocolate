@@ -2,7 +2,7 @@
 #include "Engine/GameObject.h"
 #include "Player.h"
 
-//◆◆◆を管理するクラス
+//エネミーを管理するクラス
 class Enemy : public GameObject
 {
     int enemy_;
@@ -16,6 +16,9 @@ class Enemy : public GameObject
     float differenceX;
     float differenceY;
     float differenceZ;
+
+    //エネミーを倒した数
+    int deadCount_;
 
 public:
     //コンストラクタ
@@ -44,5 +47,9 @@ public:
     void SetPlayer(Player* player);
 
     void PlayerChase();
+
+    int GetKill();
+
+    void SetEnemyPos(XMFLOAT3 _enemyPos);
 
 };
