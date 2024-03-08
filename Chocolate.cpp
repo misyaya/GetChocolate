@@ -24,6 +24,8 @@ void Chocolate::Initialize()
     transform_.position_.y = 1.0f;
     transform_.position_.z = 3.0f;
 
+    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
     AddCollider(collision);
 }
