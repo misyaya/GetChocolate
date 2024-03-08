@@ -1,10 +1,34 @@
 #include "Floor.h"
 #include "Engine/Model.h"
+#include "Engine/CsvReader.h"
 
 //コンストラクタ
 Floor::Floor(GameObject* parent)
-    :GameObject(parent, "Floor"),floor_(-1)
+    :GameObject(parent, "Floor"),hModel_{-1,-1},table_(nullptr),width_(0),height_(0)
 {
+    CsvReader csv;
+    csv.Load("map.csv");
+
+    width_ = csv.GetWidth();
+    height_ = csv.GetHeight();
+
+
+    //配列作り
+    table_ = new int* [width_];
+
+    for (int x = 0; x < width_; x++)
+    {
+        table_[x] = new int[height_];
+    }
+
+    //格納
+    for (int x = 0; x < width_; x++)
+    {
+        for (int z = 0; z < height_; z++)
+        {
+            table_[x][height_ - 1 - z] = csv.GetValue(x, z);
+        }
+    }
 }
 
 //デストラクタ
@@ -15,12 +39,17 @@ Floor::~Floor()
 //初期化
 void Floor::Initialize()
 {
-    //モデルデータのロード
-    floor_ = Model::Load("Floor.fbx");
-    assert(floor_ >= 0);
+    const char* fileName[] = { "Floor.fbx" , "Wall.fbx" };
 
-    transform_.position_.z = 45.0f;
-    transform_.scale_ = XMFLOAT3(2.0f, 1.0f, 2.0f);
+
+    //モデルデータのロード
+    for(int i = 0; i < TYPE_MAX; i++)
+    {
+        hModel_[i] = Model::Load(fileName[i]);
+        assert(hModel_[i] >= 0);
+    }
+
+ 
 }
 
 //更新
@@ -31,11 +60,42 @@ void Floor::Update()
 //描画
 void Floor::Draw()
 {
-    Model::SetTransform(floor_, transform_);
-    Model::Draw(floor_);
+    Transform blockTrans;
+
+    for (int x = 0; x < 15; x++)
+    {
+        for (int z = 0; z < 15; z++)
+        {
+            blockTrans.position_.x = x;
+            blockTrans.position_.z = z;
+
+            int type = table_[x][z];
+            Model::SetTransform(hModel_[type], blockTrans);
+            Model::Draw(hModel_[type]);
+        }
+    }
+   
 }
 
 //開放
 void Floor::Release()
 {
+    for (int x = 0; x < width_; x++)
+    {
+        delete[] table_[x];
+    }
+
+    delete[] table_;
+}
+
+bool Floor::IsWall(int x, int z)
+{
+    if (table_[x][z] == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
