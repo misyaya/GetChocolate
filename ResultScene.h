@@ -10,6 +10,7 @@ class ResultScene : public GameObject
 	Text* pECount; //Enemyを倒した数
 
 	int hBack_;    
+	int hGameClear_;
 
 public:
 	//コンストラクタ

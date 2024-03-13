@@ -29,6 +29,7 @@ Floor::Floor(GameObject* parent)
             table_[x][height_ - 1 - z] = csv.GetValue(x, z);
         }
     }
+
 }
 
 //デストラクタ
@@ -62,9 +63,9 @@ void Floor::Draw()
 {
     Transform blockTrans;
 
-    for (int x = 0; x < 15; x++)
+    for (int x = 0; x < width_; x++)
     {
-        for (int z = 0; z < 15; z++)
+        for (int z = 0; z < height_; z++)
         {
             blockTrans.position_.x = x;
             blockTrans.position_.z = z;

@@ -12,6 +12,8 @@
 
 
 using namespace std::chrono;
+int enemyKill = 0;
+
 //コンストラクタ
 Player::Player(GameObject* parent)
     :GameObject(parent, "Player"), hModel_(-1),nowHp_(3),maxHp_(3), hPictHp_(-1), hB_(-1),pText(nullptr),pTextHp(nullptr),
@@ -49,7 +51,7 @@ void Player::Initialize()
 	pTextHp->Initialize();
 	
 
-	transform_.position_ = XMFLOAT3(0.0f,0.0f,-1.0f);
+	transform_.position_ = XMFLOAT3(20.0f, 0.0f, 1.0f);
 }
 
 //更新
@@ -86,7 +88,7 @@ void Player::Update()
 	}
 
 	
-
+	
 
 	//カメラ
 	UpdateCamera();

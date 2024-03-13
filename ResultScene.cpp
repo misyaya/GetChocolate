@@ -6,7 +6,7 @@
 
 //コンストラクタ
 ResultScene::ResultScene(GameObject* parent)
-	: GameObject(parent, "ResultScene"),pText(nullptr),pECount(nullptr),hBack_(-1)
+	: GameObject(parent, "ResultScene"),pText(nullptr),pECount(nullptr),hBack_(-1),hGameClear_(-1)
 {
 }
 
@@ -23,6 +23,12 @@ void ResultScene::Initialize()
 	//背景
 	hBack_ = Image::Load("TitleBack.png");
 	assert(hBack_ >= 0);
+
+	//GameClear文字
+	hGameClear_ = Image::Load("GameClear.png");
+	assert(hGameClear_ >= 0);
+
+	transform_.position_.x = transform_.position_.x + 0.1f;
 }
 
 //更新
@@ -45,12 +51,17 @@ void ResultScene::Draw()
 	Image::SetTransform(hBack_, transform_);
 	Image::Draw(hBack_);
 
+	Image::SetTransform(hGameClear_, transform_);
+	Image::Draw(hGameClear_);
+
+	
+
 	EnemyManager* EManager = new EnemyManager();
 	int eCount_ = EManager->GetDeadCount();
 	
 	//HP　数字
 	pText->Draw(30, 30, "RESULT");
-	pECount->Draw(30, 90, eCount_);
+	//pECount->Draw(30, 90, eCount_);
 
 	
 }

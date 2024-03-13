@@ -4,6 +4,7 @@
 #include "Engine/Input.h"
 #include "Engine/BoxCollider.h"
 #include "Engine/Input.h"
+#include "Engine/SceneManager.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
@@ -23,9 +24,9 @@ void Sword::Initialize()
     sword_ = Model::Load("Sword.fbx");
     assert(sword_ >= 0);
 
-    transform_.position_.x = 0.0f;
+    transform_.position_.x = 20.0f;
     transform_.position_.y = 2.0f;
-    transform_.position_.z = 0.8f;
+    transform_.position_.z = 1.6f;
     state_ = ATTACK;
 }
 
@@ -124,6 +125,8 @@ void Sword::Update()
         transform_.position_.x -= 0.1f;
         //transform_.rotate_.y = front.rotate_.y - 90.0f;
     }
+
+
     {
         //   //後
         //   if (Input::IsKey(DIK_S))
@@ -185,6 +188,12 @@ void Sword::OnCollision(GameObject* pTarget)
     {
         flag_ = false;
         count_++;
+
+        if (count_ >= 1)
+        {
+            SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+            pSceneManager->ChangeScene(SCENE_ID_RESULT);
+        }
     }
 
     if (count_ <= 1)
