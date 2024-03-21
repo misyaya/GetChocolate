@@ -29,6 +29,15 @@
     <Filter Include="Mission">
       <UniqueIdentifier>{7d3c3667-f15c-430b-89ae-c5e48439df4c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGameScene">
+      <UniqueIdentifier>{bcf86862-fe11-4c32-8480-1ce5d1bdd473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGameScene\Object">
+      <UniqueIdentifier>{5ebcac41-a35f-4c02-86e4-4722c4ce1fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Value">
+      <UniqueIdentifier>{8a23206c-f190-4e0a-b954-e24119b7a059}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine\BoxCollider.cpp">
@@ -85,7 +94,6 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="MainGameScene.cpp" />
     <ClCompile Include="Engine\Audio.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
@@ -104,11 +112,6 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="StartButton.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
@@ -130,7 +133,27 @@
     <ClCompile Include="MissionManager.cpp">
       <Filter>Mission</Filter>
     </ClCompile>
-    <ClCompile Include="ValueManager.cpp" />
+    <ClCompile Include="Chocolate.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameScene.cpp">
+      <Filter>MainGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueManager.cpp">
+      <Filter>Value</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -187,7 +210,6 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="MainGameScene.h" />
     <ClInclude Include="Engine\Audio.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
@@ -206,11 +228,6 @@
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Floor.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Sword.h" />
-    <ClInclude Include="Chocolate.h" />
     <ClInclude Include="StartButton.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
@@ -232,7 +249,27 @@
     <ClInclude Include="MissionManager.h">
       <Filter>Mission</Filter>
     </ClInclude>
-    <ClInclude Include="ValueManager.h" />
+    <ClInclude Include="Chocolate.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameScene.h">
+      <Filter>MainGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueManager.h">
+      <Filter>Value</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

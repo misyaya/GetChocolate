@@ -27,8 +27,6 @@ void MainGameScene::Initialize()
 			Instantiate<Chocolate>(this);
 		}
 
-	for (int i = 0; i < 10; i++)
-	{
 		Instantiate<Enemy>(this);
 	}
 
