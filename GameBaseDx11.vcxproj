@@ -150,11 +150,6 @@
     <ClCompile Include="Engine\FbxParts.cpp" />
     <ClCompile Include="Engine\GameObject.cpp" />
     <ClCompile Include="Engine\Image.cpp" />
-    <ClCompile Include="Engine\Imgui\imgui.cpp" />
-    <ClCompile Include="Engine\Imgui\imgui_demo.cpp" />
-    <ClCompile Include="Engine\Imgui\imgui_draw.cpp" />
-    <ClCompile Include="Engine\Imgui\imgui_tables.cpp" />
-    <ClCompile Include="Engine\Imgui\imgui_widgets.cpp" />
     <ClCompile Include="Engine\Input.cpp" />
     <ClCompile Include="Engine\Main.cpp" />
     <ClCompile Include="Engine\Model.cpp" />
@@ -196,12 +191,6 @@
     <ClInclude Include="Engine\GameObject.h" />
     <ClInclude Include="Engine\Global.h" />
     <ClInclude Include="Engine\Image.h" />
-    <ClInclude Include="Engine\Imgui\imconfig.h" />
-    <ClInclude Include="Engine\Imgui\imgui.h" />
-    <ClInclude Include="Engine\Imgui\imgui_internal.h" />
-    <ClInclude Include="Engine\Imgui\imstb_rectpack.h" />
-    <ClInclude Include="Engine\Imgui\imstb_textedit.h" />
-    <ClInclude Include="Engine\Imgui\imstb_truetype.h" />
     <ClInclude Include="Engine\Input.h" />
     <ClInclude Include="Engine\Model.h" />
     <ClInclude Include="Engine\VFX.h" />
@@ -239,11 +228,6 @@
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">VS</EntryPointName>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">VS</EntryPointName>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine\Imgui\.editorconfig" />
-    <None Include="Engine\Imgui\.gitattributes" />
-    <None Include="Engine\Imgui\.gitignore" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

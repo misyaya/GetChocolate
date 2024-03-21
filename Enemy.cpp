@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Chocolate.h"
 #include "Engine/Audio.h"
+#include "ValueManager.h"
 
 
 //コンストラクタ
@@ -25,15 +26,17 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    transform_.position_.x = (float)(rand() % 50 - 3);
-    transform_.position_.z = (float)(rand() % 50);
+    transform_.position_.x = (float)(rand() % 20 + 10 );
+    transform_.position_.z = (float)(rand() % 50 + 3 );
+
+    transform_.scale_ = XMFLOAT3(1.5f, 1.5f, 1.5f);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);
 
     //サウンドデータのロード
-    //sDead_ = Audio::Load(".wav");
-    //assert(sDead_ >= 0);
+    sDead_ = Audio::Load("enemyDead.wav");
+    assert(sDead_ >= 0);
 }
 
 //更新
@@ -63,6 +66,8 @@ void Enemy::OnCollision(GameObject* pTarget)
     //剣に当たったとき
     if (pTarget->GetObjectName() == "Sword")
     {
+        ValueManager::GetInstance().AddEnemyD(1);
+        Audio::Play(sDead_);
         KillMe();
     }
 }

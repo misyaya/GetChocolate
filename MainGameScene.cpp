@@ -20,16 +20,18 @@ MainGameScene::MainGameScene(GameObject * parent)
 //‰Šú‰»
 void MainGameScene::Initialize()
 {
-	Instantiate<Player>(this);
-	Instantiate<Floor>(this);
-	Instantiate<Chocolate>(this);
-
-
 	for (int i = 0; i < 10; i++)
 	{
+		if(i % 2 ==0)
+		{
+			Instantiate<Chocolate>(this);
+		}
+
 		Instantiate<Enemy>(this);
 	}
-	
+
+	Instantiate<Floor>(this);
+	Instantiate<Player>(this);
 }
 
 //XV

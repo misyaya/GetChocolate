@@ -102,7 +102,6 @@ void Player::Update()
 	if (Input::IsKey(DIK_S))
 	{
 		transform_.position_.z -= 0.1f;
-		//transform_.rotate_.y = front.rotate_.y - 180.0f;
 		Audio::Play(sWalk_);
 	}
 
@@ -110,7 +109,6 @@ void Player::Update()
 	if (Input::IsKey(DIK_D))
 	{
 		transform_.position_.x += 0.1f;
-		//transform_.rotate_.y = front.rotate_.y + 90.0f;
 		Audio::Play(sWalk_);
 	}
 
@@ -118,12 +116,11 @@ void Player::Update()
 	if (Input::IsKey(DIK_A))
 	{
 		transform_.position_.x -= 0.1f;
-		//transform_.rotate_.y = front.rotate_.y - 90.0f;
 		Audio::Play(sWalk_);
 	}
 
-	
-	
+	chocoPoint_ = ValueManager::GetInstance().GetPoints();
+	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
 
 	//カメラ
 	UpdateCamera();
@@ -134,14 +131,17 @@ void Player::Update()
 		enemy->SetPlayer(this);
 	}
 
+	if (nowHp_ <= 0  || chocoPoint_ >= 5)
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_RESULT);
+	}
 }
 
 //描画
 void Player::Draw()
 {
-	chocoPoint_ = ValueManager::GetInstance().GetPoints();
-	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
-
+	
 	//プレイヤー
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
@@ -157,7 +157,6 @@ void Player::Draw()
 	//エネミー撃破数
 	pTextE->Draw(30, 90, "EN");
 	pEnemy->Draw(90, 90, enemyPoint_);
-	
 }
 
 //開放
@@ -168,7 +167,6 @@ void Player::Release()
 //当たり判定
 void Player::OnCollision(GameObject* pTarget)
 {
-	//敵に当たったらちょっと後ろに飛ぶようにしたい
 	//敵に当たったとき
 	if (pTarget->GetObjectName() == "Enemy")
 	{	
@@ -188,19 +186,13 @@ void Player::OnCollision(GameObject* pTarget)
 			float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			MoveBackward(knockbackDistance);
 
-			if (nowHp_ <= 0)
-			{
-				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-				pSceneManager->ChangeScene(SCENE_ID_RESULT);
-			}
 		}
 	}
 
-	//チョコに当たったとき
+	//チョコレートに当たったとき
 	if (pTarget->GetObjectName() == "Chocolate")
 	{
 		Audio::Play(sChocoGet_);
-		ValueManager::GetInstance().AddPoints(1);
 	}
 
 }
@@ -235,10 +227,10 @@ void Player::UpdateCamera()
 	XMFLOAT3 playerPosition = GetPlayerPos();
 
 	// カメラの位置
-	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 5, playerPosition.z - 8);
+	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 6, playerPosition.z - 5);
 
 	// カメラの焦点
-	XMFLOAT3 newTarget = XMFLOAT3(playerPosition.x, playerPosition.y + 2, playerPosition.z + 5);
+	XMFLOAT3 newTarget = XMFLOAT3(playerPosition.x, playerPosition.y + 1 , playerPosition.z + 10);
 
 	// カメラの位置と焦点を設定
 	Camera::SetPosition(newPosition);

@@ -20,9 +20,6 @@
       <UniqueIdentifier>{47a6a3f5-8cfd-436b-8d58-beccd108f3f3}</UniqueIdentifier>
       <Extensions>hlsl</Extensions>
     </Filter>
-    <Filter Include="01Engine\Imgui">
-      <UniqueIdentifier>{5e273a71-4534-46f8-a9fe-e59f3858ad38}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TitleScene">
       <UniqueIdentifier>{c87b57aa-3b93-4539-998c-1181d37761ac}</UniqueIdentifier>
     </Filter>
@@ -103,21 +100,6 @@
     </ClCompile>
     <ClCompile Include="Engine\VFX.cpp">
       <Filter>01Engine\ResourceManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_demo.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_draw.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_tables.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_widgets.cpp">
-      <Filter>01Engine\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene</Filter>
@@ -221,24 +203,6 @@
     <ClInclude Include="Engine\VFX.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Imgui\imgui.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imgui_internal.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_rectpack.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_textedit.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_truetype.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imconfig.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
@@ -283,16 +247,5 @@
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">
       <Filter>02Shader</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine\Imgui\.editorconfig">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
-    <None Include="Engine\Imgui\.gitattributes">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
-    <None Include="Engine\Imgui\.gitignore">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
   </ItemGroup>
 </Project>

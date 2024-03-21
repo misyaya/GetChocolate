@@ -2,6 +2,7 @@
 #include "Back_Title.h"
 #include "TitleLogo.h"
 #include "StartButton.h"
+#include "ValueManager.h"
 
 
 //コンストラクタ
@@ -16,6 +17,9 @@ void TitleScene::Initialize()
 	Instantiate<Back_Title>(this);
 	Instantiate<TitleLogo>(this);
 	Instantiate<StartButton>(this);
+
+	ValueManager::GetInstance().ResetPoints();
+	ValueManager::GetInstance().ResetEnemyD();
 }
 
 //更新
