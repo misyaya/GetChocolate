@@ -1,10 +1,21 @@
 #pragma once
 #include "Engine/GameObject.h"
 
+enum
+{
+    TYPE_FLOOR,
+    TYPE_WALL,
+    TYPE_MAX,
+};
+
+
 //ステージ床を管理するクラス
 class Floor : public GameObject
 {
-    int floor_;
+    int hModel_[TYPE_MAX];    //モデル番号
+    int** table_;
+    int width_, height_;
+
 public:
     //コンストラクタ
     Floor(GameObject* parent);
@@ -23,4 +34,12 @@ public:
 
     //開放
     void Release() override;
+
+    /// <summary>
+    /// 指定した位置が通れるか通れないか
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="z"></param>
+    /// <returns>通れない＝true/通れる=false</returns>
+    bool IsWall(int x, int z);
 };

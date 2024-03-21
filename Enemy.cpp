@@ -3,12 +3,14 @@
 #include "Engine/SphereCollider.h"
 #include "Player.h"
 #include "Chocolate.h"
-#include "EnemyManager.h"
+#include "Engine/Audio.h"
+#include "ValueManager.h"
+
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
-    differenceX(0), differenceY(0), differenceZ(0),deadCount_(0)
+    differenceX(0), differenceY(0), differenceZ(0), sDead_(-1)
 {
 }
 
@@ -24,11 +26,17 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    transform_.position_.x = (float)(rand() % 50 - 25);
-    transform_.position_.z = (float)(rand() % 50);
+    transform_.position_.x = (float)(rand() % 30 + 10 );
+    transform_.position_.z = (float)(rand() % 55 + 4 );
+
+    transform_.scale_ = XMFLOAT3(1.5f, 1.5f, 1.5f);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);
+
+    //サウンドデータのロード
+    sDead_ = Audio::Load("enemyDead.wav");
+    assert(sDead_ >= 0);
 }
 
 //更新
@@ -58,13 +66,9 @@ void Enemy::OnCollision(GameObject* pTarget)
     //剣に当たったとき
     if (pTarget->GetObjectName() == "Sword")
     {
-       // KillMe();
+        ValueManager::GetInstance().AddEnemyD(1);
+        Audio::Play(sDead_);
         KillMe();
-        ++deadCount_;
-        Instantiate<Chocolate>;
-        EnemyManager* pEManager = new EnemyManager();
-        pEManager->SetDeadCount(deadCount_);
-
     }
 }
 

@@ -4,32 +4,27 @@
 //Swordを管理するクラス
 class Sword : public GameObject
 {
+    //モデル
     int sword_;
+
     Transform front;
     int state_;
-    bool attackflag_ = true;
-    bool flag_ = true;
-    bool atF = true;
-    // クラスのメンバ変数
-    bool isRotating = false;
-    float targetRotation = 0.0f;
-    float downSwingRotation = 90.0f;
+   
 
-    bool walkFlagL_ = true;
-    bool walkFlagR_ = true;
-    bool walkFlagF_ = true;
-    bool walkFlagB_ = true;
+    //当たり判定のフラグ
+    bool colliderFlag_ = false;
+    bool attackFlag_ = false;
 
 
-    int seconds_;
-    int count_;
+    //サウンド
+    //剣(振り下ろす)
+    int sSword_;
 
     enum {
         MOVE = 0,
         RETURN,
         ATTACK,
         WAIT
-       
     };
 
 public:
@@ -60,9 +55,15 @@ public:
     //攻撃1
     void AttackSword();
 
-    //攻撃2
-    void AttackBeside();
-
     //攻撃終了1
-    void FihishAttack();
-};
+    void FinishAttack();
+
+    //Sword位置の設定
+    void SetSwordPos(XMFLOAT3 _position);
+
+    //Sword位置の取得
+    XMFLOAT3 GetSwordPos();
+
+    //後ろに飛ぶ
+    void MoveBackward(float _distance);
+}; 

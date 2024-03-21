@@ -4,10 +4,12 @@
 #include "Engine/Input.h"
 #include "Engine/BoxCollider.h"
 #include "Engine/Input.h"
+#include "Engine/SceneManager.h"
+#include "Engine/Audio.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
-    :GameObject(parent, "Sword"), sword_(-1)
+    :GameObject(parent, "Sword"), sword_(-1),sSword_(-1)
 {
 }
 
@@ -23,9 +25,14 @@ void Sword::Initialize()
     sword_ = Model::Load("Sword.fbx");
     assert(sword_ >= 0);
 
-    transform_.position_.x = 0.0f;
+    //サウンドデータのロード
+    //剣(振り下ろす)
+    sSword_ = Audio::Load("sword.WAV");
+    assert(sSword_ >= 0);
+
     transform_.position_.y = 2.0f;
-    transform_.position_.z = 0.8f;
+    transform_.position_.z = 1.6f;
+
     state_ = ATTACK;
 }
 
@@ -40,128 +47,17 @@ void Sword::Update()
         
         ClearCollider();
     }
-
-
-    if (Input::IsKeyDown(DIK_UP)&& attackflag_)
-    {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 1, 1), XMFLOAT3(1, 1, 1));
-        AddCollider(collision);
-
-        AttackBeside();
-    }
    
     //スペースキーが押されていたら
     if (Input::IsKeyDown(DIK_SPACE))
     {
-        flag_ = true;
-        seconds_ = 0;
         AttackSword();  
     }
 
-    //エンターが押されたら
-    if (Input::IsKey(DIK_L))
+    if (colliderFlag_ == true)
     {
-        transform_.rotate_.x += 10.0f;
-    }
-
-
-    if (Input::IsKey(DIK_K))
-    {
-        float rotationSpeed = 0.5f;
-        while (atF)
-        {
-            if (transform_.rotate_.x < 90.0f && attackflag_)
-            {
-                transform_.rotate_.x += rotationSpeed;
-            }
-            else
-            {
-                // 回転が90度を超えた場合、90度に固定
-
-                attackflag_ = false;
-                // 90度まで回転した後、0度まで戻す
-                if (transform_.rotate_.x > 0.0f)
-                {
-                    transform_.rotate_.x -= rotationSpeed;
-                }
-                else
-                {
-                    // 回転が0度を超えた場合、0度に固定
-                    transform_.rotate_.x = 0.0f;
-                    atF = false;
-                }
-            }
-        }
-    }
-
-
-
-    //前
-    if (Input::IsKey(DIK_W))
-    {
-        
-		transform_.position_.z += 0.1f;
-		transform_.rotate_.y = front.rotate_.y;
-	}
-
-    //後
-    if (Input::IsKey(DIK_S))
-    {
-        transform_.position_.z -= 0.1f;
-        //transform_.rotate_.y = front.rotate_.y - 180.0f;
-    }
-
-    //左
-    if (Input::IsKey(DIK_D))
-    {
-        transform_.position_.x += 0.1f;
-        //transform_.rotate_.y = front.rotate_.y + 90.0f;
-    }
-
-    //右
-    if (Input::IsKey(DIK_A))
-    {
-        transform_.position_.x -= 0.1f;
-        //transform_.rotate_.y = front.rotate_.y - 90.0f;
-    }
-    {
-        //   //後
-        //   if (Input::IsKey(DIK_S))
-        //   {
-        //       transform_.position_.z -= 0.1f;
-        //       transform_.rotate_.y = front.rotate_.y - 180.0f;
-        //   }
-
-           ////左
-           //if (Input::IsKey(DIK_D))
-           //{
-        //       walkFlagR_ = true;
-
-        //       if (walkFlagL_)
-        //       {
-        //           transform_.position_.x = transform_.position_.x + 0.5f;
-        //           walkFlagL_ = false;
-        //       }
-
-           //	transform_.position_.x += 0.1f;
-           //	transform_.rotate_.y = front.rotate_.y + 90.0f;
-           //}
-
-           ////右
-           //if (Input::IsKey(DIK_A))
-           //{
-        //       walkFlagL_ = true;
-        //       if (walkFlagR_)
-        //       {
-        //           transform_.position_.x = transform_.position_.x - 1.5f;
-        //           transform_.position_.z = transform_.position_.z - 1.5f;
-        //           walkFlagR_ = false;
-        //       }
-
-           //	transform_.position_.x -= 0.1f;
-           //	transform_.rotate_.y = front.rotate_.y - 90.0f;
-           //}
-
+        ClearCollider();
+        colliderFlag_ = false;
     }
 }
 
@@ -183,13 +79,9 @@ void Sword::OnCollision(GameObject* pTarget)
     //敵に当たったとき
     if (pTarget->GetObjectName() == "Enemy")
     {
-        flag_ = false;
-        count_++;
-    }
-
-    if (count_ <= 1)
-    {
-        FihishAttack();
+        colliderFlag_ = true; 
+        attackFlag_ = false;
+        FinishAttack();
     }
 }
 
@@ -200,37 +92,47 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 
 void Sword::AttackSword()
 {
-    if(flag_)
+    if(attackFlag_ == false)
     {
         BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
+
+        Audio::Play(sSword_);
+
+        while (transform_.rotate_.x <= 120.0f)
+        {
+            transform_.rotate_.x += 10.0f;
+        }
     }
 
-    while(transform_.rotate_.x <= 120.0f)
-    {
-        transform_.rotate_.x += 10.0f;
-    }
-}
-
-void Sword::AttackBeside()
-{
-    attackflag_ = false;
-
-    while (transform_.rotate_.z <= 100)
-    {
-        transform_.rotate_.z += 0.5f;
-    }
-
-    while (transform_.rotate_.z >= -100)
-    {
-        transform_.rotate_.z -= 0.5f;
-    }
+    attackFlag_ = true;
  
-    attackflag_ = true;
 }
 
-void Sword::FihishAttack()
+
+void Sword::FinishAttack()
 {
-    count_ = 0;
     transform_.rotate_.x = 0;
+}
+
+void Sword::SetSwordPos(XMFLOAT3 _position)
+{
+    transform_.position_ = _position;
+}
+
+XMFLOAT3 Sword::GetSwordPos()
+{
+    return transform_.position_;
+}
+
+void Sword::MoveBackward(float _distance)
+{
+    // プレイヤーの現在位置を取得
+    XMFLOAT3 currentPosition = GetSwordPos();
+
+    // プレイヤーを後ろに移動
+    currentPosition.z += _distance;
+
+    // 移動後の位置を設定
+    SetSwordPos(currentPosition);
 }

@@ -20,9 +20,6 @@
       <UniqueIdentifier>{47a6a3f5-8cfd-436b-8d58-beccd108f3f3}</UniqueIdentifier>
       <Extensions>hlsl</Extensions>
     </Filter>
-    <Filter Include="01Engine\Imgui">
-      <UniqueIdentifier>{5e273a71-4534-46f8-a9fe-e59f3858ad38}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TitleScene">
       <UniqueIdentifier>{c87b57aa-3b93-4539-998c-1181d37761ac}</UniqueIdentifier>
     </Filter>
@@ -31,6 +28,15 @@
     </Filter>
     <Filter Include="Mission">
       <UniqueIdentifier>{7d3c3667-f15c-430b-89ae-c5e48439df4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGameScene">
+      <UniqueIdentifier>{bcf86862-fe11-4c32-8480-1ce5d1bdd473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGameScene\Object">
+      <UniqueIdentifier>{5ebcac41-a35f-4c02-86e4-4722c4ce1fbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Value">
+      <UniqueIdentifier>{8a23206c-f190-4e0a-b954-e24119b7a059}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,7 +94,6 @@
     <ClCompile Include="Engine\Transform.cpp">
       <Filter>01Engine\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="MainGameScene.cpp" />
     <ClCompile Include="Engine\Audio.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
@@ -104,29 +109,9 @@
     <ClCompile Include="Engine\VFX.cpp">
       <Filter>01Engine\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_demo.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_draw.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_tables.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="Engine\Imgui\imgui_widgets.cpp">
-      <Filter>01Engine\Imgui</Filter>
-    </ClCompile>
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Floor.cpp" />
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="StartButton.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
@@ -139,7 +124,6 @@
     <ClCompile Include="ResultScene.cpp">
       <Filter>ResultScene</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Mission.cpp">
       <Filter>Mission</Filter>
     </ClCompile>
@@ -148,6 +132,27 @@
     </ClCompile>
     <ClCompile Include="MissionManager.cpp">
       <Filter>Mission</Filter>
+    </ClCompile>
+    <ClCompile Include="Chocolate.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Sword.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameScene.cpp">
+      <Filter>MainGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueManager.cpp">
+      <Filter>Value</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -205,7 +210,6 @@
     <ClInclude Include="Engine\Transform.h">
       <Filter>01Engine\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="MainGameScene.h" />
     <ClInclude Include="Engine\Audio.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
@@ -221,32 +225,9 @@
     <ClInclude Include="Engine\VFX.h">
       <Filter>01Engine\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="Engine\Imgui\imgui.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imgui_internal.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_rectpack.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_textedit.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imstb_truetype.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
-    <ClInclude Include="Engine\Imgui\imconfig.h">
-      <Filter>01Engine\Imgui</Filter>
-    </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Floor.h" />
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="Sword.h" />
-    <ClInclude Include="Chocolate.h" />
     <ClInclude Include="StartButton.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
@@ -259,7 +240,6 @@
     <ClInclude Include="ResultScene.h">
       <Filter>ResultScene</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Mission.h">
       <Filter>Mission</Filter>
     </ClInclude>
@@ -268,6 +248,27 @@
     </ClInclude>
     <ClInclude Include="MissionManager.h">
       <Filter>Mission</Filter>
+    </ClInclude>
+    <ClInclude Include="Chocolate.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Sword.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="MainGameScene.h">
+      <Filter>MainGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueManager.h">
+      <Filter>Value</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -283,16 +284,5 @@
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">
       <Filter>02Shader</Filter>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Engine\Imgui\.editorconfig">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
-    <None Include="Engine\Imgui\.gitattributes">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
-    <None Include="Engine\Imgui\.gitignore">
-      <Filter>01Engine\Imgui</Filter>
-    </None>
   </ItemGroup>
 </Project>
