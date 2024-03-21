@@ -38,16 +38,7 @@ void Sword::Initialize()
 
 //更新
 void Sword::Update()
-{
-    //エンターが押されたら
-    if (Input::IsKeyDown(DIK_RETURN) )
-    {
-        transform_.rotate_.z = 0.0f;
-        transform_.rotate_.x = 0.0f;
-        
-        ClearCollider();
-    }
-   
+{  
     //スペースキーが押されていたら
     if (Input::IsKeyDown(DIK_SPACE))
     {
