@@ -50,7 +50,7 @@ void ResultScene::Initialize()
 void ResultScene::Update()
 {
 	//スペースキーが押されていたら
-	if (Input::IsKey(DIK_RETURN))
+	if (Input::IsKeyUp(DIK_SPACE))
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 		pSceneManager->ChangeScene(SCENE_ID_TITLE);
