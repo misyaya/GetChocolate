@@ -21,6 +21,9 @@ class Sword : public GameObject
     bool walkFlagB_ = true;
 
 
+    //Œ•(U‚è‰º‚ë‚·)
+    int sSword_;
+
     int seconds_;
     int count_;
 
@@ -65,4 +68,13 @@ public:
 
     //UŒ‚I—¹1
     void FihishAttack();
-};
+
+    //SwordˆÊ’u‚Ìİ’è
+    void SetSwordPos(XMFLOAT3 _position);
+
+    //SwordˆÊ’u‚Ìæ“¾
+    XMFLOAT3 GetSwordPos();
+
+    //Œã‚ë‚É”ò‚Ô
+    void MoveBackward(float _distance);
+}; 

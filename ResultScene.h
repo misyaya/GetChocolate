@@ -6,9 +6,16 @@
 //リザルトシーンを管理するクラス
 class ResultScene : public GameObject
 {
-	Text* pText;
-	Text* pECount; //Enemyを倒した数
+	Text* pTextE;
+	Text* pEnemy; //Enemyを倒した数
 
+	Text* pTextC;
+	Text* pChoco;
+
+	int chocoPoint_;
+	int enemyPoint_;
+
+	//画像データ
 	int hBack_;    
 	int hGameClear_;
 

@@ -1,6 +1,6 @@
 #include "MissionManager.h"
 #include "Enemy.h"
-#include "EnemyManager.h"
+
 
 MissionManager::MissionManager()
 {
@@ -55,12 +55,5 @@ void MissionManager::FinishMission(const string& _missionName)
 
 void MissionManager::EnemyCheck()
 {
-	EnemyManager* EManager = new EnemyManager();
-	EnemyDeadCuont_  = EManager->GetDeadCount();
 
-	//“G‚ğ‚R‘ÌˆÈã“|‚µ‚½‚ç
-	if (EnemyDeadCuont_  <= 3)
-	{
-
-	}
 }

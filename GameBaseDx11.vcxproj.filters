@@ -139,7 +139,6 @@
     <ClCompile Include="ResultScene.cpp">
       <Filter>ResultScene</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Mission.cpp">
       <Filter>Mission</Filter>
     </ClCompile>
@@ -149,6 +148,7 @@
     <ClCompile Include="MissionManager.cpp">
       <Filter>Mission</Filter>
     </ClCompile>
+    <ClCompile Include="ValueManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -259,7 +259,6 @@
     <ClInclude Include="ResultScene.h">
       <Filter>ResultScene</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Mission.h">
       <Filter>Mission</Filter>
     </ClInclude>
@@ -269,6 +268,7 @@
     <ClInclude Include="MissionManager.h">
       <Filter>Mission</Filter>
     </ClInclude>
+    <ClInclude Include="ValueManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

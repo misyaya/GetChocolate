@@ -3,12 +3,13 @@
 #include "Engine/SphereCollider.h"
 #include "Player.h"
 #include "Chocolate.h"
-#include "EnemyManager.h"
+#include "Engine/Audio.h"
+
 
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
-    differenceX(0), differenceY(0), differenceZ(0),deadCount_(0)
+    differenceX(0), differenceY(0), differenceZ(0), sDead_(-1)
 {
 }
 
@@ -29,6 +30,10 @@ void Enemy::Initialize()
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);
+
+    //サウンドデータのロード
+    //sDead_ = Audio::Load(".wav");
+    //assert(sDead_ >= 0);
 }
 
 //更新
@@ -58,13 +63,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     //剣に当たったとき
     if (pTarget->GetObjectName() == "Sword")
     {
-       // KillMe();
         KillMe();
-        ++deadCount_;
-        Instantiate<Chocolate>;
-        EnemyManager* pEManager = new EnemyManager();
-        pEManager->SetDeadCount(deadCount_);
-
     }
 }
 

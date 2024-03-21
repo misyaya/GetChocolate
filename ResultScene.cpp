@@ -1,23 +1,30 @@
 #include "ResultScene.h"
 #include "Engine/SceneManager.h"
 #include "Engine/Input.h"
-#include "EnemyManager.h"
 #include "Engine/Image.h"
+#include "ValueManager.h"
 
 //コンストラクタ
 ResultScene::ResultScene(GameObject* parent)
-	: GameObject(parent, "ResultScene"),pText(nullptr),pECount(nullptr),hBack_(-1),hGameClear_(-1)
+	: GameObject(parent, "ResultScene"), pTextE(nullptr), pEnemy(nullptr), pTextC(nullptr), pChoco(nullptr), hBack_(-1), hGameClear_(-1)
 {
 }
 
 //初期化
 void ResultScene::Initialize()
 {
-	pText = new Text;
-	pText->Initialize();
+	pTextE = new Text;
+	pTextE->Initialize();
 
-	pECount = new Text;
-	pECount->Initialize();
+	pEnemy = new Text;
+	pEnemy->Initialize();
+
+	pTextC = new Text;
+	pTextC->Initialize();
+	
+	pChoco = new Text;
+	pChoco->Initialize();
+
 
 	//画像データのロード
 	//背景
@@ -55,14 +62,18 @@ void ResultScene::Draw()
 	Image::Draw(hGameClear_);
 
 	
-
-	EnemyManager* EManager = new EnemyManager();
-	int eCount_ = EManager->GetDeadCount();
-	
 	//HP　数字
-	pText->Draw(30, 30, "RESULT");
+	pTextE->Draw(30, 30, "RESULT");
 	//pECount->Draw(30, 90, eCount_);
 
+
+	chocoPoint_ = ValueManager::GetInstance().GetPoints();
+	pTextC->Draw(30, 60, "chocolate!"); 
+	pChoco->Draw(90, 60, chocoPoint_);
+
+	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
+	pTextE->Draw(30, 90, "Enemy");
+	pEnemy->Draw(90, 90, enemyPoint_);
 	
 }
 

@@ -5,10 +5,12 @@
 #include "Engine/BoxCollider.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
+#include "Engine/Audio.h"
+#include "ValueManager.h"
 
 //コンストラクタ
 Sword::Sword(GameObject* parent)
-    :GameObject(parent, "Sword"), sword_(-1)
+    :GameObject(parent, "Sword"), sword_(-1),sSword_(-1)
 {
 }
 
@@ -24,9 +26,14 @@ void Sword::Initialize()
     sword_ = Model::Load("Sword.fbx");
     assert(sword_ >= 0);
 
-    transform_.position_.x = 20.0f;
+    //サウンドデータのロード
+    //剣(振り下ろす)
+    sSword_ = Audio::Load("sword.WAV");
+    assert(sSword_ >= 0);
+
     transform_.position_.y = 2.0f;
     transform_.position_.z = 1.6f;
+
     state_ = ATTACK;
 }
 
@@ -57,6 +64,7 @@ void Sword::Update()
         flag_ = true;
         seconds_ = 0;
         AttackSword();  
+        Audio::Play(sSword_);
     }
 
     //エンターが押されたら
@@ -95,77 +103,6 @@ void Sword::Update()
         }
     }
 
-
-
-    //前
-    if (Input::IsKey(DIK_W))
-    {
-        
-		transform_.position_.z += 0.1f;
-		transform_.rotate_.y = front.rotate_.y;
-	}
-
-    //後
-    if (Input::IsKey(DIK_S))
-    {
-        transform_.position_.z -= 0.1f;
-        //transform_.rotate_.y = front.rotate_.y - 180.0f;
-    }
-
-    //左
-    if (Input::IsKey(DIK_D))
-    {
-        transform_.position_.x += 0.1f;
-        //transform_.rotate_.y = front.rotate_.y + 90.0f;
-    }
-
-    //右
-    if (Input::IsKey(DIK_A))
-    {
-        transform_.position_.x -= 0.1f;
-        //transform_.rotate_.y = front.rotate_.y - 90.0f;
-    }
-
-
-    {
-        //   //後
-        //   if (Input::IsKey(DIK_S))
-        //   {
-        //       transform_.position_.z -= 0.1f;
-        //       transform_.rotate_.y = front.rotate_.y - 180.0f;
-        //   }
-
-           ////左
-           //if (Input::IsKey(DIK_D))
-           //{
-        //       walkFlagR_ = true;
-
-        //       if (walkFlagL_)
-        //       {
-        //           transform_.position_.x = transform_.position_.x + 0.5f;
-        //           walkFlagL_ = false;
-        //       }
-
-           //	transform_.position_.x += 0.1f;
-           //	transform_.rotate_.y = front.rotate_.y + 90.0f;
-           //}
-
-           ////右
-           //if (Input::IsKey(DIK_A))
-           //{
-        //       walkFlagL_ = true;
-        //       if (walkFlagR_)
-        //       {
-        //           transform_.position_.x = transform_.position_.x - 1.5f;
-        //           transform_.position_.z = transform_.position_.z - 1.5f;
-        //           walkFlagR_ = false;
-        //       }
-
-           //	transform_.position_.x -= 0.1f;
-           //	transform_.rotate_.y = front.rotate_.y - 90.0f;
-           //}
-
-    }
 }
 
 //描画
@@ -187,7 +124,7 @@ void Sword::OnCollision(GameObject* pTarget)
     if (pTarget->GetObjectName() == "Enemy")
     {
         flag_ = false;
-        count_++;
+        ValueManager::GetInstance().AddEnemyD(1);
 
         if (count_ >= 1)
         {
@@ -242,4 +179,26 @@ void Sword::FihishAttack()
 {
     count_ = 0;
     transform_.rotate_.x = 0;
+}
+
+void Sword::SetSwordPos(XMFLOAT3 _position)
+{
+    transform_.position_ = _position;
+}
+
+XMFLOAT3 Sword::GetSwordPos()
+{
+    return transform_.position_;
+}
+
+void Sword::MoveBackward(float _distance)
+{
+    // プレイヤーの現在位置を取得
+    XMFLOAT3 currentPosition = GetSwordPos();
+
+    // プレイヤーを後ろに移動
+    currentPosition.z += _distance;
+
+    // 移動後の位置を設定
+    SetSwordPos(currentPosition);
 }

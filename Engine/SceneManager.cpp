@@ -20,13 +20,13 @@ SceneManager::SceneManager(GameObject * parent)
 void SceneManager::Initialize()
 {
 	//最初のシーンを準備
-	currentSceneID_ = SCENE_ID_TITLE;
+	/*currentSceneID_ = SCENE_ID_TITLE;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<TitleScene>(this);
+	Instantiate<TitleScene>(this);*/
 
-	/*currentSceneID_ = SCENE_ID_MAINGAME;
+	currentSceneID_ = SCENE_ID_MAINGAME;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<ResultScene>(this);*/
+	Instantiate<MainGameScene>(this);
 }
 
 //更新

@@ -7,32 +7,55 @@
 class Player : public GameObject
 {
 private:
-   int hModel_;    //モデル番号4
+    //モデル
+   int hModel_;   
+
+   //値
    int hPictHp_;
    int hB_;
    int nowHp_;
    int maxHp_;
+  
+   int chocoPoint_; //チョコレート獲得数
+   int enemyPoint_; //エネミー撃破数
 
    Transform tentative;
    Transform front;
    Transform hpTr_;
    
+   //HP表示
    Text* pText;
    Text* pTextHp;
+
+   //チョコレート獲得数表示
+   Text* pTextC;
+   Text* pChoco;
+
+   //エネミー撃破数
+   Text* pTextE;
+   Text* pEnemy;
 
    int situation = 0;
 
 
+   //無敵判定
    enum class InvincibilityState
    {
        Normal,
        Invincible
    };
-    
    float invinTime;
    const float invinDuration = 5.0f * 60.0f;
    InvincibilityState invinState;
    float deltaTime;
+
+   //サウンド
+   int sWalk_; //足音
+   int sDamage_; //ダメージ音
+   int sInvin_; //無敵時間中の接敵
+   int sChocoGet_; //チョコレートを入手
+
+
 
 public:
     //コンストラクタ

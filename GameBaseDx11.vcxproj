@@ -132,7 +132,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Back_Title.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="MissionDisplay.cpp" />
     <ClCompile Include="MissionManager.cpp" />
     <ClCompile Include="ResultScene.cpp" />
@@ -174,10 +173,10 @@
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="ValueManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Back_Title.h" />
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="MissionDisplay.h" />
     <ClInclude Include="MissionManager.h" />
     <ClInclude Include="ResultScene.h" />
@@ -220,6 +219,7 @@
     <ClInclude Include="Sword.h" />
     <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="ValueManager.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\BillBoard.hlsl">
