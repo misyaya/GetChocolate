@@ -55,7 +55,7 @@ private:
    int sInvin_; //無敵時間中の接敵
    int sChocoGet_; //チョコレートを入手
 
-
+ 
 
 public:
     //コンストラクタ

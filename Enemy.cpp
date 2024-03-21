@@ -25,8 +25,10 @@ void Enemy::Initialize()
     enemy_ = Model::Load("Enemy.fbx");
     assert(enemy_ >= 0);
 
-    transform_.position_.x = (float)(rand() % 50 - 3);
-    transform_.position_.z = (float)(rand() % 50);
+    transform_.position_.x = (float)(rand() % 20 + 10 );
+    transform_.position_.z = (float)(rand() % 50 + 3 );
+
+    transform_.scale_ = XMFLOAT3(1.5f, 1.5f, 1.5f);
 
     SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 1.2f, 0), 1.0f);
     AddCollider(collision);

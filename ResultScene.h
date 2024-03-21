@@ -15,6 +15,9 @@ class ResultScene : public GameObject
 	int chocoPoint_;
 	int enemyPoint_;
 
+	//サウンド
+	int sGameSet_;
+
 	//画像データ
 	int hBack_;    
 	int hGameClear_;

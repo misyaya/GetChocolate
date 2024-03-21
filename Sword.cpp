@@ -73,36 +73,11 @@ void Sword::Update()
         transform_.rotate_.x += 10.0f;
     }
 
-
-    if (Input::IsKey(DIK_K))
+    if (colliderFlag = true)
     {
-        float rotationSpeed = 0.5f;
-        while (atF)
-        {
-            if (transform_.rotate_.x < 90.0f && attackflag_)
-            {
-                transform_.rotate_.x += rotationSpeed;
-            }
-            else
-            {
-                // 回転が90度を超えた場合、90度に固定
-
-                attackflag_ = false;
-                // 90度まで回転した後、0度まで戻す
-                if (transform_.rotate_.x > 0.0f)
-                {
-                    transform_.rotate_.x -= rotationSpeed;
-                }
-                else
-                {
-                    // 回転が0度を超えた場合、0度に固定
-                    transform_.rotate_.x = 0.0f;
-                    atF = false;
-                }
-            }
-        }
+        //ClearCollider();
+        colliderFlag = false;
     }
-
 }
 
 //描画
@@ -125,7 +100,7 @@ void Sword::OnCollision(GameObject* pTarget)
     {
         flag_ = false;
         ValueManager::GetInstance().AddEnemyD(1);
-
+        colliderFlag = true;
         if (count_ >= 1)
         {
             SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
@@ -137,6 +112,8 @@ void Sword::OnCollision(GameObject* pTarget)
     {
         FihishAttack();
     }
+
+
 }
 
 void Sword::SetSwordTr(XMFLOAT3 _transform)
@@ -146,11 +123,9 @@ void Sword::SetSwordTr(XMFLOAT3 _transform)
 
 void Sword::AttackSword()
 {
-    if(flag_)
-    {
-        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
-        AddCollider(collision);
-    }
+     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+     AddCollider(collision);
+    
 
     while(transform_.rotate_.x <= 120.0f)
     {

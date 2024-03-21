@@ -15,10 +15,7 @@ class Sword : public GameObject
     float targetRotation = 0.0f;
     float downSwingRotation = 90.0f;
 
-    bool walkFlagL_ = true;
-    bool walkFlagR_ = true;
-    bool walkFlagF_ = true;
-    bool walkFlagB_ = true;
+    bool colliderFlag = false;
 
 
     //åï(êUÇËâ∫ÇÎÇ∑)

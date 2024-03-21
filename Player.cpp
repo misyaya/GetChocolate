@@ -122,8 +122,8 @@ void Player::Update()
 		Audio::Play(sWalk_);
 	}
 
-	
-	
+	chocoPoint_ = ValueManager::GetInstance().GetPoints();
+	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
 
 	//カメラ
 	UpdateCamera();
@@ -134,14 +134,17 @@ void Player::Update()
 		enemy->SetPlayer(this);
 	}
 
+	if (nowHp_ <= 0  || chocoPoint_ >= 10|| enemyPoint_ >= 10)
+	{
+		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		pSceneManager->ChangeScene(SCENE_ID_RESULT);
+	}
 }
 
 //描画
 void Player::Draw()
 {
-	chocoPoint_ = ValueManager::GetInstance().GetPoints();
-	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
-
+	
 	//プレイヤー
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
@@ -157,7 +160,6 @@ void Player::Draw()
 	//エネミー撃破数
 	pTextE->Draw(30, 90, "EN");
 	pEnemy->Draw(90, 90, enemyPoint_);
-	
 }
 
 //開放
@@ -188,11 +190,6 @@ void Player::OnCollision(GameObject* pTarget)
 			float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			MoveBackward(knockbackDistance);
 
-			if (nowHp_ <= 0)
-			{
-				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-				pSceneManager->ChangeScene(SCENE_ID_RESULT);
-			}
 		}
 	}
 

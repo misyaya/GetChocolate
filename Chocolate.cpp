@@ -20,11 +20,13 @@ void Chocolate::Initialize()
     hChoco_ = Model::Load("Chocolate.fbx");
     assert(hChoco_ >= 0);
 
-    transform_.position_.x = 2.0f;
+    transform_.position_.x = (float)(rand() % 20 + 10);
     transform_.position_.y = 1.0f;
-    transform_.position_.z = 3.0f;
+    transform_.position_.z = (float)(rand() % 50 + 3);
 
-    transform_.scale_ = XMFLOAT3(0.05f, 0.05f, 0.05f);
+    transform_.scale_ = XMFLOAT3(0.1f, 0.1f, 0.1f);
+
+    transform_.rotate_.x = 90.0f;
 
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
     AddCollider(collision);
