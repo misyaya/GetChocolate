@@ -20,7 +20,15 @@ class ResultScene : public GameObject
 
 	//画像データ
 	int hBack_;    
+	int hBackSmall_;
+	int hResultName_;
+	int hPerfect_;
 	int hGameClear_;
+
+	//画像の位置情報等
+	Transform trBackS_;
+	Transform trResultN_;
+	Transform trPerfect_;
 
 public:
 	//コンストラクタ

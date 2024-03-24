@@ -17,7 +17,7 @@ void TitleLogo::Initialize()
 {
 	//画像データのロード
 	//タイトルロゴ
-	hLogo_ = Image::Load("TitleName.png");
+	hLogo_ = Image::Load("titleLogo.png");
 	assert(hLogo_ >= 0);
 
 	logoTr_.position_.y += 0.5f;

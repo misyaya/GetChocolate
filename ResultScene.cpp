@@ -8,7 +8,7 @@
 //ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 ResultScene::ResultScene(GameObject* parent)
 	: GameObject(parent, "ResultScene"), pTextE(nullptr), pEnemy(nullptr), pTextC(nullptr), pChoco(nullptr),
-	sGameSet_(-1), hBack_(-1), hGameClear_(-1)
+	sGameSet_(-1), hBack_(-1), hBackSmall_(-1), hResultName_(-1), hPerfect_(-1), hGameClear_(-1)
 {
 }
 
@@ -37,9 +37,21 @@ void ResultScene::Initialize()
 	hBack_ = Image::Load("TitleBack.png");
 	assert(hBack_ >= 0);
 
+	//”wŒi¬
+	hBackSmall_ = Image::Load("resultBack.png");
+	assert(hBackSmall_ >= 0);
+
+	//Result•¶Žš
+	hResultName_ = Image::Load("resultName.png");
+	assert(hResultName_ >= 0);
+
+	//Perfect•¶Žš
+	hPerfect_ = Image::Load("perfect.png");
+	assert(hPerfect_ >= 0);
+
 	//GameClear•¶Žš
-	hGameClear_ = Image::Load("GameClear.png");
-	assert(hGameClear_ >= 0);
+	//hGameClear_ = Image::Load("GameClear.png");
+	//assert(hGameClear_ >= 0);
 
 	transform_.position_.x = transform_.position_.x + 0.1f;
 
@@ -61,27 +73,54 @@ void ResultScene::Update()
 //•`‰æ
 void ResultScene::Draw()
 {
+	//ƒŠƒUƒ‹ƒg’l
+	chocoPoint_ = ValueManager::GetInstance().GetPoints();
+	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
+	
+
 	//”wŒi
 	Image::SetAlpha(hBack_, 128);
 	Image::SetTransform(hBack_, transform_);
 	Image::Draw(hBack_);
 
+
+	//”wŒi¬
+	trBackS_.position_.y = 0.1f;
+	trBackS_.scale_ = XMFLOAT3(0.9f, 0.7f, 1.0f);
+	Image::SetAlpha(hBackSmall_, 200);
+	Image::SetTransform(hBackSmall_, trBackS_);
+	Image::Draw(hBackSmall_);
+
+
+	//Result•¶Žš
+	trResultN_.position_.y = 0.5f;
+	trResultN_.scale_ = XMFLOAT3(0.5f, 0.5f, 1.0f);
+	Image::SetTransform(hResultName_, trResultN_);
+	Image::Draw(hResultName_);
+
+	//GameClear•¶Žš
 	//Image::SetTransform(hGameClear_, transform_);
 	//Image::Draw(hGameClear_);
 
+
+	//Perfect•¶Žš
+	if (chocoPoint_ >= 5 && enemyPoint_ >= 10)
+	{
+		trPerfect_.position_.x = 0.2f;
+		trPerfect_.position_.y = -0.55f;
+		Image::SetTransform(hPerfect_, trPerfect_);
+		Image::Draw(hPerfect_);
+	}
 	
 	//HP@”Žš
-	pTextE->Draw(30, 30, "RESULT!");
+	//pTextE->Draw(30, 30, "RESULT!");
 	//pECount->Draw(30, 90, eCount_);
 
-
-	chocoPoint_ = ValueManager::GetInstance().GetPoints();
-	pTextC->Draw(550, 300, "CH"); 
-	pChoco->Draw(600, 300, chocoPoint_);
-
-	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
-	pTextE->Draw(550, 360, "EN");
-	pEnemy->Draw(600, 360, enemyPoint_);
+	//’l•\Ž¦
+	pTextC->Draw(600, 360, "CH");
+	pChoco->Draw(680, 360, chocoPoint_);
+	pTextE->Draw(600, 400, "EN");
+	pEnemy->Draw(680, 400, enemyPoint_);
 	
 }
 

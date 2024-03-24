@@ -4,7 +4,11 @@
 //チョコレートを管理するクラス
 class Chocolate : public GameObject
 {
+    //モデル
     int hChoco_;
+
+    //エフェクト
+    int hEmit_;
 
 public:
     //コンストラクタ
