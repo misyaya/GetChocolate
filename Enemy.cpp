@@ -10,7 +10,7 @@
 //コンストラクタ
 Enemy::Enemy(GameObject* parent)
     :GameObject(parent, "Enemy"), enemy_(-1),enemySpeed_(0.05),pl(nullptr), playerPos_(0.0f, 0.0f, 0.0f),
-    differenceX(0), differenceY(0), differenceZ(0), sDead_(-1)
+    differenceX(0), differenceY(0), differenceZ(0), sDead_(-1), sChase_(-1)
 {
 }
 
@@ -37,6 +37,9 @@ void Enemy::Initialize()
     //サウンドデータのロード
     sDead_ = Audio::Load("enemyDead.wav");
     assert(sDead_ >= 0);
+
+    sChase_ = Audio::Load("enemyChase.wav");
+    assert(sChase_ >= 0);
 }
 
 //更新
@@ -68,6 +71,7 @@ void Enemy::OnCollision(GameObject* pTarget)
     {
         ValueManager::GetInstance().AddEnemyD(1);
         Audio::Play(sDead_);
+        Audio::Stop(sChase_);
         KillMe();
     }
 }
@@ -95,6 +99,7 @@ void Enemy::PlayerChase()
         abs(differenceY) < chaseDistance &&
         abs(differenceZ) < chaseDistance)
     {
+        Audio::Play(sChase_);
         //進む方向　X
         if (abs(differenceX) > 0.2f)
         {
@@ -120,6 +125,10 @@ void Enemy::PlayerChase()
                 transform_.position_.z += enemySpeed_;
             }
         }
+    }
+    else
+    {
+        Audio::Stop(sChase_);
     }
    
 }

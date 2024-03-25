@@ -31,7 +31,7 @@ void Chocolate::Initialize()
 
     transform_.rotate_.x = 90.0f;
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(2.0f, 2.0f, 2.0f));
     AddCollider(collision);
 
     EmitterData  data;

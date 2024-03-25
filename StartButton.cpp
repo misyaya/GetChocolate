@@ -19,7 +19,7 @@ StartButton::~StartButton()
 void StartButton::Initialize()
 {
 	//ƒ{ƒ^ƒ“
-	hButton_ = Image::Load("TitleButton.png");
+	hButton_ = Image::Load("pressSpace.png");
 	assert(hButton_ >= 0);
 
 	buttonTr_.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);

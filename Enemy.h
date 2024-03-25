@@ -20,6 +20,7 @@ class Enemy : public GameObject
     //サウンド
     //倒されたとき
     int sDead_;
+    int sChase_;
 
 public:
     //コンストラクタ
