@@ -132,8 +132,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Back_Title.cpp" />
+    <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="MissionDisplay.cpp" />
     <ClCompile Include="MissionManager.cpp" />
+    <ClCompile Include="PressSpace.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Chocolate.cpp" />
@@ -172,8 +175,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Back_Title.h" />
+    <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="MissionDisplay.h" />
     <ClInclude Include="MissionManager.h" />
+    <ClInclude Include="PressSpace.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="Chocolate.h" />

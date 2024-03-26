@@ -119,6 +119,26 @@ void Player::Update()
 		Audio::Play(sWalk_);
 	}
 
+
+	static float velocity_;
+
+	if (Input::IsKey(DIK_RETURN))
+	{
+		velocity_ = 0.15f;
+	}
+	if (velocity_ != 0.0f)
+	{
+		velocity_ -= 0.02f;
+
+		transform_.position_.y += velocity_;
+	}
+	
+	if(transform_.position_.y <= 0.0f )
+	{
+		transform_.position_.y = 0.0f;
+	}
+
+
 	chocoPoint_ = ValueManager::GetInstance().GetPoints();
 	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
 

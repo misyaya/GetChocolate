@@ -2,7 +2,7 @@
 #include "Engine/GameObject.h"
 
 //スタートボタンを管理するクラス
-class StartButton : public GameObject
+class PressSpace : public GameObject
 {
     int hButton_;  //ボタン
     bool pushed; // 押されているか
@@ -18,10 +18,10 @@ class StartButton : public GameObject
 
 public:
     //コンストラクタ
-    StartButton(GameObject* parent);
+    PressSpace(GameObject* parent);
 
     //デストラクタ
-    ~StartButton();
+    ~PressSpace();
 
     //初期化
     void Initialize() override;

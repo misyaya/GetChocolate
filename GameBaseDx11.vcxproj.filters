@@ -154,6 +154,11 @@
     <ClCompile Include="ValueManager.cpp">
       <Filter>Value</Filter>
     </ClCompile>
+    <ClCompile Include="PressSpace.cpp">
+      <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -270,6 +275,11 @@
     <ClInclude Include="ValueManager.h">
       <Filter>Value</Filter>
     </ClInclude>
+    <ClInclude Include="PressSpace.h">
+      <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameOver.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Shader\Simple2D.hlsl">

@@ -24,4 +24,7 @@ public:
 
 	//終了条件を満たしたとき
 	void MainGameEnd();
+
+	//タイトルシーンに戻る
+	void BackTitle();
 };

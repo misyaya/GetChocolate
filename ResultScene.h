@@ -16,7 +16,8 @@ class ResultScene : public GameObject
 	int enemyPoint_;
 
 	//サウンド
-	int sGameSet_;
+	int sGameClear_;
+	int sGameOver_;
 
 	//画像データ
 	int hBack_;    
