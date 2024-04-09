@@ -22,12 +22,12 @@ Sword::~Sword()
 void Sword::Initialize()
 {
     //モデルデータのロード
-    sword_ = Model::Load("Sword.fbx");
+    sword_ = Model::Load("Fbx/Sword.fbx");
     assert(sword_ >= 0);
 
     //サウンドデータのロード
     //剣(振り下ろす)
-    sSword_ = Audio::Load("sword.WAV");
+    sSword_ = Audio::Load("Sound/sword.WAV");
     assert(sSword_ >= 0);
 
     transform_.position_.y = 2.0f;

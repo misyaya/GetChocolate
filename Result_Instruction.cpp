@@ -1,25 +1,25 @@
-#include "StartButton.h"
+#include "Result_Instruction.h"
 #include "Engine/Image.h"
 #include "Engine/Direct3D.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
 
 //コンストラクタ
-StartButton::StartButton(GameObject* parent)
-    :GameObject(parent, "StartButton"), hButton_(-1), alpha_(0), shading_(0)
+Result_Instruction::Result_Instruction(GameObject* parent)
+	:GameObject(parent, "Result_Instruction"), hButton_(-1), alpha_(0), shading_(0)
 {
 }
 
 //デストラクタ
-StartButton::~StartButton()
+Result_Instruction::~Result_Instruction()
 {
 }
 
 //初期化
-void StartButton::Initialize()
+void Result_Instruction::Initialize()
 {
 	//ボタン
-	hButton_ = Image::Load("pressSpace.png");
+	hButton_ = Image::Load("Image/pressSpace.png");
 	assert(hButton_ >= 0);
 
 	buttonTr_.scale_ = XMFLOAT3(0.5f, 0.5f, 0.5f);
@@ -27,34 +27,33 @@ void StartButton::Initialize()
 }
 
 //更新
-void StartButton::Update()
+void Result_Instruction::Update()
 {
-	//スペースキーが押されたらゲーム画面に移行
+	//スペースキーが押されたらタイトル画面に移行
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
 		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_MAINGAME);
+		pSceneManager->ChangeScene(SCENE_ID_TITLE);
 
 	}
-
 
 
 	if (alpha_ >= 200) {
-		shading_  = -1; 
+		shading_ = -1;
 	}
 	else if (alpha_ <= 0) {
-		shading_ = 1; 
+		shading_ = 1;
 	}
 
 	alpha_ += 5 * shading_;
-	
+
 
 	Image::SetAlpha(hButton_, alpha_);
-	
+
 }
 
 //描画
-void StartButton::Draw()
+void Result_Instruction::Draw()
 {
 	Image::SetTransform(hButton_, buttonTr_);
 	Image::Draw(hButton_);
@@ -62,16 +61,16 @@ void StartButton::Draw()
 }
 
 //開放
-void StartButton::Release()
+void Result_Instruction::Release()
 {
 }
 
-void StartButton::Push(bool pushed)
+void Result_Instruction::Push(bool pushed)
 {
 	this->pushed = pushed;
 }
 
-bool StartButton::MouseInArea(XMFLOAT3 mousePos)
+bool Result_Instruction::MouseInArea(XMFLOAT3 mousePos)
 {
 	if (abs(mousePos.x - center.x) > size.x / 2)
 		return false;
@@ -80,7 +79,7 @@ bool StartButton::MouseInArea(XMFLOAT3 mousePos)
 	return true;
 }
 
-void StartButton::SetPosition(int x, int y)
+void Result_Instruction::SetPosition(int x, int y)
 {
 	buttonTr_.position_.x = (float)(x - Direct3D::screenWidth_ / 2) / Direct3D::screenWidth_;
 	buttonTr_.position_.y = -(float)(y - Direct3D::screenHeight_ / 2) / (Direct3D::screenHeight_ / 2);

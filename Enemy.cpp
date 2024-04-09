@@ -23,7 +23,7 @@ Enemy::~Enemy()
 void Enemy::Initialize()
 {
     //モデルデータのロード
-    enemy_ = Model::Load("Enemy.fbx");
+    enemy_ = Model::Load("Fbx/Enemy.fbx");
     assert(enemy_ >= 0);
 
     transform_.position_.x = (float)(rand() % 30 + 10 );
@@ -35,10 +35,10 @@ void Enemy::Initialize()
     AddCollider(collision);
 
     //サウンドデータのロード
-    sDead_ = Audio::Load("enemyDead.wav");
+    sDead_ = Audio::Load("Sound/enemyDead.wav");
     assert(sDead_ >= 0);
 
-    sChase_ = Audio::Load("enemyChase.wav");
+    sChase_ = Audio::Load("Sound/enemyChase.wav");
     assert(sChase_ >= 0);
 }
 

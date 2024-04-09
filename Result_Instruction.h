@@ -1,8 +1,8 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//スタートボタンを管理するクラス
-class StartButton : public GameObject
+//リザルトのキー操作を管理するクラス
+class Result_Instruction : public GameObject
 {
     int hButton_;  //ボタン
     bool pushed; // 押されているか
@@ -18,10 +18,10 @@ class StartButton : public GameObject
 
 public:
     //コンストラクタ
-    StartButton(GameObject* parent);
+    Result_Instruction(GameObject* parent);
 
     //デストラクタ
-    ~StartButton();
+    ~Result_Instruction();
 
     //初期化
     void Initialize() override;

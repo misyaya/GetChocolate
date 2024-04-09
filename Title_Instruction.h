@@ -1,8 +1,8 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//スタートボタンを管理するクラス
-class PressSpace : public GameObject
+//タイトルのキー操作を管理するクラス
+class Title_Instruction : public GameObject
 {
     int hButton_;  //ボタン
     bool pushed; // 押されているか
@@ -18,10 +18,10 @@ class PressSpace : public GameObject
 
 public:
     //コンストラクタ
-    PressSpace(GameObject* parent);
+    Title_Instruction(GameObject* parent);
 
     //デストラクタ
-    ~PressSpace();
+    ~Title_Instruction();
 
     //初期化
     void Initialize() override;

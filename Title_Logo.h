@@ -1,19 +1,19 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//タイトル背景を管理するクラス
-class Back_Title : public GameObject
+//タイトルロゴを管理するクラス
+class Title_Logo : public GameObject
 {
-    int hBack_;    //背景
+    int hLogo_;   //タイトルロゴ
 
-    Transform backTr_;
+    Transform logoTr_;
 
 public:
     //コンストラクタ
-    Back_Title(GameObject* parent);
+    Title_Logo(GameObject* parent);
 
     //デストラクタ
-    ~Back_Title();
+    ~Title_Logo();
 
     //初期化
     void Initialize() override;

@@ -1,26 +1,15 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Engine/Text.h"
 
 
 //リザルトシーンを管理するクラス
 class ResultScene : public GameObject
 {
-	Text* pTextE;
-	Text* pEnemy; //Enemyを倒した数
-
-	Text* pTextC;
-	Text* pChoco;
-
+	//各種値
 	int chocoPoint_;
 	int enemyPoint_;
 
-	//サウンド
-	int sGameClear_;
-	int sGameOver_;
-
-	//画像データ
-	int hBack_;    
+	//画像
 	int hBackSmall_;
 	int hResultName_;
 	int hPerfect_;

@@ -1,21 +1,19 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//GameOverを管理するクラス
-class GameOver : public GameObject
+//リザルト背景を管理するクラス
+class Result_Back : public GameObject
 {
-    //画像
-    int hGameOver_;
+    int hBack_;    //背景
 
-    //サウンド
-    int sGameOver_;
+    Transform backTr_;
 
 public:
     //コンストラクタ
-    GameOver(GameObject* parent);
+    Result_Back(GameObject* parent);
 
     //デストラクタ
-    ~GameOver();
+    ~Result_Back();
 
     //初期化
     void Initialize() override;

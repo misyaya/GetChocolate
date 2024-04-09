@@ -1,11 +1,14 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//GameClear!!の画像を管理するクラス
+//GameClearを管理するクラス
 class GameClear : public GameObject
 {
-    //画像データ
+    //画像
     int hGameClear_;
+
+    //サウンド
+    int sGameClear_;
 
 public:
     //コンストラクタ

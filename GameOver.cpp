@@ -1,9 +1,10 @@
 #include "GameOver.h"
 #include "Engine/Image.h"
+#include "Engine/Audio.h"
 
 //コンストラクタ
 GameOver::GameOver(GameObject* parent)
-    :GameObject(parent, "GameOver"), hGameOver_(-1)
+    :GameObject(parent, "GameOver"), hGameOver_(-1), sGameOver_(-1)
 {
 }
 
@@ -16,8 +17,14 @@ GameOver::~GameOver()
 void GameOver::Initialize()
 {
     //画像データのロード
-    hGameOver_ = Image::Load("gameOver.png");
+    hGameOver_ = Image::Load("Image/gameOver.png");
     assert(hGameOver_ >= 0);
+
+    //サウンドデータのロード
+    sGameOver_ = Audio::Load("Sound/gameOver.wav");
+    assert(sGameOver_ >= 0);
+
+    Audio::Play(sGameOver_);
 }
 
 //更新

@@ -1,9 +1,10 @@
 #include "GameClear.h"
 #include "Engine/Image.h"
+#include "Engine/Audio.h"
 
 //コンストラクタ
 GameClear::GameClear(GameObject* parent)
-    :GameObject(parent, "GameClear"), hGameClear_(-1)
+    :GameObject(parent, "GameClear"), hGameClear_(-1), sGameClear_(-1)
 {
 }
 
@@ -16,8 +17,14 @@ GameClear::~GameClear()
 void GameClear::Initialize()
 {
     //画像データのロード
-    hGameClear_ = Image::Load("gameClear.png");
+    hGameClear_ = Image::Load("Image/gameClear.png");
     assert(hGameClear_ >= 0);
+
+    //サウンドデータのロード
+    sGameClear_ = Audio::Load("Sound/gameClear.wav");
+    assert(sGameClear_ >= 0);
+
+    Audio::Play(sGameClear_);
 }
 
 //更新
