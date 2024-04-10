@@ -1,24 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-
 //リザルトシーンを管理するクラス
 class ResultScene : public GameObject
 {
 	//各種値
-	int chocoPoint_;
-	int enemyPoint_;
-
-	//画像
-	int hBackSmall_;
-	int hResultName_;
-	int hPerfect_;
-	int hGameClear_;
-
-	//画像の位置情報等
-	Transform trBackS_;
-	Transform trResultN_;
-	Transform trPerfect_;
+	int chocoPoint_;  //チョコレート獲得数
+	int enemyPoint_;  //エネミー撃破数
+	int criteria_;    //クリア基準
 
 public:
 	//コンストラクタ

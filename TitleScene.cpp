@@ -1,7 +1,5 @@
 #include "TitleScene.h"
-#include "Title_Back.h"
-#include "Title_Instruction.h"
-#include "Title_Logo.h"
+#include "Title_Image.h"
 #include "ValueManager.h"
 
 
@@ -14,11 +12,9 @@ TitleScene::TitleScene(GameObject* parent)
 //初期化
 void TitleScene::Initialize()
 {
-	Instantiate<Title_Back>(this);
-	Instantiate<Title_Instruction>(this);
-	Instantiate<Title_Logo>(this);
-
-
+	Instantiate<Title_Image>(this);
+	
+	//値のリセット
 	ValueManager::GetInstance().ResetPoints();
 	ValueManager::GetInstance().ResetEnemyD();
 }

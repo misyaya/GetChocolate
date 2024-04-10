@@ -5,10 +5,25 @@
 class GameClear : public GameObject
 {
     //画像
-    int hGameClear_;
+    int hGameClear_;  //GameClear!!の文字
+    int hPerfect_;    //Perfect!の文字
+
+
 
     //サウンド
-    int sGameClear_;
+    int sGameClear_;  //このクラスが呼びだされた時に鳴る
+
+
+
+    //画像情報
+    Transform trClear_;    //hGameClear_情報
+    Transform trPerfect_;  //hPerfect_情報
+
+
+
+    //各種値
+    int chocoPoint_;  //チョコレート獲得数
+    int enemyPoint_;  //エネミー撃破数
 
 public:
     //コンストラクタ
