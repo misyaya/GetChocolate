@@ -3,8 +3,9 @@
 
 enum
 {
-    TYPE_FLOOR,
-    TYPE_WALL,
+    TYPE_GRASS,
+    TYPE_SOIL,
+    TYPE_GRASSBOX,
     TYPE_MAX,
 };
 

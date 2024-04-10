@@ -112,15 +112,6 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>TitleScene</Filter>
     </ClCompile>
-    <ClCompile Include="StartButton.cpp">
-      <Filter>TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
-      <Filter>TitleScene</Filter>
-    </ClCompile>
-    <ClCompile Include="Back_Title.cpp">
-      <Filter>TitleScene</Filter>
-    </ClCompile>
     <ClCompile Include="ResultScene.cpp">
       <Filter>ResultScene</Filter>
     </ClCompile>
@@ -153,6 +144,21 @@
     </ClCompile>
     <ClCompile Include="ValueManager.cpp">
       <Filter>Value</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClear.cpp">
+      <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Result_Text.cpp">
+      <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Title_Image.cpp">
+      <Filter>TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Result_Image.cpp">
+      <Filter>ResultScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -228,15 +234,6 @@
     <ClInclude Include="TitleScene.h">
       <Filter>TitleScene</Filter>
     </ClInclude>
-    <ClInclude Include="StartButton.h">
-      <Filter>TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleLogo.h">
-      <Filter>TitleScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Back_Title.h">
-      <Filter>TitleScene</Filter>
-    </ClInclude>
     <ClInclude Include="ResultScene.h">
       <Filter>ResultScene</Filter>
     </ClInclude>
@@ -269,6 +266,21 @@
     </ClInclude>
     <ClInclude Include="ValueManager.h">
       <Filter>Value</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClear.h">
+      <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Result_Text.h">
+      <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Title_Image.h">
+      <Filter>TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Result_Image.h">
+      <Filter>ResultScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

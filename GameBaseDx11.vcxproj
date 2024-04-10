@@ -93,10 +93,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\lib\vs2022\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib\x64\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,20 +122,23 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.4\lib\vs2022\x64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib;C:\Program Files\Autodesk\FBX\FBX SDK\2020.3.7\lib\x64\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Back_Title.cpp" />
+    <ClCompile Include="Result_Image.cpp" />
+    <ClCompile Include="Result_Text.cpp" />
+    <ClCompile Include="GameClear.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="MissionDisplay.cpp" />
     <ClCompile Include="MissionManager.cpp" />
     <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="StartButton.cpp" />
+    <ClCompile Include="Title_Image.cpp" />
     <ClCompile Include="Chocolate.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Engine\Audio.cpp" />
@@ -166,16 +169,18 @@
     <ClCompile Include="Mission.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sword.cpp" />
-    <ClCompile Include="TitleLogo.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="ValueManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Back_Title.h" />
+    <ClInclude Include="Result_Image.h" />
+    <ClInclude Include="Result_Text.h" />
+    <ClInclude Include="GameClear.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="MissionDisplay.h" />
     <ClInclude Include="MissionManager.h" />
     <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="StartButton.h" />
+    <ClInclude Include="Title_Image.h" />
     <ClInclude Include="Chocolate.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Engine\Audio.h" />
@@ -206,7 +211,6 @@
     <ClInclude Include="Mission.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
-    <ClInclude Include="TitleLogo.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="ValueManager.h" />
   </ItemGroup>

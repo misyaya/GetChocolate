@@ -40,7 +40,7 @@ Floor::~Floor()
 //初期化
 void Floor::Initialize()
 {
-    const char* fileName[] = { "Floor.fbx" , "Soil.fbx" , };
+    const char* fileName[] = { "Fbx/Grass.fbx" , "Fbx/Soil.fbx" , "Fbx/GrassBox.fbx" , };
 
 
     //モデルデータのロード

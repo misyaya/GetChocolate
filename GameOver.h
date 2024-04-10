@@ -1,19 +1,21 @@
 #pragma once
 #include "Engine/GameObject.h"
 
-//タイトルロゴを管理するクラス
-class TitleLogo : public GameObject
+//GameOverを管理するクラス
+class GameOver : public GameObject
 {
-    int hLogo_;   //タイトルロゴ
+    //画像
+    int hGameOver_;
 
-    Transform logoTr_;
+    //サウンド
+    int sGameOver_;
 
 public:
     //コンストラクタ
-    TitleLogo(GameObject* parent);
+    GameOver(GameObject* parent);
 
     //デストラクタ
-    ~TitleLogo();
+    ~GameOver();
 
     //初期化
     void Initialize() override;

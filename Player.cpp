@@ -36,20 +36,20 @@ Player::~Player()
 void Player::Initialize()
 {
 	//モデルデータのロード
-	hModel_ = Model::Load("Player.fbx");
+	hModel_ = Model::Load("Fbx/Player.fbx");
 	assert(hModel_ >= 0);
 
 	//サウンドデータのロード
-	sWalk_ = Audio::Load("walk.WAV"); 	//足音
+	sWalk_ = Audio::Load("Sound/walk.WAV"); 	//足音
 	assert(sWalk_ >= 0);
 	
-	sDamage_ = Audio::Load("damage.WAV"); 	//ダメージ音
+	sDamage_ = Audio::Load("Sound/damage.WAV"); 	//ダメージ音
 	assert(sDamage_ >= 0);
 
-	sInvin_ = Audio::Load("invincible.WAV"); 	//無敵時間中の接敵
+	sInvin_ = Audio::Load("Sound/invincible.WAV"); 	//無敵時間中の接敵
 	assert(sInvin_ >= 0);
 
-	sChocoGet_ = Audio::Load("chocoGet.WAV"); 	//チョコレートを入手
+	sChocoGet_ = Audio::Load("Sound/chocoGet.WAV"); 	//チョコレートを入手
 	assert(sChocoGet_ >= 0);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
@@ -118,6 +118,26 @@ void Player::Update()
 		transform_.position_.x -= 0.1f;
 		Audio::Play(sWalk_);
 	}
+
+
+	static float velocity_;
+
+	if (Input::IsKey(DIK_RETURN))
+	{
+		velocity_ = 0.15f;
+	}
+	if (velocity_ != 0.0f)
+	{
+		velocity_ -= 0.02f;
+
+		transform_.position_.y += velocity_;
+	}
+	
+	if(transform_.position_.y <= 0.0f )
+	{
+		transform_.position_.y = 0.0f;
+	}
+
 
 	chocoPoint_ = ValueManager::GetInstance().GetPoints();
 	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
