@@ -4,7 +4,8 @@
 
 //コンストラクタ
 Floor::Floor(GameObject* parent)
-    :GameObject(parent, "Floor"),hModel_{-1,-1},table_(nullptr),width_(0),height_(0)
+    :GameObject(parent, "Floor"),
+    hModel_{-1,-1}, table_(nullptr), width_(0), height_(0)
 {
     CsvReader csv;
     csv.Load("map.csv");

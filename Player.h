@@ -19,6 +19,7 @@ private:
    int chocoPoint_; //チョコレート獲得数
    int enemyPoint_; //エネミー撃破数
 
+   //情報
    Transform tentative;
    Transform front;
    Transform hpTr_;
@@ -50,10 +51,10 @@ private:
    float deltaTime;
 
    //サウンド
-   int sWalk_; //足音
-   int sDamage_; //ダメージ音
-   int sInvin_; //無敵時間中の接敵
-   int sChocoGet_; //チョコレートを入手
+   int sWalk_;      //足音
+   int sDamage_;    //ダメージ音
+   int sInvin_;     //無敵時間中の接敵
+   int sChocoGet_;  //チョコレートを入手
 
  
 
