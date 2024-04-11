@@ -7,6 +7,7 @@
 #include "Floor.h"
 #include "Enemy.h"
 #include "Chocolate.h"
+#include "Sword.h"
 
 
 
@@ -20,7 +21,7 @@ MainGameScene::MainGameScene(GameObject * parent)
 //‰Šú‰»
 void MainGameScene::Initialize()
 {
-	for (int i = 0; i < 10; i++)
+	/*for (int i = 0; i < 10; i++)
 	{
 		if (i % 2 == 0)
 		{
@@ -28,8 +29,9 @@ void MainGameScene::Initialize()
 		}
 
 		Instantiate<Enemy>(this);
-	}
+	}*/
 	Instantiate<Floor>(this);
+	Instantiate<Sword>(this);
 	Instantiate<Player>(this);
 }
 

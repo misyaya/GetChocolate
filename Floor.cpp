@@ -92,7 +92,7 @@ void Floor::Release()
 
 bool Floor::IsWall(int x, int z)
 {
-    if (table_[x][z] == 1)
+    if (table_[x][z] == TYPE_GRASSBOX)
     {
         return true;
     }

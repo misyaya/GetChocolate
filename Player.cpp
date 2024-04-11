@@ -8,8 +8,9 @@
 #include "Engine/SceneManager.h"
 #include "Engine/Audio.h"
 #include "Enemy.h"
-#include <chrono>
+#include "Sword.h"
 #include "ValueManager.h"
+#include <chrono>
 
 
 
@@ -40,16 +41,20 @@ void Player::Initialize()
 	assert(hModel_ >= 0);
 
 	//サウンドデータのロード
-	sWalk_ = Audio::Load("Sound/walk.WAV"); 	//足音
+	//足音
+	sWalk_ = Audio::Load("Sound/walk.WAV"); 	
 	assert(sWalk_ >= 0);
 	
-	sDamage_ = Audio::Load("Sound/damage.WAV"); 	//ダメージ音
+	//ダメージ音
+	sDamage_ = Audio::Load("Sound/damage.WAV"); 	
 	assert(sDamage_ >= 0);
 
-	sInvin_ = Audio::Load("Sound/invincible.WAV"); 	//無敵時間中の接敵
+	//無敵時間中の接敵
+	sInvin_ = Audio::Load("Sound/invincible.WAV"); 	
 	assert(sInvin_ >= 0);
 
-	sChocoGet_ = Audio::Load("Sound/chocoGet.WAV"); 	//チョコレートを入手
+	//チョコレートを入手
+	sChocoGet_ = Audio::Load("Sound/chocoGet.WAV"); 	
 	assert(sChocoGet_ >= 0);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
@@ -81,42 +86,146 @@ void Player::Initialize()
 
 	transform_.position_ = XMFLOAT3(20.0f, 0.0f, 1.0f);
 
-	Instantiate<Sword>(this);
+
+	//武器の呼び出し
+	//Instantiate<Sword>(this);
+
+
+	//ステージの位置
+	pFloor_ = (Floor*)FindObject("Floor");
 
 }
 
 //更新
 void Player::Update()
 {
+	XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
+
 	SetInvulnerable();
 	
 	//前
 	if (Input::IsKey(DIK_W))
 	{
-		transform_.position_.z += 0.1f;
-		transform_.rotate_.y = front.rotate_.y;
+		fMove.z = 0.1f;
 		Audio::Play(sWalk_);
 	}
 
 	//後
 	if (Input::IsKey(DIK_S))
 	{
-		transform_.position_.z -= 0.1f;
+		fMove.z = -0.1f;
 		Audio::Play(sWalk_);
 	}
 
 	//左
-	if (Input::IsKey(DIK_D))
+	if (Input::IsKey(DIK_A))
 	{
-		transform_.position_.x += 0.1f;
+		fMove.x = -0.1f;
 		Audio::Play(sWalk_);
 	}
 
 	//右
-	if (Input::IsKey(DIK_A))
+	if (Input::IsKey(DIK_D))
 	{
-		transform_.position_.x -= 0.1f;
+		fMove.x = 0.1f;
 		Audio::Play(sWalk_);
+	}
+
+	//一定の速度で動く方法
+	XMVECTOR vMove;
+	vMove = XMLoadFloat3(&fMove);
+	vMove = XMVector3Normalize(vMove);
+
+	//速度　半径未満にしないとめり込む
+	vMove *= 0.09f;
+	XMStoreFloat3(&fMove, vMove);
+
+	transform_.position_.x += fMove.x;
+	transform_.position_.z += fMove.z;
+
+	//向き変更
+	XMVECTOR vLength = XMVector3Length(vMove); //ベクトルの長さ
+	float length = XMVectorGetX(vLength);
+	if (length != 0)
+	{
+		//プレイヤーのデフォルトの前方向↑（奥向いてる）
+		XMVECTOR vFront = { 0,0,1,0 };
+		//vMpve正規化
+		vMove = XMVector3Normalize(vMove);
+
+		//内積Ａ・Ｂ
+		//      ↑dot
+		XMVECTOR vDot = XMVector3Dot(vFront, vMove);
+		float dot = XMVectorGetX(vDot);
+		float angle = acos(dot);
+
+
+		//左右判断         ↓外積を求める
+		XMVECTOR vCross = XMVector3Cross(vFront, vMove);
+		if (XMVectorGetY(vCross) < 0)
+		{
+			angle *= -1;
+		}
+
+		//XMConvertToDegrees ラジアンを度に変換する　　Radians
+		transform_.rotate_.y = XMConvertToDegrees(angle);
+	}
+
+	//壁との当たり判定
+	int checkX1, checkX2;
+	int checkZ1, checkZ2;
+
+
+	//右
+	{
+		checkX1 = (int)(transform_.position_.x + 0.3f);
+		checkZ1 = (int)(transform_.position_.z + 0.2f);
+		checkX2 = (int)(transform_.position_.x + 0.3f);
+		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
+			pFloor_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.3f;
+		}
+	}
+
+	//左
+	{
+		checkX1 = (int)(transform_.position_.x - 0.3f);
+		checkZ1 = (int)(transform_.position_.z + 0.2f);
+		checkX2 = (int)(transform_.position_.x - 0.3f);
+		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
+			pFloor_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.x = (float)((int)transform_.position_.x) + 0.3f;
+		}
+	}
+
+	//手前
+	{
+		checkX1 = (int)(transform_.position_.x + 0.2f);
+		checkZ1 = (int)(transform_.position_.z - 0.3f);
+		checkX2 = (int)(transform_.position_.x - 0.2f);
+		checkZ2 = (int)(transform_.position_.z - 0.3f);
+		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
+			pFloor_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.z = (float)((int)transform_.position_.z) + 0.3f;
+		}
+	}
+
+	//奥
+	{
+		checkX1 = (int)(transform_.position_.x + 0.2f);
+		checkZ1 = (int)(transform_.position_.z + 0.3f);
+		checkX2 = (int)(transform_.position_.x - 0.2f);
+		checkZ2 = (int)(transform_.position_.z + 0.3f);
+		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
+			pFloor_->IsWall(checkX2, checkZ2) == true)
+		{
+			transform_.position_.z = (float)((int)transform_.position_.z) + 1.0f - 0.3f;
+		}
 	}
 
 
@@ -205,7 +314,6 @@ void Player::OnCollision(GameObject* pTarget)
 
 			float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			MoveBackward(knockbackDistance);
-
 		}
 	}
 

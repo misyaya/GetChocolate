@@ -1,7 +1,7 @@
 #pragma once
 #include "Engine/GameObject.h"
-#include "Sword.h"
 #include "Engine/Text.h"
+#include "Floor.h"
 
 //プレイヤーを管理するクラス
 class Player : public GameObject
@@ -10,14 +10,22 @@ private:
     //モデル
    int hModel_;   
 
-   //値
-   int hPictHp_;
+   //サウンド
+   int sWalk_;      //足音
+   int sDamage_;    //ダメージ音
+   int sInvin_;     //無敵時間中の接敵
+   int sChocoGet_;  //チョコレートを入手
+
+   //各種値
+   int hPictHp_;  //
    int hB_;
-   int nowHp_;
-   int maxHp_;
+   int nowHp_;    //現在のHP
+   int maxHp_;    //最大HP
   
    int chocoPoint_; //チョコレート獲得数
    int enemyPoint_; //エネミー撃破数
+
+   XMFLOAT3 prevPosition_;  //直前までいた位置
 
    //情報
    Transform tentative;
@@ -50,11 +58,7 @@ private:
    InvincibilityState invinState;
    float deltaTime;
 
-   //サウンド
-   int sWalk_;      //足音
-   int sDamage_;    //ダメージ音
-   int sInvin_;     //無敵時間中の接敵
-   int sChocoGet_;  //チョコレートを入手
+   Floor* pFloor_;
 
  
 
