@@ -88,7 +88,7 @@ void Player::Initialize()
 
 
 	//武器の呼び出し
-	//Instantiate<Sword>(this);
+	Instantiate<Sword>(this);
 
 
 	//ステージの位置

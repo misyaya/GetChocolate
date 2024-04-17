@@ -14,14 +14,14 @@
 
 //コンストラクタ
 MainGameScene::MainGameScene(GameObject * parent)
-	: GameObject(parent, "MainGameScene")
+	: GameObject(parent, "MainGameScene"),enemy_(10)
 {
 }
 
 //初期化
 void MainGameScene::Initialize()
 {
-	/*for (int i = 0; i < 10; i++)
+	for (int i = 0; i < enemy_; i++)
 	{
 		if (i % 2 == 0)
 		{
@@ -29,9 +29,8 @@ void MainGameScene::Initialize()
 		}
 
 		Instantiate<Enemy>(this);
-	}*/
+	}
 	Instantiate<Floor>(this);
-	Instantiate<Sword>(this);
 	Instantiate<Player>(this);
 }
 
