@@ -21,11 +21,11 @@ void Title_Image::Initialize()
 {
 	//画像データのロード
 	//背景
-	hBack_ = Image::Load("Image/BackGround.png");
+	hBack_ = Image::Load("Image/backGround.png");
 	assert(hBack_ >= 0);
 
 	//タイトルロゴ
-	hLogo_ = Image::Load("Image/Title_Logo.png");
+	hLogo_ = Image::Load("Image/title_Logo.png");
 	assert(hLogo_ >= 0);
 
 	//キー操作誘導

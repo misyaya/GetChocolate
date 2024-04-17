@@ -21,7 +21,7 @@ void Result_Image::Initialize()
 {
 	//画像データのロード
 	//背景
-	hBack_ = Image::Load("Image/BackGround.png");
+	hBack_ = Image::Load("Image/backGround.png");
 	assert(hBack_ >= 0);
 
 	//背景小
@@ -29,7 +29,7 @@ void Result_Image::Initialize()
 	assert(hBackLittle_ >= 0);
 
 	//Result文字
-	hResultName_ = Image::Load("Image/resultName.png");
+	hResultName_ = Image::Load("Image/result_Name.png");
 	assert(hResultName_ >= 0);
 
 	//キー操作誘導
