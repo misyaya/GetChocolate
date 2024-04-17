@@ -312,8 +312,8 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
-			float knockbackDistance = -10.0f; //Œã‚ë‚É”ò‚Ô‹——£
-			MoveBackward(knockbackDistance);
+			//float knockbackDistance = -10.0f; //Œã‚ë‚É”ò‚Ô‹——£
+			//MoveBackward(knockbackDistance);
 		}
 	}
 
