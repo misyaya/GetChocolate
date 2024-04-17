@@ -31,7 +31,8 @@ void Sword::Initialize()
     assert(sSword_ >= 0);
 
     transform_.position_.y = 2.0f;
-    transform_.position_.z = 1.6f;
+    transform_.position_.z = 0.7f;
+    transform_.position_.x = 0.0f;
 
     state_ = ATTACK;
 }
@@ -39,6 +40,9 @@ void Sword::Initialize()
 //更新
 void Sword::Update()
 {  
+	XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
+
+
     //スペースキーが押されていたら
     if (Input::IsKeyDown(DIK_SPACE))
     {

@@ -4,6 +4,8 @@
 //テストシーンを管理するクラス
 class MainGameScene : public GameObject
 {
+	int enemy_;
+	int choco_;
 	
 public:
 	//コンストラクタ

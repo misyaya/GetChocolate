@@ -7,20 +7,21 @@
 #include "Floor.h"
 #include "Enemy.h"
 #include "Chocolate.h"
+#include "Sword.h"
 
 
 
 
 //コンストラクタ
 MainGameScene::MainGameScene(GameObject * parent)
-	: GameObject(parent, "MainGameScene")
+	: GameObject(parent, "MainGameScene"),enemy_(10)
 {
 }
 
 //初期化
 void MainGameScene::Initialize()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < enemy_; i++)
 	{
 		if (i % 2 == 0)
 		{

@@ -13,8 +13,11 @@ enum
 //ステージ床を管理するクラス
 class Floor : public GameObject
 {
+    //モデル
     int hModel_[TYPE_MAX];    //モデル番号
+
     int** table_;
+
     int width_, height_;
 
 public:

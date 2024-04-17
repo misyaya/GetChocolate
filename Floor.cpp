@@ -4,7 +4,8 @@
 
 //コンストラクタ
 Floor::Floor(GameObject* parent)
-    :GameObject(parent, "Floor"),hModel_{-1,-1},table_(nullptr),width_(0),height_(0)
+    :GameObject(parent, "Floor"),
+    hModel_{-1,-1}, table_(nullptr), width_(0), height_(0)
 {
     CsvReader csv;
     csv.Load("map.csv");
@@ -91,7 +92,7 @@ void Floor::Release()
 
 bool Floor::IsWall(int x, int z)
 {
-    if (table_[x][z] == 1)
+    if (table_[x][z] == TYPE_GRASSBOX)
     {
         return true;
     }
