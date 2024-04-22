@@ -21,7 +21,7 @@ MainGameScene::MainGameScene(GameObject * parent)
 //‰Šú‰»
 void MainGameScene::Initialize()
 {
-	for (int i = 0; i < enemy_; i++)
+	/*for (int i = 0; i < enemy_; i++)
 	{
 		if (i % 2 == 0)
 		{
@@ -29,7 +29,7 @@ void MainGameScene::Initialize()
 		}
 
 		Instantiate<Enemy>(this);
-	}
+	}*/
 	Instantiate<Floor>(this);
 	Instantiate<Player>(this);
 }

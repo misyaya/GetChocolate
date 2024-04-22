@@ -154,7 +154,6 @@ void Player::Update()
 		vMove = XMVector3Normalize(vMove);
 
 		//“àÏ‚`E‚a
-		//      ªdot
 		XMVECTOR vDot = XMVector3Dot(vFront, vMove);
 		float dot = XMVectorGetX(vDot);
 		float angle = acos(dot);
@@ -185,7 +184,7 @@ void Player::Update()
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.3f;
+			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.f;
 		}
 	}
 
