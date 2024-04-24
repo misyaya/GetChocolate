@@ -15,6 +15,7 @@ private:
    int sDamage_;    //ダメージ音
    int sInvin_;     //無敵時間中の接敵
    int sChocoGet_;  //チョコレートを入手
+   int sHitWall_;   //壁に接触
 
    //各種値
    int hPictHp_;  //

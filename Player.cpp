@@ -19,10 +19,11 @@ int enemyKill = 0;
 
 //コンストラクタ
 Player::Player(GameObject* parent)
-	:GameObject(parent, "Player"), hModel_(-1), nowHp_(3), maxHp_(3), hPictHp_(-1), hB_(-1),
+	:GameObject(parent, "Player"), 
+	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0),
+	nowHp_(3), maxHp_(3), hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
-	invinTime(0.0f),invinState(InvincibilityState::Normal), deltaTime(3.0f),
-	sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0)
+	invinTime(0.0f),invinState(InvincibilityState::Normal), deltaTime(3.0f)
 {
 	Camera::SetPosition(XMFLOAT3(tentative.position_.x, 4, tentative.position_.z - 8));
 	Camera::SetTarget(XMFLOAT3(tentative.position_.x, 4, 0));
@@ -56,6 +57,10 @@ void Player::Initialize()
 	//チョコレートを入手
 	sChocoGet_ = Audio::Load("Sound/chocoGet.WAV"); 	
 	assert(sChocoGet_ >= 0);
+
+	//壁に接触
+	sHitWall_ = Audio::Load("Sound/hitWall.WAV");
+	assert(sHitWall_ >= 0);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
@@ -185,6 +190,7 @@ void Player::Update()
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
 			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.f;
+			Audio::Play(sHitWall_);
 		}
 	}
 
@@ -198,6 +204,7 @@ void Player::Update()
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
 			transform_.position_.x = (float)((int)transform_.position_.x) + 0.3f;
+			Audio::Play(sHitWall_);
 		}
 	}
 
@@ -211,6 +218,7 @@ void Player::Update()
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
 			transform_.position_.z = (float)((int)transform_.position_.z) + 0.3f;
+			Audio::Play(sHitWall_);
 		}
 	}
 
@@ -224,6 +232,7 @@ void Player::Update()
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
 			transform_.position_.z = (float)((int)transform_.position_.z) + 1.0f - 0.3f;
+			Audio::Play(sHitWall_);
 		}
 	}
 
@@ -250,6 +259,14 @@ void Player::Update()
 	chocoPoint_ = ValueManager::GetInstance().GetPoints();
 	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
 
+
+	if (Input::IsKey(DIK_LEFT))
+	{
+
+	}
+
+
+
 	//カメラ
 	UpdateCamera();
 
@@ -271,8 +288,8 @@ void Player::Draw()
 {
 	
 	//プレイヤー
-	Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);
+	/*Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);*/
 
 	//HP　数字
 	pText->Draw(30, 30, "HP");
@@ -354,7 +371,7 @@ void Player::UpdateCamera()
 	XMFLOAT3 playerPosition = GetPlayerPos();
 
 	// カメラの位置
-	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 6, playerPosition.z - 5);
+	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 3.0, playerPosition.z);
 
 	// カメラの焦点
 	XMFLOAT3 newTarget = XMFLOAT3(playerPosition.x, playerPosition.y + 1 , playerPosition.z + 10);
