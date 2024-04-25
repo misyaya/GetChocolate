@@ -93,7 +93,7 @@ void Player::Initialize()
 
 
 	//武器の呼び出し
-	Instantiate<Sword>(this);
+	//Instantiate<Sword>(this);
 
 
 	//ステージの位置
@@ -182,14 +182,14 @@ void Player::Update()
 
 	//右
 	{
-		checkX1 = (int)(transform_.position_.x + 0.3f);
-		checkZ1 = (int)(transform_.position_.z + 0.2f);
-		checkX2 = (int)(transform_.position_.x + 0.3f);
-		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		checkX1 = (int)(transform_.position_.x + 1.5f);
+		checkZ1 = (int)(transform_.position_.z + 0.5f);
+		checkX2 = (int)(transform_.position_.x + 1.5f);
+		checkZ2 = (int)(transform_.position_.z - 0.5f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.f;
+			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.5;
 			Audio::Play(sHitWall_);
 		}
 	}
@@ -235,7 +235,7 @@ void Player::Update()
 			Audio::Play(sHitWall_);
 		}
 	}
-
+	
 
 	static float velocity_;
 
@@ -288,8 +288,8 @@ void Player::Draw()
 {
 	
 	//プレイヤー
-	/*Model::SetTransform(hModel_, transform_);
-	Model::Draw(hModel_);*/
+	Model::SetTransform(hModel_, transform_);
+	Model::Draw(hModel_);
 
 	//HP　数字
 	pText->Draw(30, 30, "HP");
@@ -371,7 +371,8 @@ void Player::UpdateCamera()
 	XMFLOAT3 playerPosition = GetPlayerPos();
 
 	// カメラの位置
-	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 3.0, playerPosition.z);
+	//XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 3.0, playerPosition.z);
+	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 6, playerPosition.z - 5);
 
 	// カメラの焦点
 	XMFLOAT3 newTarget = XMFLOAT3(playerPosition.x, playerPosition.y + 1 , playerPosition.z + 10);
