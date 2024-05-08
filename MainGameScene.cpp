@@ -5,13 +5,10 @@
 #include "Engine/SceneManager.h"
 #include "Floor.h"
 #include "Tree.h"
+#include "Trap.h"
 #include "Player.h"
 #include "Enemy.h"
 #include "Chocolate.h"
-
-
-
-
 
 
 //コンストラクタ
@@ -33,7 +30,7 @@ void MainGameScene::Initialize()
 	//	//Instantiate<Enemy>(this);
 	//}
 	Instantiate<Floor>(this);
-	
+	Instantiate<Trap>(this);
 	Instantiate<Player>(this);
 	Instantiate<Tree>(this);
 }

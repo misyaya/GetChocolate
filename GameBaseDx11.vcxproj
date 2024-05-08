@@ -170,6 +170,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Sword.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="Trap.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="ValueManager.cpp" />
   </ItemGroup>
@@ -213,6 +214,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Sword.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Trap.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="ValueManager.h" />
   </ItemGroup>
