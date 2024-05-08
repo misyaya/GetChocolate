@@ -51,8 +51,6 @@ void Floor::Initialize()
         assert(hModel_[i] >= 0);
     }
 
-    hTree_ = Model::Load("Fbx/tree.fbx");
-    assert(hTree_ >= 0);
 }
 
 //çXêV
@@ -77,10 +75,6 @@ void Floor::Draw()
             Model::Draw(hModel_[type]);
         }
     }
-   
-    tree_.position_ = XMFLOAT3(3.0f, 0.0f, 20.0f);
-    Model::SetTransform(hTree_, tree_);
-    Model::Draw(hTree_);
 }
 
 //äJï˙

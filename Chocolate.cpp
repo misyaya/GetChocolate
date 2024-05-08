@@ -20,7 +20,7 @@ Chocolate::~Chocolate()
 void Chocolate::Initialize()
 {
     //モデルデータのロード
-    hChoco_ = Model::Load("Fbx/Chocolate.fbx");
+    hChoco_ = Model::Load("Fbx/present.fbx");
     assert(hChoco_ >= 0);
 
     transform_.position_.x = (float)(rand() % 20 + 10);

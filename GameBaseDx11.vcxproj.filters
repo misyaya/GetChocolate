@@ -139,9 +139,6 @@
     <ClCompile Include="Sword.cpp">
       <Filter>MainGameScene\Object</Filter>
     </ClCompile>
-    <ClCompile Include="MainGameScene.cpp">
-      <Filter>MainGameScene</Filter>
-    </ClCompile>
     <ClCompile Include="ValueManager.cpp">
       <Filter>Value</Filter>
     </ClCompile>
@@ -159,6 +156,12 @@
     </ClCompile>
     <ClCompile Include="Result_Image.cpp">
       <Filter>ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainGameScene.cpp">
+      <Filter>MainGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>MainGameScene\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -281,6 +284,9 @@
     </ClInclude>
     <ClInclude Include="Result_Image.h">
       <Filter>ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>MainGameScene\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

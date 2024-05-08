@@ -3,11 +3,13 @@
 #include "Engine/Input.h"
 #include "Engine/Camera.h"
 #include "Engine/SceneManager.h"
-#include "Player.h"
 #include "Floor.h"
+#include "Tree.h"
+#include "Player.h"
 #include "Enemy.h"
 #include "Chocolate.h"
-#include "Sword.h"
+
+
 
 
 
@@ -21,17 +23,19 @@ MainGameScene::MainGameScene(GameObject * parent)
 //‰Šú‰»
 void MainGameScene::Initialize()
 {
-	/*for (int i = 0; i < enemy_; i++)
-	{
-		if (i % 2 == 0)
-		{
-			Instantiate<Chocolate>(this);
-		}
+	//for (int i = 0; i < enemy_; i++)
+	//{
+	//	if (i % 2 == 0)
+	//	{
+	//		Instantiate<Chocolate>(this);
+	//	}
 
-		Instantiate<Enemy>(this);
-	}*/
+	//	//Instantiate<Enemy>(this);
+	//}
 	Instantiate<Floor>(this);
+	
 	Instantiate<Player>(this);
+	Instantiate<Tree>(this);
 }
 
 //XV

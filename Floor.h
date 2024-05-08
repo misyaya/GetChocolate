@@ -20,9 +20,6 @@ class Floor : public GameObject
 
     int width_, height_;
 
-    int hTree_;
-    Transform tree_;
-
 public:
     //コンストラクタ
     Floor(GameObject* parent);
