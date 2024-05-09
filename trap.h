@@ -7,6 +7,15 @@ class Trap : public GameObject
     //モデル
     int hTrap_;
 
+    //モデルの状態
+    int state_;
+
+    enum {
+        WAIT = 0,
+        DOWN,
+        UP
+    };
+
 public:
     //コンストラクタ
     Trap(GameObject* parent);

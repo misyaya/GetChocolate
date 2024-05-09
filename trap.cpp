@@ -18,17 +18,30 @@ void Trap::Initialize()
     //モデルデータのロード
     hTrap_ = Model::Load("Fbx/trap.fbx");
     assert(hTrap_ >= 0);
+    transform_.scale_ = XMFLOAT3(0.3f, 0.3f, 0.3f);
+    transform_.rotate_.y = 90.0f;
+    transform_.position_ = XMFLOAT3(10.0f, 0.0f, 30.0f);
 }
 
 //更新
 void Trap::Update()
 {
+    //switch (state_)
+    //{
+    //case WAIT:
+    //    transform_.position_.y = 0;;
+    //case UP:
+    //    transform_.position_.y += 0.2;
+    //    break;
+    //case DOWN:
+    //    transform_.position_.y -= 0.2;
+    //    break;
+    //}
 }
 
 //描画
 void Trap::Draw()
 {
-    transform_.position_ = XMFLOAT3(10.0f, 2.0f, 30.0f);
     Model::SetTransform(hTrap_, transform_);
     Model::Draw(hTrap_);
 }
