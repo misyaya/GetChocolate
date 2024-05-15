@@ -22,6 +22,8 @@ private:
    int hB_;
    int nowHp_;    //現在のHP
    int maxHp_;    //最大HP
+   float walkSpeed_;
+   float upSpeed_;
   
    int chocoPoint_; //チョコレート獲得数
    int enemyPoint_; //エネミー撃破数

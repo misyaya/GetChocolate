@@ -21,7 +21,7 @@ int enemyKill = 0;
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
 	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0),
-	nowHp_(3), maxHp_(3), hPictHp_(-1), hB_(-1),
+	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
 	invinTime(0.0f),invinState(InvincibilityState::Normal), deltaTime(3.0f)
 {
@@ -107,32 +107,41 @@ void Player::Update()
 	XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
 
 	SetInvulnerable();
-	
+
+	if (Input::IsKey(DIK_LSHIFT))
+	{
+		upSpeed_ = 10.0f;
+	}
+	else
+	{
+		upSpeed_ =  1.0f;
+	}
+
 	//‘O
 	if (Input::IsKey(DIK_W))
 	{
-		fMove.z = 0.1f;
+		fMove.z = walkSpeed_ * upSpeed_;
 		Audio::Play(sWalk_);
 	}
 
 	//Œã
 	if (Input::IsKey(DIK_S))
 	{
-		fMove.z = -0.1f;
+		fMove.z = -walkSpeed_ * upSpeed_;
 		Audio::Play(sWalk_);
 	}
 
 	//¶
 	if (Input::IsKey(DIK_A))
 	{
-		fMove.x = -0.1f;
+		fMove.x = -walkSpeed_ * upSpeed_;
 		Audio::Play(sWalk_);
 	}
 
 	//‰E
 	if (Input::IsKey(DIK_D))
 	{
-		fMove.x = 0.1f;
+		fMove.x = walkSpeed_ * upSpeed_;
 		Audio::Play(sWalk_);
 	}
 
@@ -182,14 +191,14 @@ void Player::Update()
 
 	//‰E
 	{
-		checkX1 = (int)(transform_.position_.x + 1.5f);
-		checkZ1 = (int)(transform_.position_.z + 0.5f);
-		checkX2 = (int)(transform_.position_.x + 1.5f);
-		checkZ2 = (int)(transform_.position_.z - 0.5f);
+		checkX1 = (int)(transform_.position_.x + 0.3f);
+		checkZ1 = (int)(transform_.position_.z + 0.2f);
+		checkX2 = (int)(transform_.position_.x + 0.3f);
+		checkZ2 = (int)(transform_.position_.z - 0.2f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.5;
+			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.3f;
 			Audio::Play(sHitWall_);
 		}
 	}
