@@ -151,7 +151,7 @@ void Player::Update()
 	vMove = XMVector3Normalize(vMove);
 
 	//速度　半径未満にしないとめり込む
-	vMove *= 0.09f;
+	vMove *= 0.1f;
 	XMStoreFloat3(&fMove, vMove);
 
 	transform_.position_.x += fMove.x;
@@ -191,56 +191,56 @@ void Player::Update()
 
 	//右
 	{
-		checkX1 = (int)(transform_.position_.x + 0.3f);
-		checkZ1 = (int)(transform_.position_.z + 0.2f);
-		checkX2 = (int)(transform_.position_.x + 0.3f);
-		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		checkX1 = (int)(transform_.position_.x + 0.6f);
+		checkZ1 = (int)(transform_.position_.z + 0.5f);
+		checkX2 = (int)(transform_.position_.x + 0.6f);
+		checkZ2 = (int)(transform_.position_.z - 0.5f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.3f;
+			transform_.position_.x = (float)((int)transform_.position_.x) + 1.0f - 0.6f;
 			Audio::Play(sHitWall_);
 		}
 	}
 
 	//左
 	{
-		checkX1 = (int)(transform_.position_.x - 0.3f);
-		checkZ1 = (int)(transform_.position_.z + 0.2f);
-		checkX2 = (int)(transform_.position_.x - 0.3f);
-		checkZ2 = (int)(transform_.position_.z - 0.2f);
+		checkX1 = (int)(transform_.position_.x - 0.6f);
+		checkZ1 = (int)(transform_.position_.z + 0.5f);
+		checkX2 = (int)(transform_.position_.x - 0.6f);
+		checkZ2 = (int)(transform_.position_.z - 0.5f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.x = (float)((int)transform_.position_.x) + 0.3f;
+			transform_.position_.x = (float)((int)transform_.position_.x) + 0.6f;
 			Audio::Play(sHitWall_);
 		}
 	}
 
 	//手前
 	{
-		checkX1 = (int)(transform_.position_.x + 0.2f);
-		checkZ1 = (int)(transform_.position_.z - 0.3f);
-		checkX2 = (int)(transform_.position_.x - 0.2f);
-		checkZ2 = (int)(transform_.position_.z - 0.3f);
+		checkX1 = (int)(transform_.position_.x + 0.5f);
+		checkZ1 = (int)(transform_.position_.z - 0.6f);
+		checkX2 = (int)(transform_.position_.x - 0.5f);
+		checkZ2 = (int)(transform_.position_.z - 0.6f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.z = (float)((int)transform_.position_.z) + 0.3f;
+			transform_.position_.z = (float)((int)transform_.position_.z) + 0.6f;
 			Audio::Play(sHitWall_);
 		}
 	}
 
 	//奥
 	{
-		checkX1 = (int)(transform_.position_.x + 0.2f);
-		checkZ1 = (int)(transform_.position_.z + 0.3f);
-		checkX2 = (int)(transform_.position_.x - 0.2f);
-		checkZ2 = (int)(transform_.position_.z + 0.3f);
+		checkX1 = (int)(transform_.position_.x + 0.5f);
+		checkZ1 = (int)(transform_.position_.z + 0.6f);
+		checkX2 = (int)(transform_.position_.x - 0.5f);
+		checkZ2 = (int)(transform_.position_.z + 0.6f);
 		if (pFloor_->IsWall(checkX1, checkZ1) == true ||
 			pFloor_->IsWall(checkX2, checkZ2) == true)
 		{
-			transform_.position_.z = (float)((int)transform_.position_.z) + 1.0f - 0.3f;
+			transform_.position_.z = (float)((int)transform_.position_.z) + 1.0f - 0.6f;
 			Audio::Play(sHitWall_);
 		}
 	}
