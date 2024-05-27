@@ -44,8 +44,6 @@ public:
     //“–‚½‚è”»’è
     void OnCollision(GameObject* pTarget);
 
-    void SetPlayerPos(XMFLOAT3 _playerPos);
-
     void SetPlayer(Player* player);
 
     void PlayerChase();
