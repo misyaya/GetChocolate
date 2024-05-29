@@ -83,42 +83,21 @@ void Enemy::SetPlayer(Player* player)
 
 void Enemy::PlayerChase()
 {
-    //エネミー位置とプレイヤー位置の差
-    XMVECTOR playerVector = XMLoadFloat3(&playerPos_);
-    XMVECTOR enemyVector = XMLoadFloat3(&transform_.position_);
-    XMVECTOR diff = XMVectorSubtract(playerVector, enemyVector);
-    float distance = XMVectorGetX(XMVector3Length(diff));
+    //ベクトルに変換
+    XMVECTOR playerVec = XMLoadFloat3(&playerPos_);
+    XMVECTOR enemyVec = XMLoadFloat3(&transform_.position_);
 
-    float chaseDistance = 10.0f; // PlayerとEnemy距離
+    //エネミー位置とプレイヤー位置の差
+    XMVECTOR diff = XMVectorSubtract(playerVec, enemyVec);
+    float distance = XMVectorGetX(XMVector3Length(diff));
+    
+    //PlayerとEnemy距離
+    float chaseDistance = 10.0f; 
 
     if (distance <= 10.0f)
     {
         Audio::Play(sChase_);
-        //進む方向　X
-        if (abs(differenceX) > 0.2f)
-        {
-            if (differenceX > 0.2f)
-            {
-                transform_.position_.x -= enemySpeed_;
-            }
-            else if (differenceX < -0.2f)
-            {
-                transform_.position_.x += enemySpeed_;
-            }
-        }
-
-        //進む方向　Z
-        if (abs(differenceZ) > 0.5f)
-        {
-            if (differenceZ > 0.5f)
-            {
-                transform_.position_.z -= enemySpeed_;
-            }
-            else if (differenceZ < -0.5f)
-            {
-                transform_.position_.z += enemySpeed_;
-            }
-        }
+  
     }
     else
     {
