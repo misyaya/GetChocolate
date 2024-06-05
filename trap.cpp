@@ -3,7 +3,7 @@
 
 //コンストラクタ
 Trap::Trap(GameObject* parent)
-    :GameObject(parent, "Trap"), hTrap_(-1)
+    :GameObject(parent, "Trap"), hTrap_(-1), speed_(1.0f), movingUp_(true)
 {
 }
 
@@ -38,13 +38,10 @@ void Trap::Update()
     //    break;
     //}
 
-    if (transform_.position_.y >= 1.0f)
+
+    if (movingUp_)
     {
-        transform_.position_.y -= 0.2;
-    }
-    else if(transform_.position_.y <= -1.0)
-    {
-        //transform_.position_.y += 0.2;
+
     }
 }
 

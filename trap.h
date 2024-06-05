@@ -16,6 +16,9 @@ class Trap : public GameObject
         UP
     };
 
+    float speed_;
+    bool movingUp_;
+
 public:
     //コンストラクタ
     Trap(GameObject* parent);
