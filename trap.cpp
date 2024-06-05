@@ -37,6 +37,15 @@ void Trap::Update()
     //    transform_.position_.y -= 0.2;
     //    break;
     //}
+
+    if (transform_.position_.y >= 1.0f)
+    {
+        transform_.position_.y -= 0.2;
+    }
+    else if(transform_.position_.y <= -1.0)
+    {
+        //transform_.position_.y += 0.2;
+    }
 }
 
 //•`‰æ

@@ -163,6 +163,9 @@
     <ClCompile Include="Tree.cpp">
       <Filter>MainGameScene\Object</Filter>
     </ClCompile>
+    <ClCompile Include="Trap.cpp">
+      <Filter>MainGameScene\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\BoxCollider.h">
@@ -286,6 +289,9 @@
       <Filter>ResultScene</Filter>
     </ClInclude>
     <ClInclude Include="Tree.h">
+      <Filter>MainGameScene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Trap.h">
       <Filter>MainGameScene\Object</Filter>
     </ClInclude>
   </ItemGroup>
