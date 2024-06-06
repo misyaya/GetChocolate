@@ -9,6 +9,7 @@
 #include "Engine/Audio.h"
 #include "Enemy.h"
 #include "Sword.h"
+#include "Trap.h"
 #include "ValueManager.h"
 #include <chrono>
 
@@ -268,14 +269,6 @@ void Player::Update()
 	chocoPoint_ = ValueManager::GetInstance().GetPoints();
 	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();
 
-
-	if (Input::IsKey(DIK_LEFT))
-	{
-
-	}
-
-
-
 	//カメラ
 	UpdateCamera();
 
@@ -348,6 +341,12 @@ void Player::OnCollision(GameObject* pTarget)
 		Audio::Play(sChocoGet_);
 	}
 
+	//トラップに当たったとき
+	if (pTarget->GetObjectName() == "Trap")
+	{
+		Audio::Play(sDamage_);
+		nowHp_--;
+	}
 }
 
 void Player::SetInvulnerable()
