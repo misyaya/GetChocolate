@@ -344,8 +344,22 @@ void Player::OnCollision(GameObject* pTarget)
 	//ƒgƒ‰ƒbƒv‚É“–‚½‚Á‚½‚Æ‚«
 	if (pTarget->GetObjectName() == "Trap")
 	{
-		Audio::Play(sDamage_);
-		nowHp_--;
+		// Šù‚É–³“Gó‘Ô‚Ìê‡‚Í‰½‚à‚µ‚È‚¢
+		if (invinState == InvincibilityState::Invincible)
+		{
+			Audio::Play(sInvin_);
+			return;
+		}
+		else
+		{
+			Audio::Play(sDamage_);
+			nowHp_--;
+			invinTime = invinDuration;
+			invinState = InvincibilityState::Invincible;
+
+			//float knockbackDistance = -10.0f; //Œã‚ë‚É”ò‚Ô‹——£
+			//MoveBackward(knockbackDistance);
+		}
 	}
 }
 
