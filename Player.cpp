@@ -393,7 +393,6 @@ void Player::UpdateCamera()
 	XMFLOAT3 playerPosition = GetPlayerPos();
 
 	// カメラの位置
-	//XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 3.0, playerPosition.z);
 	XMFLOAT3 newPosition = XMFLOAT3(playerPosition.x, playerPosition.y + 6, playerPosition.z - 5);
 
 	// カメラの焦点
