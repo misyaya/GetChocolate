@@ -16,15 +16,15 @@
 
 
 using namespace std::chrono;
-int enemyKill = 0;
+int enemyKill = 0; 
 
 //コンストラクタ
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
-	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0),
-	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), hPictHp_(-1), hB_(-1),
+	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
+	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0), hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
-	invinTime(0.0f),invinState(InvincibilityState::Normal), deltaTime(3.0f)
+	invinTime(0.0f), invinState(InvincibilityState::Normal), deltaTime(3.0f)
 {
 	Camera::SetPosition(XMFLOAT3(tentative.position_.x, 4, tentative.position_.z - 8));
 	Camera::SetTarget(XMFLOAT3(tentative.position_.x, 4, 0));
@@ -62,6 +62,10 @@ void Player::Initialize()
 	//壁に接触
 	sHitWall_ = Audio::Load("Sound/hitWall.WAV");
 	assert(sHitWall_ >= 0);
+
+	//音量調整テスト用
+	sTestBGM_ = Audio::Load("Sound/testBGM.WAV");
+	assert(sTestBGM_ >= 0);
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
@@ -108,6 +112,9 @@ void Player::Update()
 	XMFLOAT3 fMove = XMFLOAT3(0, 0, 0);
 
 	SetInvulnerable();
+	
+
+	Audio::Play(sTestBGM_);
 
 	if (Input::IsKey(DIK_LSHIFT))
 	{
@@ -253,6 +260,7 @@ void Player::Update()
 	{
 		velocity_ = 0.15f;
 	}
+
 	if (velocity_ != 0.0f)
 	{
 		velocity_ -= 0.02f;
@@ -265,6 +273,31 @@ void Player::Update()
 		transform_.position_.y = 0.0f;
 	}
 
+	if (Input::IsKeyUp(DIK_UP))
+	{
+		if (volume_ <= 3.0f)
+		{
+			volume_ += 0.4f;
+		}
+		
+		Audio::Volume(sTestBGM_, volume_);
+	}
+
+	if (Input::IsKeyUp(DIK_DOWN))
+	{
+		
+		if (volume_ > 0.0f)
+		{
+			volume_ -= 0.4f;
+		}
+
+		if (volume_ <= 0.0f)
+		{
+			volume_ = 0.0f;
+		}
+		
+		Audio::Volume(sTestBGM_, volume_);
+	}
 
 	chocoPoint_ = ValueManager::GetInstance().GetPoints();
 	enemyPoint_ = ValueManager::GetInstance().GetEnemyD();

@@ -25,6 +25,10 @@ namespace Audio
 	//引数：handle	止めたいサウンドの番号
 	void Stop(int ID);
 
+	//音量調査
+	//引数：handle	音量調整したいサウンドの番号
+	void Volume(int ID, float adjust);
+
 	//シーンごとの解放（ロードしたサウンドを解放）
 	void Release();
 

@@ -176,6 +176,14 @@ void Audio::Stop(int ID)
 	}
 }
 
+void Audio::Volume(int ID, float adjust)
+{
+	for (int i = 0; i < audioDatas[ID].svNum; i++)
+	{
+		audioDatas[ID].pSourceVoice[i]->SetVolume(adjust);
+	}
+}
+
 //ƒV[ƒ“‚²‚Æ‚Ì‰ğ•ú
 void Audio::Release()
 {

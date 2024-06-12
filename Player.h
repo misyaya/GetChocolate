@@ -16,6 +16,7 @@ private:
    int sInvin_;     //無敵時間中の接敵
    int sChocoGet_;  //チョコレートを入手
    int sHitWall_;   //壁に接触
+   int sTestBGM_;   //音量調整テスト用
 
    //各種値
    int hPictHp_;  //
@@ -24,6 +25,7 @@ private:
    int maxHp_;    //最大HP
    float walkSpeed_;
    float upSpeed_;
+   float volume_;
   
    int chocoPoint_; //チョコレート獲得数
    int enemyPoint_; //エネミー撃破数
