@@ -24,7 +24,7 @@ void Trap::Initialize()
     transform_.position_ = XMFLOAT3(20.0f, -7.0f, 30.0f);
 
 
-    BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+    BoxCollider* collision = new BoxCollider(XMFLOAT3(0.0f, 3.0f, 0.0f), XMFLOAT3(0.7f, 2.0f, 1.0f));
     AddCollider(collision);
 }
 
@@ -44,8 +44,8 @@ void Trap::Update()
     {
         transform_.position_.y -= speed_ * 0.016f;
         
-        if (transform_.position_.y <= -3.0f) {
-            transform_.position_.y = -3.0f;
+        if (transform_.position_.y <= -5.0f) {
+            transform_.position_.y = -5.0f;
             movingUp_ = true;
         }
     }
