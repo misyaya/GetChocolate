@@ -16,8 +16,13 @@ class Trap : public GameObject
         UP
     };
 
+    //上下動きに関わる値
     float speed_;
     bool movingUp_;
+
+    float fps_; //FPSと掛ける用の値
+    float up_;
+    float down_;
 
 public:
     //コンストラクタ
