@@ -25,7 +25,10 @@ private:
    int maxHp_;    //最大HP
    float walkSpeed_;
    float upSpeed_;
-   float volume_;
+   float volume_;       //音量
+   float volumeMax_;    //音量最大
+   float volumeMin_;    //音量最小
+   float volumeAdjust_; //音量調整幅
   
    int chocoPoint_; //チョコレート獲得数
    int enemyPoint_; //エネミー撃破数

@@ -166,7 +166,7 @@ void Audio::Play(int ID)
 	}
 }
 
-
+//í‚é~
 void Audio::Stop(int ID)
 {
 	for (int i = 0; i < audioDatas[ID].svNum; i++)
@@ -176,6 +176,7 @@ void Audio::Stop(int ID)
 	}
 }
 
+//âπó í≤êÆ
 void Audio::Volume(int ID, float adjust)
 {
 	for (int i = 0; i < audioDatas[ID].svNum; i++)

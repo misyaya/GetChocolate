@@ -20,7 +20,8 @@ int enemyKill = 0;
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
 	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
-	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0), hPictHp_(-1), hB_(-1),
+	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0f), volumeMax_(3.0f), volumeMin_(0.0f), volumeAdjust_(0.4f),
+	hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
 	invinTime(0.0f), invinState(InvincibilityState::Normal), deltaTime(3.0f)
 {
@@ -266,16 +267,16 @@ void Player::Update()
 		transform_.position_.y += velocity_;
 	}
 	
-	if(transform_.position_.y <= 0.0f )
+	if(transform_.position_.y <= volumeMin_ )
 	{
-		transform_.position_.y = 0.0f;
+		transform_.position_.y = volumeMin_;
 	}
 
 	if (Input::IsKeyUp(DIK_UP))
 	{
-		if (volume_ <= 3.0f)
+		if (volume_ <= volumeMax_)
 		{
-			volume_ += 0.4f;
+			volume_ += volumeAdjust_;
 		}
 		
 		Audio::Volume(sTestBGM_, volume_);
@@ -284,14 +285,14 @@ void Player::Update()
 	if (Input::IsKeyUp(DIK_DOWN))
 	{
 		
-		if (volume_ > 0.0f)
+		if (volume_ > volumeMin_)
 		{
-			volume_ -= 0.4f;
+			volume_ -= volumeAdjust_;
 		}
 
-		if (volume_ <= 0.0f)
+		if (volume_ <= volumeMin_)
 		{
-			volume_ = 0.0f;
+			volume_ = volumeMin_;
 		}
 		
 		Audio::Volume(sTestBGM_, volume_);
