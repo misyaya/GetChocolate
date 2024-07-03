@@ -35,7 +35,7 @@ void Chocolate::Initialize()
     AddCollider(collision);
 
     EmitterData  data;
-    data.textureFileName = "circle_Y.png";
+    data.textureFileName = "Effect/circle_Y.png";
     data.position = transform_.position_;
  
     data.delay = 5;

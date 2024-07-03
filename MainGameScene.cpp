@@ -24,7 +24,7 @@ void MainGameScene::Initialize()
 	//{
 	//	if (i % 2 == 0)
 	//	{
-	//		Instantiate<Chocolate>(this);
+			Instantiate<Chocolate>(this);
 	//	}
 
 	//	//Instantiate<Enemy>(this);

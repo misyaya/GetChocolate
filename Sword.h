@@ -20,6 +20,9 @@ class Sword : public GameObject
     //剣(振り下ろす)
     int sSword_;
 
+    //エフェクト
+    int hEmit_;
+
     enum {
         MOVE = 0,
         RETURN,
