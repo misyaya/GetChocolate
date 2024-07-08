@@ -24,7 +24,9 @@ void Trap::Initialize()
     transform_.rotate_.y = 90.0f;
     transform_.position_ = XMFLOAT3(20.0f, -7.0f, 30.0f);
 
-
+    transform_.position_.x = (float)(rand() % 20 + 10);
+    transform_.position_.y = -7.0f;
+    transform_.position_.z = (float)(rand() % 55 + 3);
     BoxCollider* collision = new BoxCollider(XMFLOAT3(0.0f, 3.0f, 0.0f), XMFLOAT3(0.7f, 2.0f, 1.0f));
     AddCollider(collision);
 }

@@ -103,24 +103,24 @@ void Sword::AttackSword()
 
 
         
-    EmitterData  data;
-    data.textureFileName = "Effect/circle_Y.png";
-    data.position = transform_.position_;
+        EmitterData  data;
+        data.textureFileName = "Effect/circle_Y.png";
+        data.position = transform_.position_;
  
-    data.delay = 5;
-    data.lifeTime = 150;
-    data.accel = 0.95;
-    data.size = XMFLOAT2(2, 2);
-    data.sizeRnd = XMFLOAT2(0.4, 0.4);
-    data.scale = XMFLOAT2(1.01f, 1.01f);
-    data.color.w = 0.2f; //不透明度
-    data.deltaColor.w = -0.002;
-    data.position.y = -2.0f;
-    data.rotateRnd.z = 180; //-180～180 
-    data.spin.z = 0.2f;
+        data.delay = 5;
+        data.lifeTime = 150;
+        data.accel = 0.95;
+        data.size = XMFLOAT2(2, 2);
+        data.sizeRnd = XMFLOAT2(0.4, 0.4);
+        data.scale = XMFLOAT2(1.01f, 1.01f);
+        data.color.w = 0.2f; //不透明度
+        data.deltaColor.w = -0.002;
+        data.position.y = -2.0f;
+        data.rotateRnd.z = 180; //-180～180 
+        data.spin.z = 0.2f;
 
 
-    hEmit_ = VFX::Start(data);	//エミッターを設置
+        hEmit_ = VFX::Start(data);	//エミッターを設置
 
         while (transform_.rotate_.x <= 120.0f)
         {
