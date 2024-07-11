@@ -171,7 +171,8 @@ void Player::Update()
 	{
 		//プレイヤーのデフォルトの前方向↑（奥向いてる）
 		XMVECTOR vFront = { 0,0,1,0 };
-		//vMpve正規化
+
+		//vMove正規化
 		vMove = XMVector3Normalize(vMove);
 
 		//内積Ａ・Ｂ
@@ -320,7 +321,6 @@ void Player::Update()
 //描画
 void Player::Draw()
 {
-	
 	//プレイヤー
 	Model::SetTransform(hModel_, transform_);
 	Model::Draw(hModel_);
