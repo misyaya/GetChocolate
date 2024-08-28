@@ -310,12 +310,6 @@ void Player::Update()
 	{
 		enemy->SetPlayer(this);
 	}
-
-	if (nowHp_ <= 0  || chocoPoint_ >= 5)
-	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-		pSceneManager->ChangeScene(SCENE_ID_RESULT);
-	}
 }
 
 //•`‰æ
@@ -362,6 +356,11 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
+			if (nowHp_ <= 0)
+			{
+				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				pSceneManager->ChangeScene(SCENE_ID_RESULT);
+			}
 			//float knockbackDistance = -10.0f; //Œã‚ë‚É”ò‚Ô‹——£
 			//MoveBackward(knockbackDistance);
 		}
