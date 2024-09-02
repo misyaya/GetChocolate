@@ -18,6 +18,9 @@ private:
    int sHitWall_;   //壁に接触
    int sTestBGM_;   //音量調整テスト用
 
+   //画像
+   int hDead_;
+
    //各種値
    int hPictHp_;  //
    int hB_;

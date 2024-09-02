@@ -19,7 +19,7 @@ int enemyKill = 0;
 //コンストラクタ
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
-	hModel_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
+	hModel_(-1), hDead_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
 	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0f), volumeMax_(3.0f), volumeMin_(0.0f), volumeAdjust_(0.4f),
 	hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
@@ -40,6 +40,10 @@ void Player::Initialize()
 	//モデルデータのロード
 	hModel_ = Model::Load("Fbx/Player.fbx");
 	assert(hModel_ >= 0);
+
+	//画像データのロード
+	hDead_ =  Image::Load("deadMessage.png");
+	assert(hDead_ >= 0);
 
 	//サウンドデータのロード
 	//足音
@@ -358,8 +362,8 @@ void Player::OnCollision(GameObject* pTarget)
 
 			if (nowHp_ <= 0)
 			{
-				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-				pSceneManager->ChangeScene(SCENE_ID_RESULT);
+				//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				//pSceneManager->ChangeScene(SCENE_ID_RESULT);
 			}
 			//float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			//MoveBackward(knockbackDistance);
