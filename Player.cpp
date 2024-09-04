@@ -42,7 +42,7 @@ void Player::Initialize()
 	assert(hModel_ >= 0);
 
 	//画像データのロード
-	hDead_ =  Image::Load("deadMessage.png");
+	hDead_ =  Image::Load("Image/deathMessage.png");
 	assert(hDead_ >= 0);
 
 	//サウンドデータのロード
