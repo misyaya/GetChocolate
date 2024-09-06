@@ -42,6 +42,7 @@ private:
    Transform tentative;
    Transform front;
    Transform hpTr_;
+   Transform deadTr_;
    
    //HP•\Ž¦
    Text* pText;
@@ -70,6 +71,8 @@ private:
    float deltaTime;
 
    Floor* pFloor_;
+
+   bool deathFlag_ = false;
 
  
 

@@ -42,7 +42,7 @@ void Player::Initialize()
 	assert(hModel_ >= 0);
 
 	//画像データのロード
-	hDead_ =  Image::Load("Image/deathMessage.png");
+	hDead_ =  Image::Load("Image/enemyDead.png");
 	assert(hDead_ >= 0);
 
 	//サウンドデータのロード
@@ -334,6 +334,13 @@ void Player::Draw()
 	//エネミー撃破数
 	pTextE->Draw(30, 90, "EN");
 	pEnemy->Draw(90, 90, enemyPoint_);
+
+	//死亡メッセージ
+	if(deathFlag_ == true)
+	{
+		Image::SetTransform(hDead_, tentative);
+		Image::Draw(hDead_);
+	}
 }
 
 //開放
@@ -362,6 +369,7 @@ void Player::OnCollision(GameObject* pTarget)
 
 			if (nowHp_ <= 0)
 			{
+				deathFlag_ = true;
 				//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
 				//pSceneManager->ChangeScene(SCENE_ID_RESULT);
 			}
