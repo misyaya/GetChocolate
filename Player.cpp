@@ -19,7 +19,7 @@ int enemyKill = 0;
 //コンストラクタ
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
-	hModel_(-1), hDead_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
+	hModel_(-1), hEnDead_(-1), hTrDead_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
 	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0f), volumeMax_(3.0f), volumeMin_(0.0f), volumeAdjust_(0.4f),
 	hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
@@ -38,12 +38,18 @@ Player::~Player()
 void Player::Initialize()
 {
 	//モデルデータのロード
+	//プレイヤー
 	hModel_ = Model::Load("Fbx/Player.fbx");
 	assert(hModel_ >= 0);
 
 	//画像データのロード
-	hDead_ =  Image::Load("Image/enemyDead.png");
-	assert(hDead_ >= 0);
+	//エネミーによって死亡
+	hEnDead_ =  Image::Load("Image/enemyDead.png");
+	assert(hEnDead_ >= 0);
+
+	//トラップによって死亡
+	hTrDead_ = Image::Load("Image/trapDead.png");
+	assert(hTrDead_ >= 0);
 
 	//サウンドデータのロード
 	//足音
@@ -128,34 +134,37 @@ void Player::Update()
 		upSpeed_ =  1.0f;
 	}
 
-	//前
-	if (Input::IsKey(DIK_W))
+	if (EnDeadFlag_ == false || TrDeadFlag_ == false)
 	{
-		fMove.z = walkSpeed_ * upSpeed_;
-		Audio::Play(sWalk_);
-	}
+		//前
+		if (Input::IsKey(DIK_W))
+		{
+			fMove.z = walkSpeed_ * upSpeed_;
+			Audio::Play(sWalk_);
+		}
 
-	//後
-	if (Input::IsKey(DIK_S))
-	{
-		fMove.z = -walkSpeed_ * upSpeed_;
-		Audio::Play(sWalk_);
-	}
+		//後
+		if (Input::IsKey(DIK_S))
+		{
+			fMove.z = -walkSpeed_ * upSpeed_;
+			Audio::Play(sWalk_);
+		}
 
-	//左
-	if (Input::IsKey(DIK_A))
-	{
-		fMove.x = -walkSpeed_ * upSpeed_;
-		Audio::Play(sWalk_);
-	}
+		//左
+		if (Input::IsKey(DIK_A))
+		{
+			fMove.x = -walkSpeed_ * upSpeed_;
+			Audio::Play(sWalk_);
+		}
 
-	//右
-	if (Input::IsKey(DIK_D))
-	{
-		fMove.x = walkSpeed_ * upSpeed_;
-		Audio::Play(sWalk_);
-	}
+		//右
+		if (Input::IsKey(DIK_D))
+		{
+			fMove.x = walkSpeed_ * upSpeed_;
+			Audio::Play(sWalk_);
+		}
 
+	}
 	//一定の速度で動く方法
 	XMVECTOR vMove;
 	vMove = XMLoadFloat3(&fMove);
@@ -336,11 +345,20 @@ void Player::Draw()
 	pEnemy->Draw(90, 90, enemyPoint_);
 
 	//死亡メッセージ
-	if(deathFlag_ == true)
+	//エネミーによって死亡
+	if(EnDeadFlag_ == true)
 	{
-		Image::SetTransform(hDead_, tentative);
-		Image::Draw(hDead_);
+		Image::SetTransform(hEnDead_, tentative);
+		Image::Draw(hEnDead_);
 	}
+
+	//トラップによって死亡
+	if (TrDeadFlag_ == true)
+	{
+		Image::SetTransform(hTrDead_, tentative);
+		Image::Draw(hTrDead_);
+	}
+
 }
 
 //開放
@@ -369,9 +387,9 @@ void Player::OnCollision(GameObject* pTarget)
 
 			if (nowHp_ <= 0)
 			{
-				deathFlag_ = true;
+				EnDeadFlag_ = true;
 				//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-				//pSceneManager->ChangeScene(SCENE_ID_RESULT);
+				//pSceneMnowHp_ <= 0anager->ChangeScene(SCENE_ID_RESULT);
 			}
 			//float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			//MoveBackward(knockbackDistance);
@@ -400,6 +418,10 @@ void Player::OnCollision(GameObject* pTarget)
 			invinTime = invinDuration;
 			invinState = InvincibilityState::Invincible;
 
+			if (nowHp_ <= 0)
+			{
+				TrDeadFlag_ = true;
+			}
 			//float knockbackDistance = -10.0f; //後ろに飛ぶ距離
 			//MoveBackward(knockbackDistance);
 		}

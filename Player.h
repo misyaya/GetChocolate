@@ -19,7 +19,8 @@ private:
    int sTestBGM_;   //音量調整テスト用
 
    //画像
-   int hDead_;
+   int hEnDead_;    //エネミーによって死亡
+   int hTrDead_;    //トラップによって死亡
 
    //各種値
    int hPictHp_;  //
@@ -72,7 +73,9 @@ private:
 
    Floor* pFloor_;
 
-   bool deathFlag_ = false;
+   //死因フラグ
+   bool EnDeadFlag_ = false;    //エネミーによって
+   bool TrDeadFlag_ = false;    //トラップによって
 
  
 

@@ -27,7 +27,7 @@ void MainGameScene::Initialize()
 			Instantiate<Chocolate>(this);
 	//	}
 
-	//	//Instantiate<Enemy>(this);
+	Instantiate<Enemy>(this);
 	//}
 	Instantiate<Floor>(this);
 	Instantiate<Trap>(this);
