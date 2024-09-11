@@ -19,14 +19,14 @@ int enemyKill = 0;
 //コンストラクタ
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), 
-	hModel_(-1), hEnDead_(-1), hTrDead_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
+	hModel_(-1), hEnDead_(-1), hTrDead_(-1), hRedDead_(-1), sWalk_(-1), sDamage_(-1), sInvin_(-1), sChocoGet_(-1), chocoPoint_(0), enemyPoint_(0), sHitWall_(0), sTestBGM_(0),
 	nowHp_(3), maxHp_(3), walkSpeed_(0.1f), upSpeed_(1.0f), volume_(1.0f), volumeMax_(3.0f), volumeMin_(0.0f), volumeAdjust_(0.4f),
 	hPictHp_(-1), hB_(-1),
 	pText(nullptr), pTextHp(nullptr), pTextC(nullptr), pChoco(nullptr), pTextE(nullptr), pEnemy(nullptr),
 	invinTime(0.0f), invinState(InvincibilityState::Normal), deltaTime(3.0f)
 {
-	Camera::SetPosition(XMFLOAT3(tentative.position_.x, 4, tentative.position_.z - 8));
-	Camera::SetTarget(XMFLOAT3(tentative.position_.x, 4, 0));
+	Camera::SetPosition(XMFLOAT3(PlTr_.position_.x, 4, PlTr_.position_.z - 8));
+	Camera::SetTarget(XMFLOAT3(PlTr_.position_.x, 4, 0));
 }
 
 //デストラクタ
@@ -50,6 +50,10 @@ void Player::Initialize()
 	//トラップによって死亡
 	hTrDead_ = Image::Load("Image/trapDead.png");
 	assert(hTrDead_ >= 0);
+
+	//死亡時の背景
+	hRedDead_ = Image::Load("Image/redDead.png");
+	assert(hRedDead_ >= 0);
 
 	//サウンドデータのロード
 	//足音
@@ -78,7 +82,7 @@ void Player::Initialize()
 	
 	hpTr_.position_ = XMFLOAT3(-0.6f, 0.8f, 0.0f);
 	
-	tentative.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
+	PlTr_.scale_ = XMFLOAT3(0.5f,0.3f,0.5f);
 
 
 	BoxCollider* collision2 = new BoxCollider(XMFLOAT3(0, 2.0f, 0), XMFLOAT3(1.0f, 3.0f, 0.5f));
@@ -104,7 +108,6 @@ void Player::Initialize()
 
 
 	transform_.position_ = XMFLOAT3(20.0f, 0.0f, 1.0f);
-	deadTr_.position_ = XMFLOAT3(5.0f, 0.0f, 0.0f);
 
 	//武器の呼び出し
 	Instantiate<Sword>(this);
@@ -163,8 +166,8 @@ void Player::Update()
 			fMove.x = walkSpeed_ * upSpeed_;
 			Audio::Play(sWalk_);
 		}
-
 	}
+
 	//一定の速度で動く方法
 	XMVECTOR vMove;
 	vMove = XMLoadFloat3(&fMove);
@@ -345,20 +348,28 @@ void Player::Draw()
 	pEnemy->Draw(90, 90, enemyPoint_);
 
 	//死亡メッセージ
+	//画像位置
+	deadTr_.position_ = XMFLOAT3(PlTr_.position_.x, PlTr_.position_.y, 0.0f);
+
 	//エネミーによって死亡
 	if(EnDeadFlag_ == true)
 	{
+		Image::SetTransform(hRedDead_, deadTr_);
+		Image::Draw(hRedDead_);
+
 		Image::SetTransform(hEnDead_, deadTr_);
 		Image::Draw(hEnDead_);
 	}
 
 	//トラップによって死亡
-	//if (TrDeadFlag_ == true)
+	if (TrDeadFlag_ == true)
 	{
+		Image::SetTransform(hRedDead_, deadTr_);
+		Image::Draw(hRedDead_);
+
 		Image::SetTransform(hTrDead_, deadTr_);
 		Image::Draw(hTrDead_);
 	}
-
 }
 
 //開放

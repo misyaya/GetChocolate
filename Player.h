@@ -21,6 +21,7 @@ private:
    //画像
    int hEnDead_;    //エネミーによって死亡
    int hTrDead_;    //トラップによって死亡
+   int hRedDead_;   //死亡時の背景
 
    //各種値
    int hPictHp_;  //
@@ -40,8 +41,7 @@ private:
    XMFLOAT3 prevPosition_;  //直前までいた位置
 
    //情報
-   Transform tentative;
-   Transform front;
+   Transform PlTr_;
    Transform hpTr_;
    Transform deadTr_;
    
