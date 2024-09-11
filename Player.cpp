@@ -104,7 +104,7 @@ void Player::Initialize()
 
 
 	transform_.position_ = XMFLOAT3(20.0f, 0.0f, 1.0f);
-
+	deadTr_.position_ = XMFLOAT3(5.0f, 0.0f, 0.0f);
 
 	//武器の呼び出し
 	Instantiate<Sword>(this);
@@ -134,7 +134,7 @@ void Player::Update()
 		upSpeed_ =  1.0f;
 	}
 
-	if (EnDeadFlag_ == false || TrDeadFlag_ == false)
+	if (EnDeadFlag_ == false && TrDeadFlag_ == false)
 	{
 		//前
 		if (Input::IsKey(DIK_W))
@@ -348,14 +348,14 @@ void Player::Draw()
 	//エネミーによって死亡
 	if(EnDeadFlag_ == true)
 	{
-		Image::SetTransform(hEnDead_, tentative);
+		Image::SetTransform(hEnDead_, deadTr_);
 		Image::Draw(hEnDead_);
 	}
 
 	//トラップによって死亡
-	if (TrDeadFlag_ == true)
+	//if (TrDeadFlag_ == true)
 	{
-		Image::SetTransform(hTrDead_, tentative);
+		Image::SetTransform(hTrDead_, deadTr_);
 		Image::Draw(hTrDead_);
 	}
 

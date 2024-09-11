@@ -31,8 +31,9 @@ void MainGameScene::Initialize()
 	//}
 	Instantiate<Floor>(this);
 	Instantiate<Trap>(this);
-	Instantiate<Player>(this);
 	Instantiate<Tree>(this);
+	Instantiate<Player>(this);
+	
 }
 
 //XV
