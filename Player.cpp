@@ -377,6 +377,7 @@ void Player::Release()
 {
 }
 
+
 //“–‚½‚è”»’è
 void Player::OnCollision(GameObject* pTarget)
 {
@@ -399,8 +400,8 @@ void Player::OnCollision(GameObject* pTarget)
 			if (nowHp_ <= 0)
 			{
 				EnDeadFlag_ = true;
-				//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
-				//pSceneMnowHp_ <= 0anager->ChangeScene(SCENE_ID_RESULT);
+				SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+				pSceneManager->ChangeScene(SCENE_ID_RESULT);
 			}
 			//float knockbackDistance = -10.0f; //Œã‚ë‚É”ò‚Ô‹——£
 			//MoveBackward(knockbackDistance);
@@ -411,6 +412,12 @@ void Player::OnCollision(GameObject* pTarget)
 	if (pTarget->GetObjectName() == "Chocolate")
 	{
 		Audio::Play(sChocoGet_);
+		chocoPoint_ = ValueManager::GetInstance().GetPoints();
+		if (chocoPoint_  >= 5)
+		{
+			SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+			pSceneManager->ChangeScene(SCENE_ID_RESULT);
+		}
 	}
 
 	//ƒgƒ‰ƒbƒv‚É“–‚½‚Á‚½‚Æ‚«

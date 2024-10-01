@@ -88,39 +88,14 @@ void Sword::AttackSword()
 {
     if(attackFlag_ == false)
     {
-        /*BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
+        BoxCollider* collision = new BoxCollider(XMFLOAT3(0, 0, 0), XMFLOAT3(1, 1, 1));
         AddCollider(collision);
 
         Audio::Play(sSword_);
 
-        EmitterData  data;
-        data.textureFileName = "Effect/cloudA.png";
-        data.color = XMFLOAT4(1, 1, 0, 1);
-        data.deltaColor = XMFLOAT4(0, -0.03, 0, -0.02);
-        data.position = transform_.position_;
-
-        hEmit = VFX::Start(data);*/
-
-
-        
-        EmitterData  data;
-        data.textureFileName = "Effect/circle_Y.png";
-        data.position = transform_.position_;
  
-        data.delay = 5;
-        data.lifeTime = 150;
-        data.accel = 0.95;
-        data.size = XMFLOAT2(2, 2);
-        data.sizeRnd = XMFLOAT2(0.4, 0.4);
-        data.scale = XMFLOAT2(1.01f, 1.01f);
-        data.color.w = 0.2f; //不透明度
-        data.deltaColor.w = -0.002;
-        data.position.y = -2.0f;
-        data.rotateRnd.z = 180; //-180～180 
-        data.spin.z = 0.2f;
 
 
-        hEmit_ = VFX::Start(data);	//エミッターを設置
 
         while (transform_.rotate_.x <= 120.0f)
         {
